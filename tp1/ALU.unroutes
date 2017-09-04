@@ -1,9 +1,115 @@
-Release 14.7 - par P.20131013 (nt)
+Release 14.7 - par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Wed Aug 23 18:11:47 2017
+Mon Sep 04 19:37:39 2017
 
-All signals are completely routed.
+104 signals are not completely routed.
 
+WARNING:ParHelpers:360 - Design is not completely routed.
+
+   A<0>
+   A<1>
+   A<2>
+   A<3>
+   A<4>
+   A<5>
+   A<6>
+   A<7>
+   B<0>
+   B<1>
+   B<2>
+   B<3>
+   B<4>
+   B<5>
+   B<6>
+   B<7>
+   GLOBAL_LOGIC1
+   Maddsub_W_addsub0000_cy<1>
+   Maddsub_W_addsub0000_cy<3>
+   Maddsub_W_addsub0000_cy<5>
+   N01
+   N12
+   N23
+   N24
+   N31
+   N34
+   N35
+   N56
+   N61
+   Op<0>
+   Op<1>
+   Op<2>
+   Op<3>
+   Op<4>
+   Op<5>
+   Op<6>
+   Op<7>
+   W_addsub0000<0>
+   W_addsub0000<1>
+   W_addsub0000<2>
+   W_addsub0000<3>
+   W_addsub0000<4>
+   W_addsub0000<5>
+   W_addsub0000<6>
+   W_addsub0000<7>
+   W_mux0000<0>
+   W_mux0000<0>128
+   W_mux0000<0>149
+   W_mux0000<0>165
+   W_mux0000<0>21
+   W_mux0000<0>52
+   W_mux0000<1>
+   W_mux0000<1>100
+   W_mux0000<1>121
+   W_mux0000<1>137
+   W_mux0000<1>28
+   W_mux0000<2>
+   W_mux0000<2>108
+   W_mux0000<2>129
+   W_mux0000<2>145
+   W_mux0000<2>25
+   W_mux0000<3>
+   W_mux0000<3>144
+   W_mux0000<3>165
+   W_mux0000<3>181
+   W_mux0000<3>30
+   W_mux0000<3>45
+   W_mux0000<4>
+   W_mux0000<4>58
+   W_mux0000<4>79
+   W_mux0000<4>95
+   W_mux0000<5>
+   W_mux0000<5>58
+   W_mux0000<5>79
+   W_mux0000<5>95
+   W_mux0000<6>
+   W_mux0000<6>110
+   W_mux0000<6>57
+   W_mux0000<6>78
+   W_mux0000<6>94
+   W_mux0000<7>
+   W_mux0000<7>104
+   W_mux0000<7>124
+   W_mux0000<7>2111
+   W_mux0000<7>2124
+   W_mux0000<7>67
+   W_mux0000<7>88
+   W_mux0001
+   W_mux000112
+   W_mux00017
+   b1_BUFGP
+   b1_BUFGP/IBUFG
+   b2_IBUF
+   b3_IBUF
+   mclk_BUFGP
+   mclk_BUFGP/IBUFG
+   switch_0_IBUF
+   switch_1_IBUF
+   switch_2_IBUF
+   switch_3_IBUF
+   switch_4_IBUF
+   switch_5_IBUF
+   switch_6_IBUF
+   switch_7_IBUF
 
 

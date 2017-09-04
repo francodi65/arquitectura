@@ -18,52 +18,58 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module ALU(input signed [7:0]switch,input b1,input b2, input b3, output reg signed[7:0]W
+module ALU(input mclk, 
+			  input [7:0]switch,
+			  input b1,
+			  input b2, 
+			  input b3,
+			  output [7:0]W
     );
+
 	reg [7:0]A;
 	reg [7:0]B;
 	reg [7:0]Op;
-	/*always @(b1,b2,b3)
+	
+	/*always @(b1, switch)
+	begin
+		//A<= 8'b00000000;
+		if(b1==1)
+			A<=switch;
+	end
+	
+	always @(b2, switch)
+	begin 
+	//B<= 8'b00000000;
+		if(b2==1)
+			B<=switch;
+	end
+	
+	always @(b3, switch)
+	begin
+	//Op<= 8'b00000000;
+		if(b3==1)
+			Op<=switch;
+	end*/
+
+			
+	always @(posedge mclk) 
 		 begin
-			 if (b1=1) 
-				begin
-					A= switch;
-				end if
+			 if (b1==1) 
+				A= switch;
 				
-			 if (b2=1) 
-				begin
-					B= switch;
-				end if
+			 else if (b2==1) 
+				B= switch;
 				
-			 if (b3=1) 
-				begin
-					Op= switch;
-				end if
+			 else if (b3==1) 
+				Op= switch;	
 		 end
-		 */
-	 always @(*)
-		begin
-		
-			A = 8'b00000001;
-			B = 8'b00000010;
-			Op = 8'b00100000;
-			 case(Op)
-					 8'b00100000: 
-						W = A + B;
-					 8'b00100010: 
-						W = A - B;
-					 8'b00100100: 
-						W = A & B;
-					 8'b00100101: 
-						W = A | B;
-					 8'b00100110: 
-						W = A ^ B;
-					 8'b00000011: 
-						W = A >>> B;
-					 8'b00000010: 
-						W = A >> B;
-					 8'b00100111: 
-						W = A |~ B;
-				endcase
-		end
+	
+	Combinacional instancia(  
+	.a (A),  
+	.b (B),
+	.op(Op),
+	.w (W));
+	 
 endmodule
+
+
