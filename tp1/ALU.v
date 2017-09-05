@@ -29,28 +29,6 @@ module ALU(input mclk,
 	reg [7:0]A;
 	reg [7:0]B;
 	reg [7:0]Op;
-	
-	/*always @(b1, switch)
-	begin
-		//A<= 8'b00000000;
-		if(b1==1)
-			A<=switch;
-	end
-	
-	always @(b2, switch)
-	begin 
-	//B<= 8'b00000000;
-		if(b2==1)
-			B<=switch;
-	end
-	
-	always @(b3, switch)
-	begin
-	//Op<= 8'b00000000;
-		if(b3==1)
-			Op<=switch;
-	end*/
-
 			
 	always @(posedge mclk) 
 		 begin

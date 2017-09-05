@@ -20,9 +20,6 @@ INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
 INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
    option. All paths that are not constrained will be reported in the 
    unconstrained paths section(s) of the report.
-INFO:Timing:3284 - This timing report was generated using estimated delay 
-   information.  For accurate numbers, please refer to the post Place and Route 
-   timing report.
 INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
    a 50 Ohm transmission line loading model.  For the details of this model, 
    and for more information on accounting for different loading conditions, 
@@ -42,105 +39,48 @@ Data Sheet report:
 -----------------
 All values displayed in nanoseconds (ns)
 
-Setup/Hold to clock b1
+Setup/Hold to clock mclk
 ------------+------------+------------+------------------+--------+
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-switch<0>   |   -1.939(F)|    2.879(F)|b1_BUFGP          |   0.000|
-switch<1>   |   -1.985(F)|    2.916(F)|b1_BUFGP          |   0.000|
-switch<2>   |   -1.939(F)|    2.879(F)|b1_BUFGP          |   0.000|
-switch<3>   |   -1.985(F)|    2.916(F)|b1_BUFGP          |   0.000|
-switch<4>   |   -1.939(F)|    2.879(F)|b1_BUFGP          |   0.000|
-switch<5>   |   -1.985(F)|    2.916(F)|b1_BUFGP          |   0.000|
-switch<6>   |   -1.939(F)|    2.879(F)|b1_BUFGP          |   0.000|
-switch<7>   |   -1.985(F)|    2.916(F)|b1_BUFGP          |   0.000|
+b1          |    2.494(R)|    0.275(R)|mclk_BUFGP        |   0.000|
+b2          |    2.318(R)|    0.051(R)|mclk_BUFGP        |   0.000|
+b3          |    2.483(R)|   -0.322(R)|mclk_BUFGP        |   0.000|
+switch<0>   |    1.207(R)|    0.297(R)|mclk_BUFGP        |   0.000|
+switch<1>   |    1.310(R)|    0.345(R)|mclk_BUFGP        |   0.000|
+switch<2>   |    1.526(R)|    0.399(R)|mclk_BUFGP        |   0.000|
+switch<3>   |    0.794(R)|    0.722(R)|mclk_BUFGP        |   0.000|
+switch<4>   |    1.040(R)|    0.645(R)|mclk_BUFGP        |   0.000|
+switch<5>   |    0.859(R)|    0.660(R)|mclk_BUFGP        |   0.000|
+switch<6>   |    0.827(R)|    0.794(R)|mclk_BUFGP        |   0.000|
+switch<7>   |    1.322(R)|    0.389(R)|mclk_BUFGP        |   0.000|
 ------------+------------+------------+------------------+--------+
 
-Setup/Hold to clock b2
-------------+------------+------------+------------------+--------+
-            |Max Setup to|Max Hold to |                  | Clock  |
-Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
-------------+------------+------------+------------------+--------+
-switch<0>   |   -1.307(F)|    2.247(F)|b2_BUFGP          |   0.000|
-switch<1>   |   -1.353(F)|    2.284(F)|b2_BUFGP          |   0.000|
-switch<2>   |   -1.307(F)|    2.247(F)|b2_BUFGP          |   0.000|
-switch<3>   |   -1.353(F)|    2.284(F)|b2_BUFGP          |   0.000|
-switch<4>   |   -1.307(F)|    2.247(F)|b2_BUFGP          |   0.000|
-switch<5>   |   -1.353(F)|    2.284(F)|b2_BUFGP          |   0.000|
-switch<6>   |   -1.307(F)|    2.247(F)|b2_BUFGP          |   0.000|
-switch<7>   |   -1.353(F)|    2.284(F)|b2_BUFGP          |   0.000|
-------------+------------+------------+------------------+--------+
-
-Setup/Hold to clock b3
-------------+------------+------------+------------------+--------+
-            |Max Setup to|Max Hold to |                  | Clock  |
-Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
-------------+------------+------------+------------------+--------+
-switch<0>   |   -2.591(F)|    3.531(F)|b3_BUFGP          |   0.000|
-switch<1>   |   -2.637(F)|    3.568(F)|b3_BUFGP          |   0.000|
-switch<2>   |   -2.591(F)|    3.531(F)|b3_BUFGP          |   0.000|
-switch<3>   |   -2.637(F)|    3.568(F)|b3_BUFGP          |   0.000|
-switch<4>   |   -2.591(F)|    3.531(F)|b3_BUFGP          |   0.000|
-switch<5>   |   -2.637(F)|    3.568(F)|b3_BUFGP          |   0.000|
-switch<6>   |   -2.591(F)|    3.531(F)|b3_BUFGP          |   0.000|
-switch<7>   |   -2.637(F)|    3.568(F)|b3_BUFGP          |   0.000|
-------------+------------+------------+------------------+--------+
-
-Clock b1 to Pad
+Clock mclk to Pad
 ------------+------------+------------------+--------+
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-W<0>        |    9.561(F)|b1_BUFGP          |   0.000|
-W<1>        |   10.066(F)|b1_BUFGP          |   0.000|
-W<2>        |   10.152(F)|b1_BUFGP          |   0.000|
-W<3>        |   10.506(F)|b1_BUFGP          |   0.000|
-W<4>        |   10.355(F)|b1_BUFGP          |   0.000|
-W<5>        |   10.709(F)|b1_BUFGP          |   0.000|
-W<6>        |   10.558(F)|b1_BUFGP          |   0.000|
-W<7>        |   10.912(F)|b1_BUFGP          |   0.000|
-------------+------------+------------------+--------+
-
-Clock b2 to Pad
-------------+------------+------------------+--------+
-            | clk (edge) |                  | Clock  |
-Destination |   to PAD   |Internal Clock(s) | Phase  |
-------------+------------+------------------+--------+
-W<0>        |    8.929(F)|b2_BUFGP          |   0.000|
-W<1>        |    9.434(F)|b2_BUFGP          |   0.000|
-W<2>        |    9.520(F)|b2_BUFGP          |   0.000|
-W<3>        |    9.874(F)|b2_BUFGP          |   0.000|
-W<4>        |    9.723(F)|b2_BUFGP          |   0.000|
-W<5>        |   10.077(F)|b2_BUFGP          |   0.000|
-W<6>        |    9.926(F)|b2_BUFGP          |   0.000|
-W<7>        |   10.280(F)|b2_BUFGP          |   0.000|
-------------+------------+------------------+--------+
-
-Clock b3 to Pad
-------------+------------+------------------+--------+
-            | clk (edge) |                  | Clock  |
-Destination |   to PAD   |Internal Clock(s) | Phase  |
-------------+------------+------------------+--------+
-W<0>        |    9.911(F)|b3_BUFGP          |   0.000|
-W<1>        |    9.911(F)|b3_BUFGP          |   0.000|
-W<2>        |    9.911(F)|b3_BUFGP          |   0.000|
-W<3>        |    9.911(F)|b3_BUFGP          |   0.000|
-W<4>        |    9.911(F)|b3_BUFGP          |   0.000|
-W<5>        |    9.911(F)|b3_BUFGP          |   0.000|
-W<6>        |    9.911(F)|b3_BUFGP          |   0.000|
-W<7>        |    9.911(F)|b3_BUFGP          |   0.000|
+W<0>        |   13.760(R)|mclk_BUFGP        |   0.000|
+W<1>        |   13.815(R)|mclk_BUFGP        |   0.000|
+W<2>        |   13.693(R)|mclk_BUFGP        |   0.000|
+W<3>        |   14.962(R)|mclk_BUFGP        |   0.000|
+W<4>        |   13.874(R)|mclk_BUFGP        |   0.000|
+W<5>        |   14.161(R)|mclk_BUFGP        |   0.000|
+W<6>        |   14.048(R)|mclk_BUFGP        |   0.000|
+W<7>        |   14.259(R)|mclk_BUFGP        |   0.000|
 ------------+------------+------------------+--------+
 
 
-Analysis completed Mon Sep 04 18:48:55 2017 
+Analysis completed Mon Sep 04 20:52:43 2017 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 178 MB
+Peak Memory Usage: 177 MB
 
 
 

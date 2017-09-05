@@ -47,5 +47,4 @@ always @(*)
 					w = 8'b00000000;
 			endcase
 
-
 endmodule
