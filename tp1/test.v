@@ -44,7 +44,7 @@ module test;
 		.W(W)
 	);
 	
-	// Clock
+	// Clock 1ns
 	initial begin
 		mclk = 0;
 		forever begin
@@ -64,15 +64,30 @@ module test;
 		#100;
         
 		// Add stimulus here
-		switch= 8'b00000001;
+		switch= 8'b00000011;  //a=1 binario
 		b1=1;
 		#10
 		b1=0;
-		switch= 8'b00000001;
+		switch= 8'b00000001;  //b=3 binario
 		b2=1;
 		#10;
 		b2=0;
-		switch= 8'b00100000;
+		switch= 8'b00100000;  //Op = suma
+		b3=1;
+		#10
+		b3=0;
+		#10
+		switch= 8'b00100010;  //Op = resta
+		b3=1;
+		#10
+		b3=0;
+		#10
+		switch= 8'b00100100;  //Op = and
+		b3=1;
+		#10
+		b3=0;
+		#10
+		switch= 8'b00100101;  //Op = or
 		b3=1;
 		#10
 		b3=0;
