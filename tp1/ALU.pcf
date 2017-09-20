@@ -1,30 +1,33 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Mon Sep 04 21:51:03 2017
+// Written by: Map P.20131013 on Wed Sep 06 18:12:16 2017
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "b1" LOCATE = SITE "G12" LEVEL 1;
-COMP "b2" LOCATE = SITE "C11" LEVEL 1;
-COMP "switch<0>" LOCATE = SITE "P11" LEVEL 1;
-COMP "b3" LOCATE = SITE "M4" LEVEL 1;
-COMP "switch<1>" LOCATE = SITE "L3" LEVEL 1;
-COMP "switch<2>" LOCATE = SITE "K3" LEVEL 1;
-COMP "switch<3>" LOCATE = SITE "B4" LEVEL 1;
-COMP "switch<4>" LOCATE = SITE "G3" LEVEL 1;
-COMP "switch<5>" LOCATE = SITE "F3" LEVEL 1;
-COMP "switch<6>" LOCATE = SITE "E2" LEVEL 1;
-COMP "switch<7>" LOCATE = SITE "N3" LEVEL 1;
-COMP "mclk" LOCATE = SITE "B8" LEVEL 1;
-PIN mclk_pin<0> = BEL "mclk" PINNAME PAD;
-PIN "mclk_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
-COMP "W<0>" LOCATE = SITE "M5" LEVEL 1;
-COMP "W<1>" LOCATE = SITE "M11" LEVEL 1;
-COMP "W<2>" LOCATE = SITE "P7" LEVEL 1;
-COMP "W<3>" LOCATE = SITE "P6" LEVEL 1;
-COMP "W<4>" LOCATE = SITE "N5" LEVEL 1;
-COMP "W<5>" LOCATE = SITE "N4" LEVEL 1;
-COMP "W<6>" LOCATE = SITE "P4" LEVEL 1;
-COMP "W<7>" LOCATE = SITE "G1" LEVEL 1;
-NET "mclk_BUFGP/IBUFG" BEL "mclk_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
+COMP "b1" LOCATE = SITE "C4" LEVEL 1;
+COMP "b2" LOCATE = SITE "B8" LEVEL 1;
+COMP "b3" LOCATE = SITE "D9" LEVEL 1;
+COMP "switch<0>" LOCATE = SITE "T10" LEVEL 1;
+COMP "switch<1>" LOCATE = SITE "T9" LEVEL 1;
+COMP "switch<2>" LOCATE = SITE "V9" LEVEL 1;
+COMP "switch<3>" LOCATE = SITE "M8" LEVEL 1;
+COMP "switch<4>" LOCATE = SITE "N8" LEVEL 1;
+COMP "switch<5>" LOCATE = SITE "U8" LEVEL 1;
+COMP "switch<6>" LOCATE = SITE "V8" LEVEL 1;
+COMP "switch<7>" LOCATE = SITE "T5" LEVEL 1;
+COMP "mclk" LOCATE = SITE "V10" LEVEL 1;
+COMP "W<0>" LOCATE = SITE "U16" LEVEL 1;
+COMP "W<1>" LOCATE = SITE "V16" LEVEL 1;
+COMP "W<2>" LOCATE = SITE "U15" LEVEL 1;
+COMP "W<3>" LOCATE = SITE "V15" LEVEL 1;
+COMP "W<4>" LOCATE = SITE "M11" LEVEL 1;
+COMP "W<5>" LOCATE = SITE "N11" LEVEL 1;
+COMP "W<6>" LOCATE = SITE "R11" LEVEL 1;
+COMP "W<7>" LOCATE = SITE "T11" LEVEL 1;
+TIMEGRP sys_clk_pin = BEL "B_0" BEL "B_1" BEL "B_2" BEL "B_3" BEL "B_4" BEL
+        "B_5" BEL "B_6" BEL "B_7" BEL "Op_0" BEL "Op_1" BEL "Op_2" BEL "Op_3"
+        BEL "Op_4" BEL "Op_5" BEL "Op_6" BEL "Op_7" BEL "A_0" BEL "A_1" BEL
+        "A_2" BEL "A_3" BEL "A_4" BEL "A_5" BEL "A_6" BEL "A_7" BEL
+        "mclk_BUFGP/BUFG";
+TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
 SCHEMATIC END;
 

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2017-09-05T14:46:52</DateModified>
+  <DateModified>2017-09-20T17:32:23</DateModified>
   <ModuleName>ALU</ModuleName>
-  <SummaryTimeStamp>2017-09-04T20:52:51</SummaryTimeStamp>
-  <SavedFilePath>C:/Users/Franco/Git/arquitectura/tp1/iseconfig/ALU.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/Franco/Git/arquitectura/tp1\</ImplementationReportsDirectory>
+  <SummaryTimeStamp>2017-09-06T17:31:43</SummaryTimeStamp>
+  <SavedFilePath>C:/Users/Juanma/arquitectura/tp1/iseconfig/ALU.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Users/Juanma/arquitectura/tp1\</ImplementationReportsDirectory>
   <DateInitialized>2017-08-23T17:10:25</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

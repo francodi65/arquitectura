@@ -1,27 +1,28 @@
-# Pin assignment for SWs
-NET "switch<7>" LOC = "N3";  # Bank = 2, Signal name = SW7
-NET "switch<6>" LOC = "E2";  # Bank = 3, Signal name = SW6
-NET "switch<5>" LOC = "F3";  # Bank = 3, Signal name = SW5
-NET "switch<4>" LOC = "G3";  # Bank = 3, Signal name = SW4
-NET "switch<3>" LOC = "B4";  # Bank = 3, Signal name = SW3
-NET "switch<2>" LOC = "K3";  # Bank = 3, Signal name = SW2
-NET "switch<1>" LOC = "L3";  # Bank = 3, Signal name = SW1
-NET "switch<0>" LOC = "P11";  # Bank = 2, Signal name = SW0
+## Switches
+Net "switch<0>" LOC = T10 | IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L29N_GCLK2, Sch name = SW0
+Net "switch<1>" LOC = T9 | IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L32P_GCLK29, Sch name = SW1
+Net "switch<2>" LOC = V9 | IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L32N_GCLK28, Sch name = SW2
+Net "switch<3>" LOC = M8 | IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L40P, Sch name = SW3
+Net "switch<4>" LOC = N8 | IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L40N, Sch name = SW4
+Net "switch<5>" LOC = U8 | IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L41P, Sch name = SW5
+Net "switch<6>" LOC = V8 | IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L41N_VREF, Sch name = SW6
+Net "switch<7>" LOC = T5 | IOSTANDARD = LVCMOS33; #Bank = MISC, pin name = IO_L48N_RDWR_B_VREF_2, Sch name = SW7
 
-NET "b3" LOC = "M4";  # Bank = 0, Signal name = BTN2
-NET "b2" LOC = "C11"; # Bank = 2, Signal name = BTN1
-NET "b1" LOC = "G12"; # Bank = 0, Signal name = BTN0
+NET "b3" LOC = "D9";  # Bank = 0, Signal name = BTN2
+NET "b2" LOC = "B8"; # Bank = 2, Signal name = BTN1
+NET "b1" LOC = "C4"; # Bank = 0, Signal name = BTN0
 
-# Pin assignment for LEDs
-NET "W<7>" LOC = "G1" ; # Bank = 3, Signal name = LD7
-NET "W<6>" LOC = "P4" ; # Bank = 2, Signal name = LD6
-NET "W<5>" LOC = "N4" ;  # Bank = 2, Signal name = LD5
-NET "W<4>" LOC = "N5" ;  # Bank = 2, Signal name = LD4
-NET "W<3>" LOC = "P6" ; # Bank = 2, Signal name = LD3
-NET "W<2>" LOC = "P7" ; # Bank = 3, Signal name = LD2
-NET "W<1>" LOC = "M11" ; # Bank = 2, Signal name = LD1
-NET "W<0>" LOC = "M5" ;  # Bank = 2, Signal name = LD0
+## Leds
+Net "W<0>" LOC = U16 | IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L2P_CMPCLK, Sch name = LD0
+Net "W<1>" LOC = V16 |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L2N_CMPMOSI, Sch name = LD1
+Net "W<2>" LOC = U15 |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L5P, Sch name = LD2
+Net "W<3>" LOC = V15 |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L5N, Sch name = LD3
+Net "W<4>" LOC = M11 |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L15P, Sch name = LD4
+Net "W<5>" LOC = N11 |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L15N, Sch name = LD5
+Net "W<6>" LOC = R11 |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L16P, Sch name = LD6
+Net "W<7>" LOC = T11 |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L16N_VREF, Sch name = LD7
 
-# clock pin for Basys2 Board
-NET "mclk" LOC = "B8"; # Bank = 0, Signal name = MCLK
-NET "mclk" CLOCK_DEDICATED_ROUTE = FALSE;
+##Clock signal
+Net "mclk" LOC=V10 | IOSTANDARD=LVCMOS33;
+Net "mclk" TNM_NET = sys_clk_pin;
+TIMESPEC TS_sys_clk_pin = PERIOD sys_clk_pin 100000 kHz;

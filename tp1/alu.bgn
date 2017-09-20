@@ -1,13 +1,13 @@
 Release 14.7 - Bitgen P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
-Loading device for application Rf_Device from file '3s100e.nph' in environment
-C:\Xilinx\14.7\ISE_DS\ISE\.
-   "ALU" is an NCD, version 3.2, device xc3s100e, package cp132, speed -5
+Loading device for application Rf_Device from file '6slx16.nph' in environment
+D:\Programas\Xilinx\14.7\ISE_DS\ISE\.
+   "ALU" is an NCD, version 3.2, device xc6slx16, package csg324, speed -3
 Opened constraints file ALU.pcf.
 
-Mon Sep 04 21:51:13 2017
+Wed Sep 06 18:13:09 2017
 
-C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\bitgen.exe -intstyle ise -w -g DebugBitstream:No -g Binary:no -g CRC:Enable -g ConfigRate:1 -g ProgPin:PullUp -g DonePin:PullUp -g TckPin:PullUp -g TdiPin:PullUp -g TdoPin:PullUp -g TmsPin:PullUp -g UnusedPin:PullDown -g UserID:0xFFFFFFFF -g DCMShutdown:Disable -g StartUpClk:CClk -g DONE_cycle:4 -g GTS_cycle:5 -g GWE_cycle:6 -g LCK_cycle:NoWait -g Security:None -g DonePipe:Yes -g DriveDone:No ALU.ncd 
+D:\Programas\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\bitgen.exe -intstyle ise -w -g DebugBitstream:No -g Binary:no -g CRC:Enable -g Reset_on_err:No -g ConfigRate:2 -g ProgPin:PullUp -g TckPin:PullUp -g TdiPin:PullUp -g TdoPin:PullUp -g TmsPin:PullUp -g UnusedPin:PullDown -g UserID:0xFFFFFFFF -g ExtMasterCclk_en:No -g SPI_buswidth:1 -g TIMER_CFG:0xFFFF -g multipin_wakeup:No -g StartUpClk:CClk -g DONE_cycle:4 -g GTS_cycle:5 -g GWE_cycle:6 -g LCK_cycle:NoWait -g Security:None -g DonePipe:Yes -g DriveDone:No -g en_sw_gsr:No -g drive_awake:No -g sw_clk:Startupclk -g sw_gwe_cycle:5 -g sw_gts_cycle:4 ALU.ncd 
 
 Summary of Bitgen Options:
 +----------------------+----------------------+
@@ -21,13 +21,11 @@ Summary of Bitgen Options:
 +----------------------+----------------------+
 | DebugBitstream       | No**                 |
 +----------------------+----------------------+
-| ConfigRate           | 1**                  |
+| ConfigRate           | 2**                  |
 +----------------------+----------------------+
 | StartupClk           | Cclk**               |
 +----------------------+----------------------+
-| DCMShutdown          | Disable**            |
-+----------------------+----------------------+
-| DonePin              | Pullup**             |
+| DonePin              | Pullup*              |
 +----------------------+----------------------+
 | ProgPin              | Pullup**             |
 +----------------------+----------------------+
@@ -59,23 +57,63 @@ Summary of Bitgen Options:
 +----------------------+----------------------+
 | UserID               | 0xFFFFFFFF**         |
 +----------------------+----------------------+
-| MultiBootMode        | No*                  |
-+----------------------+----------------------+
-| ActivateGclk         | No*                  |
-+----------------------+----------------------+
 | ActiveReconfig       | No*                  |
 +----------------------+----------------------+
-| PartialMask0         | (Not Specified)*     |
+| Partial              | (Not Specified)*     |
 +----------------------+----------------------+
-| PartialMask1         | (Not Specified)*     |
+| Encrypt              | No*                  |
 +----------------------+----------------------+
-| PartialMask2         | (Not Specified)*     |
+| Key0                 | pick*                |
 +----------------------+----------------------+
-| PartialGclk          | (Not Specified)*     |
+| StartCBC             | pick*                |
 +----------------------+----------------------+
-| PartialLeft          | (Not Specified)*     |
+| KeyFile              | (Not Specified)*     |
 +----------------------+----------------------+
-| PartialRight         | (Not Specified)*     |
+| drive_awake          | No**                 |
++----------------------+----------------------+
+| Reset_on_err         | No**                 |
++----------------------+----------------------+
+| suspend_filter       | Yes*                 |
++----------------------+----------------------+
+| en_sw_gsr            | No**                 |
++----------------------+----------------------+
+| en_suspend           | No*                  |
++----------------------+----------------------+
+| sw_clk               | Startupclk**         |
++----------------------+----------------------+
+| sw_gwe_cycle         | 5**                  |
++----------------------+----------------------+
+| sw_gts_cycle         | 4**                  |
++----------------------+----------------------+
+| multipin_wakeup      | No**                 |
++----------------------+----------------------+
+| wakeup_mask          | 0x00*                |
++----------------------+----------------------+
+| ExtMasterCclk_en     | No**                 |
++----------------------+----------------------+
+| ExtMasterCclk_divide | 1*                   |
++----------------------+----------------------+
+| CrcCoverage          | No*                  |
++----------------------+----------------------+
+| glutmask             | Yes*                 |
++----------------------+----------------------+
+| next_config_addr     | 0x00000000*          |
++----------------------+----------------------+
+| next_config_new_mode | No*                  |
++----------------------+----------------------+
+| next_config_boot_mode | 001*                 |
++----------------------+----------------------+
+| next_config_register_write | Enable*              |
++----------------------+----------------------+
+| next_config_reboot   | Enable*              |
++----------------------+----------------------+
+| golden_config_addr   | 0x00000000*          |
++----------------------+----------------------+
+| failsafe_user        | 0x0000*              |
++----------------------+----------------------+
+| TIMER_CFG            | 0xFFFF               |
++----------------------+----------------------+
+| spi_buswidth         | 1**                  |
 +----------------------+----------------------+
 | TimeStamp            | Default*             |
 +----------------------+----------------------+
