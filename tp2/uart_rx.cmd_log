@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp2/uart_rx.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp2/uart_rx.syr" 

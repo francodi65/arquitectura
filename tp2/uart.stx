@@ -1,0 +1,40 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to C:/Users/Franco/Git/arquitectura/tp2/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> Parameter xsthdpdir set to C:/Users/Franco/Git/arquitectura/tp2/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "uart.v" in library work
+ERROR:HDLCompilers:26 - "uart.v" line 28 expecting '=', found 'IT'
+ERROR:HDLCompilers:26 - "uart.v" line 40 unexpected token: '.'
+ERROR:HDLCompilers:28 - "uart.v" line 46 'DVSR_BIT' has not been declared
+ERROR:HDLCompilers:28 - "uart.v" line 53 'FIF0_W' has not been declared
+ERROR:HDLCompilers:28 - "uart.v" line 58 'FIF0_W' has not been declared
+ERROR:HDLCompilers:26 - "uart.v" line 64 expecting '(', found '.'
+ERROR:HDLCompilers:26 - "uart.v" line 65 unexpected token: '.'
+ERROR:HDLCompilers:26 - "uart.v" line 65 unexpected token: '.'
+ERROR:HDLCompilers:26 - "uart.v" line 66 unexpected token: '.'
+ERROR:HDLCompilers:26 - "uart.v" line 66 unexpected token: '.'
+Module <uart> compiled
+Analysis of file <"uart.prj"> failed.
+--> 
+
+Total memory usage is 265552 kilobytes
+
+Number of errors   :   10 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+
