@@ -1,0 +1,5 @@
+set -tmpdir "C:/Users/Franco/Git/arquitectura/tp2/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/Franco/Git/arquitectura/tp2/xst"
+elaborate
+-ifn uart_rx.prj
+-ifmt mixed
