@@ -28,12 +28,13 @@ module uart #( 								// Default setting:
 								 DVSR_BIT = 8,// # bits of DVSR 
 								 FIF0_W = 8 	// # addr bits of FIFO 
 													// # words in FIFO = 2 "FIFO-W 
-) 
-				(input wire clk, reset, 
-				 input wire rd_uart, wr_uart, rx, 
-				 input wire [7:0] w_data , 
-				 output wire tx_full ,rx_empty, tx, 
-				 output wire [7:0] r_data); 
+				 ) 
+				 ( input wire clk, reset, 
+				   input wire rd_uart, wr_uart, rx, 
+				   input wire [7:0] w_data , 
+				   output wire tx_full ,rx_empty, tx, 
+				   output wire [7:0] r_data
+				 ); 
 
 // signal declaration 
 

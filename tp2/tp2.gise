@@ -23,6 +23,9 @@
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
     <file xil_pn:fileType="FILE_LSO" xil_pn:name=".lso"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="baud_gen.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="baud_gen.stx"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="baud_gen.xst"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="flag_buf.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="flag_buf.stx"/>
     <file xil_pn:fileType="FILE_XST" xil_pn:name="flag_buf.xst"/>
