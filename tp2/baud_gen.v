@@ -39,7 +39,7 @@ always @(posedge clk, posedge reset)
 	if (reset) 
 		r_reg <= 0; 
 	else 
-		r_reg <= r.next; 
+		r_reg <= r_next; 
 
 // next -state logic 
 assign r_next = (r_reg == (M-1)) ? 0 : r_reg + 1; 

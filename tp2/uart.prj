@@ -1,5 +1,5 @@
 verilog work "uart_tx.v"
 verilog work "uart_rx.v"
-verilog work "flag_buf.v"
+verilog work "fifo.v"
 verilog work "baud_gen.v"
 verilog work "uart.v"

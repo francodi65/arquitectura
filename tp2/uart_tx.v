@@ -129,7 +129,7 @@ begin
 end
 
 //  output 
-assign  dout  =  b_reg; 
+assign  tx  =  tx_reg; 
 
 endmodule
 
