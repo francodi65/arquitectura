@@ -42,65 +42,61 @@ module test;
 	initial begin
 			clk = 0;
 			forever begin
-					#1 clk = ~clk;
+					#0.01 clk = ~clk;
 			end
 	end
 	initial begin
 		// Initialize Inputs
-		clk = 0;
-		reset = 0;
-		rx = 0;
+		reset = 1;
+		rx = 1;
 
 		// Wait 100 ns for global reset to finish
 		#100;
-        
-		#1 reset = 1;
 		#1 reset = 0;
 		// Add stimulus here
-		rx=1;
 		//start bit
 		#1 rx=0;
 		//data
-		#1 rx=1;
-		#1 rx=0;
-		#1 rx=0;
-		#1 rx=0;
-		#1 rx=0;
-		#1 rx=0;
-		#1 rx=0;
-		#1 rx=0;
+		#52 rx=1;
+		#52 rx=0;
+		#52 rx=0;
+		#52 rx=0;
+		#52 rx=0;
+		#52 rx=0;
+		#52 rx=0;
+		#52 rx=0;
 		//stop bit
-		#1 rx=1;
+		#52 rx=1;
 		
 		
 		//start bit
-		#1 rx=0;
+		#52 rx=0;
 		//data
-		#1 rx=1;
-		#1 rx=1;
-		#1 rx=0;
-		#1 rx=0;
-		#1 rx=0;
-		#1 rx=0;
-		#1 rx=0;
-		#1 rx=0;
+		#52 rx=1;
+		#52 rx=1;
+		#52 rx=0;
+		#52 rx=0;
+		#52 rx=0;
+		#52 rx=0;
+		#52 rx=0;
+		#52 rx=0;
 		//stop bit
-		#1 rx=1;
+		#52 rx=1;
 		
 		
 		//start bit
-		#1 rx=0;
+		#52 rx=0;
 		//data
-		#1 rx=0;
-		#1 rx=0;
-		#1 rx=0;
-		#1 rx=0;
-		#1 rx=0;
-		#1 rx=1;
-		#1 rx=0;
-		#1 rx=0;
+		#52 rx=0;
+		#52 rx=0;
+		#52 rx=0;
+		#52 rx=0;
+		#52 rx=0;
+		#52 rx=1;
+		#52 rx=0;
+		#52 rx=0;
 		//stop bit
-		#1 rx=1;
+		#52 rx=1;
 	end
       
 endmodule

@@ -31,7 +31,6 @@ module interfaz #(parameter REG_SIZE=8)( input wire clk, reset,
 					);
 reg [1:0] state= 0;
 
-
 reg w_done=1'b0;
 
 always @(posedge clk, posedge reset) 
@@ -40,38 +39,46 @@ begin
 		begin
 			state = 2'b00;
 			w_done = 1'b0;
+			rd_uart = 0;
 		end
 	else
 		if (~rx_empty)
-			case(state)
-				2'b00:
-					begin
-						a = r_data;
-						state = state+1;
-						rd_uart = 1'b1;
-						w_done = 1'b0;
-					end
-				2'b01:
-					begin
-						b = r_data;
-						state=state+1;
-						rd_uart = 1'b1;
-						w_done = 1'b0;
-					end
-				2'b10:
-					begin
-						op = r_data;
-						state=2'b00;
-						rd_uart = 1'b1;
-						w_done = 1'b1;
-					end
-			endcase
-			else
+			begin
+				case(state)
+					2'b00:
+						begin
+							a = r_data;
+							state = state+1;
+							rd_uart = 1'b1;
+							w_done = 1'b0;
+						end
+					2'b01:
+						begin
+							b = r_data;
+							state=state+1;
+							rd_uart = 1'b1;
+							w_done = 1'b0;
+						end
+					2'b10:
+						begin
+							op = r_data;
+							state=2'b00;
+							rd_uart = 1'b1;
+							w_done = 1'b1;
+						end
+				endcase
+				
 				rd_uart = 1'b0;
+			end
+		else
+			begin
+				rd_uart = 1'b0;
+				w_done = 1'b0;
+			end
 				
 end
 
-always @*
+always @(posedge clk)
 	if(w_done & ~tx_full)
 		begin
 			w_data = w;
@@ -79,7 +86,7 @@ always @*
 		end
 	else
 		begin
-			w_data = 0;
+			w_data = 1;
 			wr_uart = 1'b0;
 		end
 			
