@@ -28,6 +28,8 @@ module test;
 	reg clk;
 	reg reset;
 	reg rx;
+	wire rd_uart, wr_uart, tx_full, rx_empty;
+	wire [8-1:0] w_data, r_data, a, b, op, w;
 
 	// Outputs
 	wire tx;
@@ -37,7 +39,10 @@ module test;
 		.clk(clk), 
 		.reset(reset), 
 		.rx(rx), 
-		.tx(tx)
+		.tx(tx),
+		.rd_uart(rd_uart), .wr_uart(wr_uart), 
+	 .tx_full(tx_full), .rx_empty(rx_empty), .w_data(w_data),
+	 .r_data(r_data), .a(a), .b(b), .op(op), .w(w)
 	);
 	initial begin
 			clk = 0;

@@ -30,11 +30,13 @@ module top_module #( 								// Default setting:
 															// # words in FIFO = 2 "FIFO-W 
 						 ) 
 						 ( input wire clk, reset, rx,
-						   output wire tx
+						   output wire tx,
+							output wire rd_uart, wr_uart, tx_full, rx_empty,
+							output [DBIT-1:0] w_data, r_data, a, b, op, w
 					    );
 
-wire rd_uart, wr_uart, tx_full, rx_empty;
-wire [DBIT-1:0] w_data, r_data, a, b, op, w;
+//wire rd_uart, wr_uart, tx_full, rx_empty;
+//wire [DBIT-1:0] w_data, r_data, a, b, op, w;
  
 alu #(.REG_SIZE(DBIT)) alu_unit 
 	(.a(a), .b(b), .op(op), .w(w)); 

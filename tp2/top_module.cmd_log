@@ -30,3 +30,4 @@ xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp2/top_module.xst" -of
 xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp2/top_module.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp2/top_module.syr" 
 xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp2/top_module.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp2/top_module.syr" 
 xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp2/top_module.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp2/top_module.syr" 
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp2/top_module.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp2/top_module.syr" 

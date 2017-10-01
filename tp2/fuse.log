@@ -26,7 +26,8 @@ Compiling module top_module
 Compiling module test
 Compiling module glbl
 Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
 Compiled 10 Verilog Units
 Built simulation executable C:/Users/Franco/Git/arquitectura/tp2/test_isim_beh.exe
-Fuse Memory Usage: 28428 KB
-Fuse CPU Usage: 437 ms
+Fuse Memory Usage: 28392 KB
+Fuse CPU Usage: 389 ms

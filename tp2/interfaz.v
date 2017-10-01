@@ -29,9 +29,16 @@ module interfaz #(parameter REG_SIZE=8)( input wire clk, reset,
 						output reg [REG_SIZE-1:0]op,
 						input signed [REG_SIZE-1:0]w
 					);
-reg [1:0] state= 0;
 
-reg w_done=1'b0;
+localparam  [1:0]
+	num1  =  2'b00, 
+	num2  =  2'b01, 
+	opr   =  2'b10,
+	wr		=  2'b11;
+	
+reg [1:0] state, next_state;
+reg [REG_SIZE-1:0] a_state, b_state, op_state, w_state;
+reg w_done;
 
 always @(posedge clk, posedge reset) 
 begin
@@ -42,53 +49,68 @@ begin
 			rd_uart = 0;
 		end
 	else
-		if (~rx_empty)
-			begin
+		state = next_state;
+		a = a_state;
+		b = b_state;
+		op = op_state;
+		w_data = w_state;
+end
+
+always @*
+begin
+	next_state = state;
+	rd_uart= 1'b0;
+	a_state = a;
+	b_state = b;
+	op_state = op;
+	if (~rx_empty)
 				case(state)
-					2'b00:
+					num1:
 						begin
-							a = r_data;
-							state = state+1;
+							a_state = r_data;
+							next_state = num2;
 							rd_uart = 1'b1;
 							w_done = 1'b0;
 						end
-					2'b01:
+					num2:
 						begin
-							b = r_data;
-							state=state+1;
+							b_state = r_data;
+							next_state = opr;
 							rd_uart = 1'b1;
 							w_done = 1'b0;
 						end
-					2'b10:
+					opr:
 						begin
-							op = r_data;
-							state=2'b00;
-							rd_uart = 1'b1;
+							op_state = r_data;
+							next_state = wr;
+							w_done = 1'b0;
+						end
+					wr:
+						begin
 							w_done = 1'b1;
+							next_state = num1;
+							rd_uart = 1'b1;
 						end
 				endcase
-				
-				rd_uart = 1'b0;
-			end
 		else
 			begin
 				rd_uart = 1'b0;
 				w_done = 1'b0;
 			end
-				
 end
 
-always @(posedge clk)
+always @*
+begin
+	w_state = 0;
 	if(w_done & ~tx_full)
 		begin
-			w_data = w;
+			w_state = w;
 			wr_uart = 1'b1;
 		end
 	else
 		begin
-			w_data = 1;
+			w_state = 0;
 			wr_uart = 1'b0;
 		end
-			
-	
+end		
 endmodule
