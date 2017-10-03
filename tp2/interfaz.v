@@ -38,67 +38,71 @@ localparam  [1:0]
 	
 reg [1:0] state, next_state;
 reg [REG_SIZE-1:0] a_state, b_state, op_state, w_state;
-reg w_done;
+reg w_done= 1'b0;
 
 always @(posedge clk, posedge reset) 
 begin
 	if (reset)
 		begin
-			state = 2'b00;
-			w_done = 1'b0;
-			rd_uart = 0;
+			state = num1;
 		end
 	else
-		state = next_state;
-		a = a_state;
-		b = b_state;
-		op = op_state;
-		w_data = w_state;
+		begin
+			state = next_state;
+			a = a_state;
+			b = b_state;
+			op = op_state;
+			w_data = w_state;
+			wr_uart = 1'b0;
+		end
 end
 
 always @*
 begin
-	next_state = state;
-	rd_uart= 1'b0;
+	next_state = state;	
 	a_state = a;
 	b_state = b;
 	op_state = op;
+	w_state = w_data;
+	rd_uart= 1'b0;
+	wr_uart = 1'b0;
 	if (~rx_empty)
-				case(state)
-					num1:
-						begin
-							a_state = r_data;
-							next_state = num2;
-							rd_uart = 1'b1;
-							w_done = 1'b0;
-						end
-					num2:
-						begin
-							b_state = r_data;
-							next_state = opr;
-							rd_uart = 1'b1;
-							w_done = 1'b0;
-						end
-					opr:
-						begin
-							op_state = r_data;
-							next_state = wr;
-							w_done = 1'b0;
-						end
-					wr:
-						begin
-							w_done = 1'b1;
-							next_state = num1;
-							rd_uart = 1'b1;
-						end
-				endcase
-		else
-			begin
-				rd_uart = 1'b0;
-				w_done = 1'b0;
-			end
+		begin
+			case(state)
+				num1:
+					begin
+						a_state = r_data;
+						next_state = num2;
+						rd_uart = 1'b1;
+					end
+				num2:
+					begin
+						b_state = r_data;
+						next_state = opr;
+						rd_uart = 1'b1;
+					end
+				opr:
+					begin
+						op_state = r_data;
+						next_state = wr;	
+					end
+				wr:
+					begin
+						w_done = 1'b1;
+						next_state = num1;
+						rd_uart = 1'b1;
+						w_state = w;							
+					end
+			endcase
+		end
+	else if (w_done)
+		begin
+			wr_uart = 1'b1;
+			w_done = 1'b0;
+		end
 end
 
+/*
 always @*
 begin
 	w_state = 0;
@@ -112,5 +116,5 @@ begin
 			w_state = 0;
 			wr_uart = 1'b0;
 		end
-end		
+end	*/
 endmodule

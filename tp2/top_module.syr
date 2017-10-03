@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.18 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.18 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Reading design: top_module.prj
 
@@ -142,6 +142,7 @@ Analyzing hierarchy for module <interfaz> in library <work> with parameters.
 	num1 = "00"
 	num2 = "01"
 	opr = "10"
+	wr = "11"
 
 Analyzing hierarchy for module <uart> in library <work> with parameters.
 	DBIT = "00000000000000000000000000001000"
@@ -195,6 +196,7 @@ Analyzing module <interfaz> in library <work>.
 	num1 = 2'b00
 	num2 = 2'b01
 	opr = 2'b10
+	wr = 2'b11
 Module <interfaz> is correct for synthesis.
  
 Analyzing module <uart> in library <work>.
@@ -239,8 +241,7 @@ Module <uart_tx> is correct for synthesis.
 =========================================================================
 
 Performing bidirectional port resolution...
-INFO:Xst:2679 - Register <w_done> in unit <interfaz> has a constant value of 0 during circuit operation. The register is replaced by logic.
-INFO:Xst:2679 - Register <rd_uart> in unit <interfaz> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <wr_uart> in unit <interfaz> has a constant value of 0 during circuit operation. The register is replaced by logic.
 
 Synthesizing Unit <alu>.
     Related source file is "alu.v".
@@ -256,28 +257,34 @@ Unit <alu> synthesized.
 
 Synthesizing Unit <interfaz>.
     Related source file is "interfaz.v".
-WARNING:Xst:737 - Found 8-bit latch for signal <a>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 3-bit latch for signal <next_state>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 8-bit latch for signal <b>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 8-bit latch for signal <op>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 55 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+WARNING:Xst:647 - Input <tx_full> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 71 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
    	- add an 'INIT' attribute on signal <state> (optimization is then done without any risk)
    	- use the attribute 'signal_encoding user' to avoid onehot optimization
    	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
-    Using one-hot encoding for signal <state>.
-INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 55 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
-   	- add an 'INIT' attribute on signal <state> (optimization is then done without any risk)
-   	- use the attribute 'signal_encoding user' to avoid onehot optimization
-   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
-INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 55 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
-   	- add an 'INIT' attribute on signal <state> (optimization is then done without any risk)
-   	- use the attribute 'signal_encoding user' to avoid onehot optimization
-   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 4                                              |
+    | Inputs             | 0                                              |
+    | Outputs            | 5                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Clock enable       | rx_empty                  (negative)           |
+    | Reset              | reset                     (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 00                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+WARNING:Xst:737 - Found 1-bit latch for signal <w_done>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
     Found 8-bit register for signal <w_data>.
-    Found 1-bit register for signal <wr_uart>.
-    Found 3-bit register for signal <state>.
+    Found 8-bit register for signal <a>.
+    Found 8-bit register for signal <b>.
+    Found 8-bit register for signal <op>.
     Summary:
-	inferred   9 D-type flip-flop(s).
+	inferred   1 Finite State Machine(s).
+	inferred  32 D-type flip-flop(s).
 Unit <interfaz> synthesized.
 
 
@@ -297,7 +304,7 @@ INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state_reg> of Case statement line 71
    	- add an 'INIT' attribute on signal <state_reg> (optimization is then done without any risk)
    	- use the attribute 'signal_encoding user' to avoid onehot optimization
    	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
-    Found finite state machine <FSM_0> for signal <state_reg>.
+    Found finite state machine <FSM_1> for signal <state_reg>.
     -----------------------------------------------------------------------
     | States             | 4                                              |
     | Transitions        | 12                                             |
@@ -350,7 +357,7 @@ INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state_reg> of Case statement line 75
    	- add an 'INIT' attribute on signal <state_reg> (optimization is then done without any risk)
    	- use the attribute 'signal_encoding user' to avoid onehot optimization
    	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
-    Found finite state machine <FSM_1> for signal <state_reg>.
+    Found finite state machine <FSM_2> for signal <state_reg>.
     -----------------------------------------------------------------------
     | States             | 4                                              |
     | Transitions        | 12                                             |
@@ -399,15 +406,14 @@ Macro Statistics
  4-bit adder                                           : 2
  8-bit adder                                           : 1
  8-bit addsub                                          : 1
-# Registers                                            : 19
- 1-bit register                                        : 6
+# Registers                                            : 20
+ 1-bit register                                        : 5
  2-bit register                                        : 4
- 3-bit register                                        : 3
+ 3-bit register                                        : 2
  4-bit register                                        : 2
- 8-bit register                                        : 4
-# Latches                                              : 4
- 3-bit latch                                           : 1
- 8-bit latch                                           : 3
+ 8-bit register                                        : 7
+# Latches                                              : 1
+ 1-bit latch                                           : 1
 # Comparators                                          : 4
  2-bit comparator equal                                : 4
 # Multiplexers                                         : 4
@@ -424,7 +430,7 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
-Analyzing FSM <FSM_1> for best encoding.
+Analyzing FSM <FSM_2> for best encoding.
 Optimizing FSM <uart_unit/uart_tx_unit/state_reg/FSM> on signal <state_reg[1:2]> with gray encoding.
 -------------------
  State | Encoding
@@ -434,7 +440,7 @@ Optimizing FSM <uart_unit/uart_tx_unit/state_reg/FSM> on signal <state_reg[1:2]>
  10    | 11
  11    | 10
 -------------------
-Analyzing FSM <FSM_0> for best encoding.
+Analyzing FSM <FSM_1> for best encoding.
 Optimizing FSM <uart_unit/uart_rx_unit/state_reg/FSM> on signal <state_reg[1:2]> with gray encoding.
 -------------------
  State | Encoding
@@ -443,6 +449,16 @@ Optimizing FSM <uart_unit/uart_rx_unit/state_reg/FSM> on signal <state_reg[1:2]>
  01    | 01
  10    | 11
  11    | 10
+-------------------
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <interfaz_unit/state/FSM> on signal <state[1:4]> with one-hot encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 0001
+ 01    | 0010
+ 10    | 0100
+ 11    | 1000
 -------------------
 
 Synthesizing (advanced) Unit <fifo>.
@@ -468,7 +484,7 @@ Unit <fifo> synthesized (advanced).
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# FSMs                                                 : 2
+# FSMs                                                 : 3
 # RAMs                                                 : 2
  4x8-bit dual-port distributed RAM                     : 2
 # Adders/Subtractors                                   : 10
@@ -477,11 +493,10 @@ Macro Statistics
  4-bit adder                                           : 2
  8-bit adder                                           : 1
  8-bit addsub                                          : 1
-# Registers                                            : 63
- Flip-Flops                                            : 63
-# Latches                                              : 4
- 3-bit latch                                           : 1
- 8-bit latch                                           : 3
+# Registers                                            : 83
+ Flip-Flops                                            : 83
+# Latches                                              : 1
+ 1-bit latch                                           : 1
 # Comparators                                          : 4
  2-bit comparator equal                                : 4
 # Multiplexers                                         : 4
@@ -498,25 +513,20 @@ Macro Statistics
 *                         Low Level Synthesis                           *
 =========================================================================
 
-ERROR:Xst:528 - Multi-source in Unit <interfaz> on signal <rd_uart>; this signal is connected to multiple drivers.
-Drivers are: 
-   Signal <interfaz_unit/rd_uart> is assigned to logic
-   Signal <interfaz_unit/rd_uart> in Unit <interfaz> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <interfaz> on signal <w_done>; this signal is connected to multiple drivers.
+ERROR:Xst:528 - Multi-source in Unit <interfaz> on signal <wr_uart>; this signal is connected to multiple drivers.
 Drivers are: 
    Signal <interfaz_unit/_n0000> is assigned to logic
-   Signal <interfaz_unit/w_done> in Unit <interfaz> is assigned to GND
+   Signal <interfaz_unit/wr_uart> in Unit <interfaz> is assigned to GND
 
 
 Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 5.08 secs
+Total CPU time to Xst completion: 5.00 secs
  
 --> 
 
-Total memory usage is 310092 kilobytes
+Total memory usage is 325680 kilobytes
 
-Number of errors   :    2 (   0 filtered)
-Number of warnings :    6 (   0 filtered)
-Number of infos    :    9 (   0 filtered)
+Number of errors   :    1 (   0 filtered)
+Number of warnings :    4 (   0 filtered)
+Number of infos    :    7 (   0 filtered)
 
