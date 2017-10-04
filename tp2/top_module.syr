@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Reading design: top_module.prj
 
@@ -131,7 +131,7 @@ Analyzing hierarchy for module <top_module> in library <work> with parameters.
 	DBIT = "00000000000000000000000000001000"
 	DVSR = "00000000000000000000000010100011"
 	DVSR_BIT = "00000000000000000000000000001000"
-	FIF0_W = "00000000000000000000000000000010"
+	FIF0_W = "00000000000000000000000000000001"
 	SB_TICK = "00000000000000000000000000010000"
 
 Analyzing hierarchy for module <alu> in library <work> with parameters.
@@ -148,7 +148,7 @@ Analyzing hierarchy for module <uart> in library <work> with parameters.
 	DBIT = "00000000000000000000000000001000"
 	DVSR = "00000000000000000000000010100011"
 	DVSR_BIT = "00000000000000000000000000001000"
-	FIF0_W = "00000000000000000000000000000010"
+	FIF0_W = "00000000000000000000000000000001"
 	SB_TICK = "00000000000000000000000000010000"
 
 Analyzing hierarchy for module <baud_gen> in library <work> with parameters.
@@ -165,7 +165,7 @@ Analyzing hierarchy for module <uart_rx> in library <work> with parameters.
 
 Analyzing hierarchy for module <fifo> in library <work> with parameters.
 	B = "00000000000000000000000000001000"
-	W = "00000000000000000000000000000010"
+	W = "00000000000000000000000000000001"
 
 Analyzing hierarchy for module <uart_tx> in library <work> with parameters.
 	DBIT = "00000000000000000000000000001000"
@@ -183,7 +183,7 @@ Analyzing top module <top_module>.
 	DBIT = 32'sb00000000000000000000000000001000
 	DVSR = 32'sb00000000000000000000000010100011
 	DVSR_BIT = 32'sb00000000000000000000000000001000
-	FIF0_W = 32'sb00000000000000000000000000000010
+	FIF0_W = 32'sb00000000000000000000000000000001
 	SB_TICK = 32'sb00000000000000000000000000010000
 Module <top_module> is correct for synthesis.
  
@@ -203,7 +203,7 @@ Analyzing module <uart> in library <work>.
 	DBIT = 32'sb00000000000000000000000000001000
 	DVSR = 32'sb00000000000000000000000010100011
 	DVSR_BIT = 32'sb00000000000000000000000000001000
-	FIF0_W = 32'sb00000000000000000000000000000010
+	FIF0_W = 32'sb00000000000000000000000000000001
 	SB_TICK = 32'sb00000000000000000000000000010000
 Module <uart> is correct for synthesis.
  
@@ -223,7 +223,7 @@ Module <uart_rx> is correct for synthesis.
  
 Analyzing module <fifo> in library <work>.
 	B = 32'sb00000000000000000000000000001000
-	W = 32'sb00000000000000000000000000000010
+	W = 32'sb00000000000000000000000000000001
 Module <fifo> is correct for synthesis.
  
 Analyzing module <uart_tx> in library <work>.
@@ -241,7 +241,6 @@ Module <uart_tx> is correct for synthesis.
 =========================================================================
 
 Performing bidirectional port resolution...
-INFO:Xst:2679 - Register <wr_uart> in unit <interfaz> has a constant value of 0 during circuit operation. The register is replaced by logic.
 
 Synthesizing Unit <alu>.
     Related source file is "alu.v".
@@ -257,7 +256,6 @@ Unit <alu> synthesized.
 
 Synthesizing Unit <interfaz>.
     Related source file is "interfaz.v".
-WARNING:Xst:647 - Input <tx_full> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 71 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
    	- add an 'INIT' attribute on signal <state> (optimization is then done without any risk)
    	- use the attribute 'signal_encoding user' to avoid onehot optimization
@@ -331,22 +329,21 @@ Unit <uart_rx> synthesized.
 
 Synthesizing Unit <fifo>.
     Related source file is "fifo.v".
-WARNING:Xst:646 - Signal <w_ptr_succ> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <r_ptr_succ> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-    Found 4x8-bit dual-port RAM <Mram_array_reg> for signal <array_reg>.
+WARNING:Xst:646 - Signal <w_ptr_succ<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <r_ptr_succ<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 2x8-bit dual-port RAM <Mram_array_reg> for signal <array_reg>.
     Found 1-bit 4-to-1 multiplexer for signal <empty_next>.
-    Found 2-bit comparator equal for signal <empty_next$cmp_eq0000> created at line 91.
+    Found 1-bit xor2 for signal <empty_next$xor0000> created at line 91.
     Found 1-bit register for signal <empty_reg>.
     Found 1-bit 4-to-1 multiplexer for signal <full_next>.
-    Found 2-bit comparator equal for signal <full_next$cmp_eq0000> created at line 100.
+    Found 1-bit xor2 for signal <full_next$xor0000> created at line 100.
     Found 1-bit register for signal <full_reg>.
-    Found 2-bit register for signal <r_ptr_reg>.
-    Found 2-bit register for signal <w_ptr_reg>.
+    Found 1-bit register for signal <r_ptr_reg<0>>.
+    Found 1-bit register for signal <w_ptr_reg<0>>.
     Summary:
 	inferred   1 RAM(s).
-	inferred   6 D-type flip-flop(s).
+	inferred   4 D-type flip-flop(s).
 	inferred   2 Adder/Subtractor(s).
-	inferred   2 Comparator(s).
 	inferred   2 Multiplexer(s).
 Unit <fifo> synthesized.
 
@@ -399,29 +396,27 @@ HDL Synthesis Report
 
 Macro Statistics
 # RAMs                                                 : 2
- 4x8-bit dual-port RAM                                 : 2
+ 2x8-bit dual-port RAM                                 : 2
 # Adders/Subtractors                                   : 10
- 2-bit adder                                           : 4
+ 1-bit adder                                           : 4
  3-bit adder                                           : 2
  4-bit adder                                           : 2
  8-bit adder                                           : 1
  8-bit addsub                                          : 1
 # Registers                                            : 20
- 1-bit register                                        : 5
- 2-bit register                                        : 4
+ 1-bit register                                        : 9
  3-bit register                                        : 2
  4-bit register                                        : 2
  8-bit register                                        : 7
 # Latches                                              : 1
  1-bit latch                                           : 1
-# Comparators                                          : 4
- 2-bit comparator equal                                : 4
 # Multiplexers                                         : 4
  1-bit 4-to-1 multiplexer                              : 4
 # Logic shifters                                       : 2
  8-bit shifter arithmetic right                        : 1
  8-bit shifter logical right                           : 1
-# Xors                                                 : 1
+# Xors                                                 : 5
+ 1-bit xor2                                            : 4
  8-bit xor2                                            : 1
 
 =========================================================================
@@ -467,14 +462,14 @@ INFO:Xst:3217 - HDL ADVISOR - Register <b_reg> currently described with an async
     | ram_type           | Distributed                         |          |
     -----------------------------------------------------------------------
     | Port A                                                              |
-    |     aspect ratio   | 4-word x 8-bit                      |          |
+    |     aspect ratio   | 2-word x 8-bit                      |          |
     |     clkA           | connected to signal <clk>           | rise     |
     |     weA            | connected to signal <wr_en>         | high     |
     |     addrA          | connected to signal <w_ptr_reg>     |          |
     |     diA            | connected to signal <w_data>        |          |
     -----------------------------------------------------------------------
     | Port B                                                              |
-    |     aspect ratio   | 4-word x 8-bit                      |          |
+    |     aspect ratio   | 2-word x 8-bit                      |          |
     |     addrB          | connected to signal <r_ptr_reg>     |          |
     |     doB            | connected to signal <r_data>        |          |
     -----------------------------------------------------------------------
@@ -486,25 +481,24 @@ Advanced HDL Synthesis Report
 Macro Statistics
 # FSMs                                                 : 3
 # RAMs                                                 : 2
- 4x8-bit dual-port distributed RAM                     : 2
+ 2x8-bit dual-port distributed RAM                     : 2
 # Adders/Subtractors                                   : 10
- 2-bit adder                                           : 4
+ 1-bit adder                                           : 4
  3-bit adder                                           : 2
  4-bit adder                                           : 2
  8-bit adder                                           : 1
  8-bit addsub                                          : 1
-# Registers                                            : 83
- Flip-Flops                                            : 83
+# Registers                                            : 79
+ Flip-Flops                                            : 79
 # Latches                                              : 1
  1-bit latch                                           : 1
-# Comparators                                          : 4
- 2-bit comparator equal                                : 4
 # Multiplexers                                         : 4
  1-bit 4-to-1 multiplexer                              : 4
 # Logic shifters                                       : 2
  8-bit shifter arithmetic right                        : 1
  8-bit shifter logical right                           : 1
-# Xors                                                 : 1
+# Xors                                                 : 5
+ 1-bit xor2                                            : 4
  8-bit xor2                                            : 1
 
 =========================================================================
@@ -512,21 +506,236 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+WARNING:Xst:2170 - Unit alu : the following signal(s) form a combinatorial loop: w_shift0000<7>.
 
-ERROR:Xst:528 - Multi-source in Unit <interfaz> on signal <wr_uart>; this signal is connected to multiple drivers.
-Drivers are: 
-   Signal <interfaz_unit/_n0000> is assigned to logic
-   Signal <interfaz_unit/wr_uart> in Unit <interfaz> is assigned to GND
+Optimizing unit <top_module> ...
+
+Optimizing unit <alu> ...
+
+Optimizing unit <interfaz> ...
+
+Optimizing unit <baud_gen> ...
+
+Optimizing unit <uart_rx> ...
+
+Optimizing unit <fifo> ...
+
+Optimizing unit <uart_tx> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block top_module, actual ratio is 16.
+FlipFlop interfaz_unit/op_2 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 88
+ Flip-Flops                                            : 88
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : top_module.ngr
+Top Level Output File Name         : top_module
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 12
+
+Cell Usage :
+# BELS                             : 323
+#      GND                         : 1
+#      INV                         : 2
+#      LUT2                        : 18
+#      LUT2_L                      : 2
+#      LUT3                        : 54
+#      LUT3_D                      : 10
+#      LUT3_L                      : 7
+#      LUT4                        : 151
+#      LUT4_D                      : 22
+#      LUT4_L                      : 30
+#      MUXCY                       : 7
+#      MUXF5                       : 11
+#      XORCY                       : 8
+# FlipFlops/Latches                : 89
+#      FDC                         : 48
+#      FDCE                        : 3
+#      FDE                         : 33
+#      FDP                         : 3
+#      FDPE                        : 1
+#      LD                          : 1
+# RAMS                             : 16
+#      RAM16X1D                    : 16
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 11
+#      IBUF                        : 2
+#      OBUF                        : 9
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s100ecp132-5 
+
+ Number of Slices:                      154  out of    960    16%  
+ Number of Slice Flip Flops:             89  out of   1920     4%  
+ Number of 4 input LUTs:                328  out of   1920    17%  
+    Number used as logic:               296
+    Number used as RAMs:                 32
+ Number of IOs:                          12
+ Number of bonded IOBs:                  12  out of     83    14%  
+ Number of GCLKs:                         1  out of     24     4%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 5.00 secs
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-------------------------------------------------------------+------------------------------+-------+
+Clock Signal                                                 | Clock buffer(FF name)        | Load  |
+-------------------------------------------------------------+------------------------------+-------+
+clk                                                          | BUFGP                        | 104   |
+interfaz_unit/w_done_not0001(interfaz_unit/w_done_not00012:O)| NONE(*)(interfaz_unit/w_done)| 1     |
+-------------------------------------------------------------+------------------------------+-------+
+(*) This 1 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+reset                              | IBUF                   | 55    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 7.641ns (Maximum Frequency: 130.871MHz)
+   Minimum input arrival time before clock: 4.363ns
+   Maximum output required time after clock: 4.221ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 7.641ns (frequency: 130.871MHz)
+  Total number of paths / destination ports: 2679 / 156
+-------------------------------------------------------------------------
+Delay:               7.641ns (Levels of Logic = 6)
+  Source:            interfaz_unit/b_4 (FF)
+  Destination:       interfaz_unit/w_data_4 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: interfaz_unit/b_4 to interfaz_unit/w_data_4
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              8   0.514   0.795  interfaz_unit/b_4 (interfaz_unit/b_4)
+     LUT2:I0->O            2   0.612   0.383  alu_unit/w_or0004_SW0 (N60)
+     LUT4_D:I3->O         10   0.612   0.902  alu_unit/w_or0004 (alu_unit/w_or0004)
+     LUT4:I0->O            1   0.612   0.360  interfaz_unit/w_state<4>46 (interfaz_unit/w_state<4>46)
+     LUT4:I3->O            1   0.612   0.387  interfaz_unit/w_state<4>119 (interfaz_unit/w_state<4>119)
+     LUT4:I2->O            1   0.612   0.360  interfaz_unit/w_state<4>147 (interfaz_unit/w_state<4>147)
+     LUT4:I3->O            1   0.612   0.000  interfaz_unit/w_state<4>171 (interfaz_unit/w_state<4>)
+     FDE:D                     0.268          interfaz_unit/w_data_4
+    ----------------------------------------
+    Total                      7.641ns (4.454ns logic, 3.187ns route)
+                                       (58.3% logic, 41.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 39 / 39
+-------------------------------------------------------------------------
+Offset:              4.363ns (Levels of Logic = 4)
+  Source:            rx (PAD)
+  Destination:       uart_unit/uart_rx_unit/s_reg_3 (FF)
+  Destination Clock: clk rising
+
+  Data Path: rx to uart_unit/uart_rx_unit/s_reg_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             5   1.106   0.690  rx_IBUF (rx_IBUF)
+     LUT4_D:I0->LO         1   0.612   0.103  uart_unit/uart_rx_unit/s_next<0>15 (N217)
+     LUT4:I3->O            1   0.612   0.360  uart_unit/uart_rx_unit/s_next<3>5 (uart_unit/uart_rx_unit/s_next<3>5)
+     LUT4:I3->O            1   0.612   0.000  uart_unit/uart_rx_unit/s_next<3>35 (uart_unit/uart_rx_unit/s_next<3>)
+     FDC:D                     0.268          uart_unit/uart_rx_unit/s_reg_3
+    ----------------------------------------
+    Total                      4.363ns (3.210ns logic, 1.153ns route)
+                                       (73.6% logic, 26.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 9 / 9
+-------------------------------------------------------------------------
+Offset:              4.221ns (Levels of Logic = 1)
+  Source:            interfaz_unit/w_data_7 (FF)
+  Destination:       led<7> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: interfaz_unit/w_data_7 to led<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              5   0.514   0.538  interfaz_unit/w_data_7 (interfaz_unit/w_data_7)
+     OBUF:I->O                 3.169          led_7_OBUF (led<7>)
+    ----------------------------------------
+    Total                      4.221ns (3.683ns logic, 0.538ns route)
+                                       (87.3% logic, 12.7% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 6.50 secs
  
 --> 
 
-Total memory usage is 325680 kilobytes
+Total memory usage is 325664 kilobytes
 
-Number of errors   :    1 (   0 filtered)
+Number of errors   :    0 (   0 filtered)
 Number of warnings :    4 (   0 filtered)
 Number of infos    :    7 (   0 filtered)
 

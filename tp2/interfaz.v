@@ -53,7 +53,7 @@ begin
 			b = b_state;
 			op = op_state;
 			w_data = w_state;
-			wr_uart = 1'b0;
+			//wr_uart = 1'b0;
 		end
 end
 
@@ -91,14 +91,15 @@ begin
 						w_done = 1'b1;
 						next_state = num1;
 						rd_uart = 1'b1;
-						w_state = w;							
+						w_state = w;
 					end
 			endcase
 		end
-	else if (w_done)
+	else if (w_done & ~tx_full)
 		begin
 			wr_uart = 1'b1;
 			w_done = 1'b0;
+			w_state= 0;
 		end
 end
 
