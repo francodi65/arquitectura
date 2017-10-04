@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/Juanma/arquitectura/tp2/uart.v";
+static const char *ng0 = "C:/Users/Franco/Git/arquitectura/tp2/uart.v";
 
 
 
@@ -139,9 +139,9 @@ LAB9:    t15 = *((unsigned int *)t3);
 }
 
 
-extern void work_m_00000000004168335137_3139917142_init()
+extern void work_m_00000000004168335137_2416576149_init()
 {
 	static char *pe[] = {(void *)Cont_69_0};
-	xsi_register_didat("work_m_00000000004168335137_3139917142", "isim/test_isim_beh.exe.sim/work/m_00000000004168335137_3139917142.didat");
+	xsi_register_didat("work_m_00000000004168335137_2416576149", "isim/test_isim_beh.exe.sim/work/m_00000000004168335137_2416576149.didat");
 	xsi_register_executes(pe);
 }

@@ -71,18 +71,21 @@ begin
 			case(state)
 				num1:
 					begin
+						w_done = 1'b0;
 						a_state = r_data;
 						next_state = num2;
 						rd_uart = 1'b1;
 					end
 				num2:
 					begin
+						w_done = 1'b0;
 						b_state = r_data;
 						next_state = opr;
 						rd_uart = 1'b1;
 					end
 				opr:
 					begin
+						w_done = 1'b0;
 						op_state = r_data;
 						next_state = wr;	
 					end
@@ -101,6 +104,8 @@ begin
 			w_done = 1'b0;
 			w_state= 0;
 		end
+	else 
+		w_done = 1'b0;
 end
 
 /*

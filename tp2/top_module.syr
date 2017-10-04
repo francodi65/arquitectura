@@ -274,8 +274,6 @@ INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 71 was
     | Encoding           | automatic                                      |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-WARNING:Xst:737 - Found 1-bit latch for signal <w_done>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
     Found 8-bit register for signal <w_data>.
     Found 8-bit register for signal <a>.
     Found 8-bit register for signal <b>.
@@ -408,8 +406,6 @@ Macro Statistics
  3-bit register                                        : 2
  4-bit register                                        : 2
  8-bit register                                        : 7
-# Latches                                              : 1
- 1-bit latch                                           : 1
 # Multiplexers                                         : 4
  1-bit 4-to-1 multiplexer                              : 4
 # Logic shifters                                       : 2
@@ -490,8 +486,6 @@ Macro Statistics
  8-bit addsub                                          : 1
 # Registers                                            : 79
  Flip-Flops                                            : 79
-# Latches                                              : 1
- 1-bit latch                                           : 1
 # Multiplexers                                         : 4
  1-bit 4-to-1 multiplexer                              : 4
 # Logic shifters                                       : 2
@@ -521,11 +515,40 @@ Optimizing unit <uart_rx> ...
 Optimizing unit <fifo> ...
 
 Optimizing unit <uart_tx> ...
+WARNING:Xst:1710 - FF/Latch <uart_unit/fifo_tx_unit/empty_reg> (without init value) has a constant value of 1 in block <top_module>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uart_unit/fifo_tx_unit/full_reg> (without init value) has a constant value of 0 in block <top_module>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uart_unit/fifo_tx_unit/w_ptr_reg_0> (without init value) has a constant value of 0 in block <top_module>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uart_unit/uart_tx_unit/state_reg_FSM_FFd2> (without init value) has a constant value of 0 in block <top_module>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uart_unit/uart_tx_unit/tx_reg> (without init value) has a constant value of 1 in block <top_module>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uart_unit/uart_tx_unit/b_reg_7> (without init value) has a constant value of 0 in block <top_module>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uart_unit/uart_tx_unit/b_reg_6> (without init value) has a constant value of 0 in block <top_module>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uart_unit/uart_tx_unit/b_reg_5> (without init value) has a constant value of 0 in block <top_module>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uart_unit/uart_tx_unit/b_reg_4> (without init value) has a constant value of 0 in block <top_module>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uart_unit/uart_tx_unit/b_reg_3> (without init value) has a constant value of 0 in block <top_module>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uart_unit/uart_tx_unit/b_reg_2> (without init value) has a constant value of 0 in block <top_module>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uart_unit/uart_tx_unit/b_reg_1> (without init value) has a constant value of 0 in block <top_module>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <uart_unit/uart_tx_unit/b_reg_0> (without init value) has a constant value of 0 in block <top_module>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <uart_unit/fifo_tx_unit/Mram_array_reg7> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <uart_unit/fifo_tx_unit/Mram_array_reg6> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <uart_unit/fifo_tx_unit/Mram_array_reg8> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <uart_unit/fifo_tx_unit/Mram_array_reg4> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <uart_unit/fifo_tx_unit/Mram_array_reg3> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <uart_unit/fifo_tx_unit/Mram_array_reg5> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <uart_unit/fifo_tx_unit/Mram_array_reg1> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <uart_unit/fifo_tx_unit/Mram_array_reg2> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <uart_unit/fifo_tx_unit/r_ptr_reg_0> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <uart_unit/uart_tx_unit/state_reg_FSM_FFd1> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <uart_unit/uart_tx_unit/n_reg_2> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <uart_unit/uart_tx_unit/n_reg_1> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <uart_unit/uart_tx_unit/n_reg_0> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <uart_unit/uart_tx_unit/s_reg_3> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <uart_unit/uart_tx_unit/s_reg_2> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <uart_unit/uart_tx_unit/s_reg_1> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <uart_unit/uart_tx_unit/s_reg_0> of sequential type is unconnected in block <top_module>.
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block top_module, actual ratio is 16.
-FlipFlop interfaz_unit/op_2 has been replicated 1 time(s)
+Found area constraint ratio of 100 (+ 5) on block top_module, actual ratio is 13.
 
 Final Macro Processing ...
 
@@ -533,8 +556,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 88
- Flip-Flops                                            : 88
+# Registers                                            : 65
+ Flip-Flops                                            : 65
 
 =========================================================================
 
@@ -563,29 +586,30 @@ Design Statistics
 # IOs                              : 12
 
 Cell Usage :
-# BELS                             : 323
+# BELS                             : 262
 #      GND                         : 1
 #      INV                         : 2
-#      LUT2                        : 18
+#      LUT2                        : 11
+#      LUT2_D                      : 2
 #      LUT2_L                      : 2
-#      LUT3                        : 54
-#      LUT3_D                      : 10
+#      LUT3                        : 44
+#      LUT3_D                      : 9
 #      LUT3_L                      : 7
-#      LUT4                        : 151
-#      LUT4_D                      : 22
-#      LUT4_L                      : 30
+#      LUT4                        : 123
+#      LUT4_D                      : 16
+#      LUT4_L                      : 22
 #      MUXCY                       : 7
-#      MUXF5                       : 11
+#      MUXF5                       : 7
+#      VCC                         : 1
 #      XORCY                       : 8
-# FlipFlops/Latches                : 89
-#      FDC                         : 48
+# FlipFlops/Latches                : 65
+#      FDC                         : 28
 #      FDCE                        : 3
-#      FDE                         : 33
-#      FDP                         : 3
+#      FDE                         : 32
+#      FDP                         : 1
 #      FDPE                        : 1
-#      LD                          : 1
-# RAMS                             : 16
-#      RAM16X1D                    : 16
+# RAMS                             : 8
+#      RAM16X1D                    : 8
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
 # IO Buffers                       : 11
@@ -598,11 +622,11 @@ Device utilization summary:
 
 Selected Device : 3s100ecp132-5 
 
- Number of Slices:                      154  out of    960    16%  
- Number of Slice Flip Flops:             89  out of   1920     4%  
- Number of 4 input LUTs:                328  out of   1920    17%  
-    Number used as logic:               296
-    Number used as RAMs:                 32
+ Number of Slices:                      126  out of    960    13%  
+ Number of Slice Flip Flops:             65  out of   1920     3%  
+ Number of 4 input LUTs:                254  out of   1920    13%  
+    Number used as logic:               238
+    Number used as RAMs:                 16
  Number of IOs:                          12
  Number of bonded IOBs:                  12  out of     83    14%  
  Number of GCLKs:                         1  out of     24     4%  
@@ -625,32 +649,27 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
--------------------------------------------------------------+------------------------------+-------+
-Clock Signal                                                 | Clock buffer(FF name)        | Load  |
--------------------------------------------------------------+------------------------------+-------+
-clk                                                          | BUFGP                        | 104   |
-interfaz_unit/w_done_not0001(interfaz_unit/w_done_not00012:O)| NONE(*)(interfaz_unit/w_done)| 1     |
--------------------------------------------------------------+------------------------------+-------+
-(*) This 1 clock signal(s) are generated by combinatorial logic,
-and XST is not able to identify which are the primary clock signals.
-Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
-INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 73    |
+-----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
 ----------------------------------------
 -----------------------------------+------------------------+-------+
 Control Signal                     | Buffer(FF name)        | Load  |
 -----------------------------------+------------------------+-------+
-reset                              | IBUF                   | 55    |
+reset                              | IBUF                   | 33    |
 -----------------------------------+------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -5
 
-   Minimum period: 7.641ns (Maximum Frequency: 130.871MHz)
+   Minimum period: 7.192ns (Maximum Frequency: 139.037MHz)
    Minimum input arrival time before clock: 4.363ns
-   Maximum output required time after clock: 4.221ns
+   Maximum output required time after clock: 4.134ns
    Maximum combinational path delay: No path found
 
 Timing Detail:
@@ -659,34 +678,39 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 7.641ns (frequency: 130.871MHz)
-  Total number of paths / destination ports: 2679 / 156
+  Clock period: 7.192ns (frequency: 139.037MHz)
+  Total number of paths / destination ports: 2025 / 101
 -------------------------------------------------------------------------
-Delay:               7.641ns (Levels of Logic = 6)
-  Source:            interfaz_unit/b_4 (FF)
-  Destination:       interfaz_unit/w_data_4 (FF)
+Delay:               7.192ns (Levels of Logic = 11)
+  Source:            interfaz_unit/op_2 (FF)
+  Destination:       interfaz_unit/w_data_6 (FF)
   Source Clock:      clk rising
   Destination Clock: clk rising
 
-  Data Path: interfaz_unit/b_4 to interfaz_unit/w_data_4
+  Data Path: interfaz_unit/op_2 to interfaz_unit/w_data_6
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              8   0.514   0.795  interfaz_unit/b_4 (interfaz_unit/b_4)
-     LUT2:I0->O            2   0.612   0.383  alu_unit/w_or0004_SW0 (N60)
-     LUT4_D:I3->O         10   0.612   0.902  alu_unit/w_or0004 (alu_unit/w_or0004)
-     LUT4:I0->O            1   0.612   0.360  interfaz_unit/w_state<4>46 (interfaz_unit/w_state<4>46)
-     LUT4:I3->O            1   0.612   0.387  interfaz_unit/w_state<4>119 (interfaz_unit/w_state<4>119)
-     LUT4:I2->O            1   0.612   0.360  interfaz_unit/w_state<4>147 (interfaz_unit/w_state<4>147)
-     LUT4:I3->O            1   0.612   0.000  interfaz_unit/w_state<4>171 (interfaz_unit/w_state<4>)
-     FDE:D                     0.268          interfaz_unit/w_data_4
+     FDE:C->Q             17   0.514   0.962  interfaz_unit/op_2 (interfaz_unit/op_2)
+     LUT4:I1->O            9   0.612   0.766  alu_unit/w_mux00004 (alu_unit/w_mux00004)
+     LUT2:I1->O            1   0.612   0.357  alu_unit/w_mux000013 (alu_unit/w_mux0000)
+     MUXCY:CI->O           1   0.052   0.000  alu_unit/Maddsub_w_addsub0000_cy<0> (alu_unit/Maddsub_w_addsub0000_cy<0>)
+     MUXCY:CI->O           1   0.052   0.000  alu_unit/Maddsub_w_addsub0000_cy<1> (alu_unit/Maddsub_w_addsub0000_cy<1>)
+     MUXCY:CI->O           1   0.052   0.000  alu_unit/Maddsub_w_addsub0000_cy<2> (alu_unit/Maddsub_w_addsub0000_cy<2>)
+     MUXCY:CI->O           1   0.052   0.000  alu_unit/Maddsub_w_addsub0000_cy<3> (alu_unit/Maddsub_w_addsub0000_cy<3>)
+     MUXCY:CI->O           1   0.052   0.000  alu_unit/Maddsub_w_addsub0000_cy<4> (alu_unit/Maddsub_w_addsub0000_cy<4>)
+     MUXCY:CI->O           1   0.052   0.000  alu_unit/Maddsub_w_addsub0000_cy<5> (alu_unit/Maddsub_w_addsub0000_cy<5>)
+     XORCY:CI->O           1   0.699   0.360  alu_unit/Maddsub_w_addsub0000_xor<6> (alu_unit/w_addsub0000<6>)
+     LUT4:I3->O            1   0.612   0.509  interfaz_unit/w_state<6>164 (interfaz_unit/w_state<6>164)
+     LUT4:I0->O            1   0.612   0.000  interfaz_unit/w_state<6>192 (interfaz_unit/w_state<6>)
+     FDE:D                     0.268          interfaz_unit/w_data_6
     ----------------------------------------
-    Total                      7.641ns (4.454ns logic, 3.187ns route)
-                                       (58.3% logic, 41.7% route)
+    Total                      7.192ns (4.238ns logic, 2.954ns route)
+                                       (58.9% logic, 41.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 39 / 39
+  Total number of paths / destination ports: 38 / 38
 -------------------------------------------------------------------------
 Offset:              4.363ns (Levels of Logic = 4)
   Source:            rx (PAD)
@@ -698,44 +722,44 @@ Offset:              4.363ns (Levels of Logic = 4)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             5   1.106   0.690  rx_IBUF (rx_IBUF)
-     LUT4_D:I0->LO         1   0.612   0.103  uart_unit/uart_rx_unit/s_next<0>15 (N217)
-     LUT4:I3->O            1   0.612   0.360  uart_unit/uart_rx_unit/s_next<3>5 (uart_unit/uart_rx_unit/s_next<3>5)
-     LUT4:I3->O            1   0.612   0.000  uart_unit/uart_rx_unit/s_next<3>35 (uart_unit/uart_rx_unit/s_next<3>)
-     FDC:D                     0.268          uart_unit/uart_rx_unit/s_reg_3
+     LUT4_D:I0->LO         1   0.612   0.103  uart_unit/uart_rx_unit/s_next<0>15 (N108)
+     LUT4:I3->O            1   0.612   0.360  uart_unit/uart_rx_unit/s_next<2>13 (uart_unit/uart_rx_unit/s_next<2>13)
+     LUT4:I3->O            1   0.612   0.000  uart_unit/uart_rx_unit/s_next<2>35 (uart_unit/uart_rx_unit/s_next<2>)
+     FDC:D                     0.268          uart_unit/uart_rx_unit/s_reg_2
     ----------------------------------------
     Total                      4.363ns (3.210ns logic, 1.153ns route)
                                        (73.6% logic, 26.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 9 / 9
+  Total number of paths / destination ports: 8 / 8
 -------------------------------------------------------------------------
-Offset:              4.221ns (Levels of Logic = 1)
-  Source:            interfaz_unit/w_data_7 (FF)
-  Destination:       led<7> (PAD)
+Offset:              4.134ns (Levels of Logic = 1)
+  Source:            interfaz_unit/w_data_6 (FF)
+  Destination:       led<6> (PAD)
   Source Clock:      clk rising
 
-  Data Path: interfaz_unit/w_data_7 to led<7>
+  Data Path: interfaz_unit/w_data_6 to led<6>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              5   0.514   0.538  interfaz_unit/w_data_7 (interfaz_unit/w_data_7)
-     OBUF:I->O                 3.169          led_7_OBUF (led<7>)
+     FDE:C->Q              3   0.514   0.451  interfaz_unit/w_data_6 (interfaz_unit/w_data_6)
+     OBUF:I->O                 3.169          led_6_OBUF (led<6>)
     ----------------------------------------
-    Total                      4.221ns (3.683ns logic, 0.538ns route)
-                                       (87.3% logic, 12.7% route)
+    Total                      4.134ns (3.683ns logic, 0.451ns route)
+                                       (89.1% logic, 10.9% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 6.50 secs
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 6.06 secs
  
 --> 
 
-Total memory usage is 325664 kilobytes
+Total memory usage is 310156 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    4 (   0 filtered)
-Number of infos    :    7 (   0 filtered)
+Number of warnings :   33 (   0 filtered)
+Number of infos    :    5 (   0 filtered)
 

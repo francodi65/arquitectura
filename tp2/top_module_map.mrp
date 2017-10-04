@@ -9,24 +9,24 @@ Target Device  : xc3s100e
 Target Package : cp132
 Target Speed   : -5
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Tue Oct 03 21:01:20 2017
+Mapped Date    : Wed Oct 04 12:10:31 2017
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    1
 Logic Utilization:
-  Total Number Slice Registers:          89 out of   1,920    4%
-    Number used as Flip Flops:           88
+  Total Number Slice Registers:          88 out of   1,920    4%
+    Number used as Flip Flops:           87
     Number used as Latches:               1
-  Number of 4 input LUTs:               326 out of   1,920   16%
+  Number of 4 input LUTs:               321 out of   1,920   16%
 Logic Distribution:
-  Number of occupied Slices:            169 out of     960   17%
-    Number of Slices containing only related logic:     169 out of     169 100%
-    Number of Slices containing unrelated logic:          0 out of     169   0%
+  Number of occupied Slices:            164 out of     960   17%
+    Number of Slices containing only related logic:     164 out of     164 100%
+    Number of Slices containing unrelated logic:          0 out of     164   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         326 out of   1,920   16%
-    Number used as logic:               294
+  Total Number of 4 input LUTs:         321 out of   1,920   16%
+    Number used as logic:               289
     Number used for Dual Port RAMs:      32
       (Two LUTs used per Dual Port RAM)
 
@@ -36,10 +36,10 @@ Logic Distribution:
   Number of bonded IOBs:                 12 out of      83   14%
   Number of BUFGMUXs:                     1 out of      24    4%
 
-Average Fanout of Non-Clock Nets:                3.98
+Average Fanout of Non-Clock Nets:                4.00
 
-Peak Memory Usage:  365 MB
-Total REAL time to MAP completion:  1 secs 
+Peak Memory Usage:  296 MB
+Total REAL time to MAP completion:  7 secs 
 Total CPU time to MAP completion:   1 secs 
 
 NOTES:

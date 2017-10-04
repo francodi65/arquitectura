@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module uart_tx #( parameter DBIT = 8, //#data bits
+	module uart_tx #( parameter DBIT = 8, //#data bits
 						parameter SB_TICK = 16 //ticks for stop bits 
 					 )
 					 ( input wire clk, reset, 

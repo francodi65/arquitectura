@@ -84,7 +84,7 @@ module fifo #(parameter B = 8 , // number of bits in a word
 		case ({wr , rd}) 
 		// 2 ' b00 : no op 
 			2'b01: // read 
-				if ( ~ empty_reg ) // not empty 
+				if ( ~empty_reg ) // not empty 
 					begin 
 						r_ptr_next = r_ptr_succ ; 
 						full_next = 1'b0; 
@@ -93,7 +93,7 @@ module fifo #(parameter B = 8 , // number of bits in a word
 					end 
 			2'b10: // write 
 
-				if (~ full_reg) // not full 
+				if (~full_reg) // not full 
 					begin 
 						w_ptr_next = w_ptr_succ ; 
 						empty_next = 1'b0; 
