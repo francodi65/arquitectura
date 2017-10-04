@@ -19,14 +19,15 @@ Compiling module alu(REG_SIZE=8)
 Compiling module interfaz(REG_SIZE=8)
 Compiling module baud_gen(N=8,M=163)
 Compiling module uart_rx(DBIT=8,SB_TICK=16)
-Compiling module fifo(B=8,W=1)
+Compiling module fifo(B=8,W=2)
 Compiling module uart_tx(DBIT=8,SB_TICK=16)
 Compiling module uart(DBIT=8,SB_TICK=16,DVSR=163,...
 Compiling module top_module
 Compiling module test
 Compiling module glbl
 Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
 Compiled 10 Verilog Units
 Built simulation executable C:/Users/Franco/Git/arquitectura/tp2/test_isim_beh.exe
-Fuse Memory Usage: 28340 KB
-Fuse CPU Usage: 327 ms
+Fuse Memory Usage: 28336 KB
+Fuse CPU Usage: 499 ms

@@ -26,22 +26,22 @@ module top_module #( 								// Default setting:
 										 DVSR = 163,   // baud rate divisor 
 															// DVSR = 50M/( 16* baud rate) 
 										 DVSR_BIT = 8, // # bits of DVSR 
-										 FIF0_W = 1 	// # addr bits of FIFO 
+										 FIF0_W = 2 	// # addr bits of FIFO 
 															// # words in FIFO = 2 "FIFO-W 
 						 ) 
 						 ( input wire clk, reset, rx,
 						   output wire tx,
-							//output wire rd_uart, wr_uart, tx_full, rx_empty,
-							//output [DBIT-1:0] w_data, r_data, a, b, op, w
-							output [DBIT-1:0]led
+							output wire rd_uart, wr_uart, tx_full, rx_empty,
+							output [DBIT-1:0] w_data, r_data, a, b, op, w
+							//output [DBIT-1:0]led
 					    );
 
-wire rd_uart, wr_uart, tx_full, rx_empty;
-wire [DBIT-1:0] w_data, r_data, a, b, op, w;
+//wire rd_uart, wr_uart, tx_full, rx_empty;
+//wire [DBIT-1:0] w_data, r_data, a, b, op, w;
 
 
 
-assign led = w_data;
+//assign led = w_data;
  
 alu #(.REG_SIZE(DBIT)) alu_unit 
 	(.a(a), .b(b), .op(op), .w(w)); 

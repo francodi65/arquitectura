@@ -37,8 +37,7 @@ localparam  [1:0]
 	wr		=  2'b11;
 	
 reg [1:0] state, next_state;
-reg [REG_SIZE-1:0] a_state, b_state, op_state, w_state;
-reg w_done= 1'b0;
+reg [REG_SIZE-1:0] a_state, b_state, op_state;
 
 always @(posedge clk, posedge reset) 
 begin
@@ -52,7 +51,7 @@ begin
 			a = a_state;
 			b = b_state;
 			op = op_state;
-			w_data = w_state;
+			w_data = w;
 			//wr_uart = 1'b0;
 		end
 end
@@ -63,49 +62,53 @@ begin
 	a_state = a;
 	b_state = b;
 	op_state = op;
-	w_state = w_data;
-	rd_uart= 1'b0;
-	wr_uart = 1'b0;
-	if (~rx_empty)
-		begin
-			case(state)
-				num1:
-					begin
-						w_done = 1'b0;
-						a_state = r_data;
-						next_state = num2;
-						rd_uart = 1'b1;
-					end
-				num2:
-					begin
-						w_done = 1'b0;
-						b_state = r_data;
-						next_state = opr;
-						rd_uart = 1'b1;
-					end
-				opr:
-					begin
-						w_done = 1'b0;
-						op_state = r_data;
-						next_state = wr;	
-					end
-				wr:
-					begin
-						w_done = 1'b1;
-						next_state = num1;
-						rd_uart = 1'b1;
-						w_state = w;
-					end
-			endcase
-		end
-	else if (w_done & ~tx_full)
-		begin
-			wr_uart = 1'b1;
-			w_done = 1'b0;
-			w_state= 0;
-		end
-	else 
-		w_done = 1'b0;
+	case(state)
+		num1:
+			if(~rx_empty)
+				begin
+					a_state = r_data;
+					next_state = num2;
+					rd_uart = 1'b1;
+					wr_uart = 1'b0;
+				end
+			else 
+				begin
+					rd_uart= 1'b0;
+					wr_uart = 1'b0;
+				end
+		num2:
+			if(~rx_empty)
+				begin
+					b_state = r_data;
+					next_state = opr;
+					rd_uart = 1'b1;
+					wr_uart = 1'b0;
+				end
+			else 
+				begin
+					rd_uart= 1'b0;
+					wr_uart = 1'b0;
+				end
+		opr:
+			if(~rx_empty)
+				begin
+					op_state = r_data;
+					next_state = wr;	
+					rd_uart = 1'b1;
+					wr_uart = 1'b0;
+				end
+			else 
+				begin
+					rd_uart= 1'b0;
+					wr_uart = 1'b0;
+				end
+		wr:
+			begin
+				wr_uart = 1'b1;
+				rd_uart= 1'b0;
+				next_state= num1;
+			end
+	endcase
 end
 
 /*

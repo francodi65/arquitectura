@@ -40,10 +40,10 @@ module test;
 		.reset(reset), 
 		.rx(rx), 
 		.tx(tx),
-		//.rd_uart(rd_uart), .wr_uart(wr_uart), 
-	 //.tx_full(tx_full), .rx_empty(rx_empty), .w_data(w_data),
-	 //.r_data(r_data), .a(a), .b(b), .op(op), .w(w)
-	 .led(led)
+		.rd_uart(rd_uart), .wr_uart(wr_uart), 
+	 .tx_full(tx_full), .rx_empty(rx_empty), .w_data(w_data),
+	 .r_data(r_data), .a(a), .b(b), .op(op), .w(w)
+	 //.led(led)
 	);
 	initial begin
 			clk = 0;
