@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2017-10-04T14:47:21</DateModified>
+  <DateModified>2017-10-05T16:53:36</DateModified>
   <ModuleName>top_module</ModuleName>
-  <SummaryTimeStamp>2017-10-04T14:22:58</SummaryTimeStamp>
+  <SummaryTimeStamp>2017-10-05T16:52:55</SummaryTimeStamp>
   <SavedFilePath>C:/Users/Franco/Git/arquitectura/tp2/iseconfig/top_module.xreport</SavedFilePath>
   <ImplementationReportsDirectory>C:/Users/Franco/Git/arquitectura/tp2\</ImplementationReportsDirectory>
   <DateInitialized>2017-09-26T20:38:53</DateInitialized>
@@ -19,7 +19,7 @@
     <toc-item title="Detailed Reports" target="Detailed Reports" />
    </view>
    <view inputState="Unknown" program="implementation" contextTags="FPGA_ONLY" hidden="true" type="HTML" file="top_module_envsettings.html" label="System Settings" />
-   <view inputState="Translated" program="map" locator="MAP_IOB_TABLE" contextTags="FPGA_ONLY" type="IOBProperties" file="top_module_map.xrpt" label="IOB Properties" />
+   <view inputState="Translated" program="map" locator="MAP_IOB_TABLE" contextTags="FPGA_ONLY" type="IOBProperties" file="top_module_map.xrpt" showConstraints="0" label="IOB Properties" />
    <view inputState="Translated" program="map" contextTags="FPGA_ONLY" hidden="true" type="Control_Sets" file="top_module_map.xrpt" label="Control Set Information" />
    <view inputState="Translated" program="map" locator="MAP_MODULE_HIERARCHY" contextTags="FPGA_ONLY" type="Module_Utilization" file="top_module_map.xrpt" label="Module Level Utilization" />
    <view inputState="Mapped" program="par" locator="CONSTRAINT_TABLE" contextTags="FPGA_ONLY" type="ConstraintsData" file="top_module.ptwx" label="Timing Constraints" translator="ptwxToTableXML.xslt" />

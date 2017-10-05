@@ -31,17 +31,17 @@ module top_module #( 								// Default setting:
 						 ) 
 						 ( input wire clk, reset, rx,
 						   output wire tx,
-							output wire rd_uart, wr_uart, tx_full, rx_empty,
-							output [DBIT-1:0] w_data, r_data, a, b, op, w
-							//output [DBIT-1:0]led
+							//output wire rd_uart, wr_uart, tx_full, rx_empty,
+							//output [DBIT-1:0] w_data, r_data, a, b, op, w,
+							output [DBIT-1:0]led
 					    );
 
-//wire rd_uart, wr_uart, tx_full, rx_empty;
-//wire [DBIT-1:0] w_data, r_data, a, b, op, w;
+wire rd_uart, wr_uart, tx_full, rx_empty;
+wire [DBIT-1:0] w_data, r_data, a, b, op, w;
 
 
 
-//assign led = w_data;
+assign led = w_data;
  
 alu #(.REG_SIZE(DBIT)) alu_unit 
 	(.a(a), .b(b), .op(op), .w(w)); 

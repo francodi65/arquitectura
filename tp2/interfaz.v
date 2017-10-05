@@ -30,13 +30,14 @@ module interfaz #(parameter REG_SIZE=8)( input wire clk, reset,
 						input signed [REG_SIZE-1:0]w
 					);
 
-localparam  [1:0]
-	num1  =  2'b00, 
-	num2  =  2'b01, 
-	opr   =  2'b10,
-	wr		=  2'b11;
+localparam  [2:0]
+	num1  =  3'b000, 
+	num2  =  3'b001, 
+	opr   =  3'b010,
+	wr		=  3'b011,
+	send	=	3'b100;
 	
-reg [1:0] state, next_state;
+reg [2:0] state, next_state;
 reg [REG_SIZE-1:0] a_state, b_state, op_state;
 
 always @(posedge clk, posedge reset) 
@@ -52,7 +53,6 @@ begin
 			b = b_state;
 			op = op_state;
 			w_data = w;
-			//wr_uart = 1'b0;
 		end
 end
 
@@ -104,9 +104,26 @@ begin
 				end
 		wr:
 			begin
-				wr_uart = 1'b1;
+				wr_uart = 1'b0;
 				rd_uart= 1'b0;
-				next_state= num1;
+				next_state= send;
+			end
+		send:
+			if(~tx_full)
+				begin
+					wr_uart = 1'b1;
+					rd_uart= 1'b0;
+					next_state= num1;
+				end
+			else 
+				begin
+					rd_uart= 1'b0;
+					wr_uart = 1'b0;
+				end
+	   default:
+			begin
+				wr_uart = 1'b0;
+				rd_uart= 1'b0;
 			end
 	endcase
 end

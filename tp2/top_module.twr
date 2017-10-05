@@ -45,8 +45,8 @@ Setup/Hold to clock clk
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-reset       |    1.456(R)|    0.491(R)|clk_BUFGP         |   0.000|
-rx          |    2.689(R)|    0.576(R)|clk_BUFGP         |   0.000|
+reset       |    2.154(R)|    0.479(R)|clk_BUFGP         |   0.000|
+rx          |    3.469(R)|    0.886(R)|clk_BUFGP         |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock clk to Pad
@@ -54,15 +54,15 @@ Clock clk to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-led<0>      |    7.663(R)|clk_BUFGP         |   0.000|
-led<1>      |    7.412(R)|clk_BUFGP         |   0.000|
-led<2>      |    7.252(R)|clk_BUFGP         |   0.000|
-led<3>      |    6.992(R)|clk_BUFGP         |   0.000|
-led<4>      |    7.171(R)|clk_BUFGP         |   0.000|
-led<5>      |    7.413(R)|clk_BUFGP         |   0.000|
-led<6>      |    7.907(R)|clk_BUFGP         |   0.000|
-led<7>      |    7.865(R)|clk_BUFGP         |   0.000|
-tx          |   10.835(R)|clk_BUFGP         |   0.000|
+led<0>      |    7.165(R)|clk_BUFGP         |   0.000|
+led<1>      |    7.641(R)|clk_BUFGP         |   0.000|
+led<2>      |    7.401(R)|clk_BUFGP         |   0.000|
+led<3>      |    7.139(R)|clk_BUFGP         |   0.000|
+led<4>      |    7.216(R)|clk_BUFGP         |   0.000|
+led<5>      |    7.114(R)|clk_BUFGP         |   0.000|
+led<6>      |    7.612(R)|clk_BUFGP         |   0.000|
+led<7>      |    7.315(R)|clk_BUFGP         |   0.000|
+tx          |   11.344(R)|clk_BUFGP         |   0.000|
 ------------+------------+------------------+--------+
 
 Clock to Setup on destination clock clk
@@ -70,11 +70,11 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    6.645|         |         |         |
+clk            |    6.194|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Wed Oct 04 12:10:57 2017 
+Analysis completed Thu Oct 05 17:01:50 2017 
 --------------------------------------------------------------------------------
 
 Trace Settings:

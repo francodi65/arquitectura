@@ -44,7 +44,7 @@ always @(*)
 				 8'b00100111: 
 					w = a |~ b;
 				 default:
-					w = 8'b01000000;
+					w = 8'b00000000;
 			endcase
 
 endmodule

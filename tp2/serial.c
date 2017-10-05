@@ -1,16 +1,15 @@
 #include <windows.h>
 #include <stdio.h>
+
+
+void toBinary(char *bytes_to_send);
  
 int main()
 {
     // Define the five bytes to send ("hello")
     char bytes_to_send[3];
-    bytes_to_send[0] = 1;
-    bytes_to_send[1] = 3;
-    bytes_to_send[2] = 32;
+    char com[12];
     char  TempChar;                        // Temperory Character
-    char  SerialBuffer[256];               // Buffer Containing Rxed Data
-    int i=0;
     DWORD NoBytesRead; // Bytes read by ReadFile()
     DWORD dwEventMask;
  
@@ -20,9 +19,12 @@ int main()
     COMMTIMEOUTS timeouts = {0};
          
     // Open the highest available serial port number
-    fprintf(stderr, "Opening serial port...");
+    printf("\n--- Interfaz - UART/ALU - FPGA ---\n Ingrese el puerto COM: ");
+    scanf("%c",&TempChar);
+    sprintf(com,"\\\\.\\COM%c",TempChar);
+    fprintf(stderr, "\n Abriendo puerto serie...");
     hSerial = CreateFile(
-                "\\\\.\\COM8", GENERIC_READ|GENERIC_WRITE, 0, NULL,
+                com, GENERIC_READ|GENERIC_WRITE, 0, NULL,
                 OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL );
     if (hSerial == INVALID_HANDLE_VALUE)
     {
@@ -64,29 +66,38 @@ int main()
         CloseHandle(hSerial);
         return 1;
     }
+   // getc(stdin);
+    printf("\nIngrese el primer numero: ");
+    scanf("\n%c",&bytes_to_send[0]);
+    //getc(stdin);
+    printf("\nIngrese el segundo numero: ");
+    scanf("\n%c",&bytes_to_send[1]);
+    //getc(stdin);
+    printf("\nIngrese el operador: ");
+    scanf("\n%c",&bytes_to_send[2]);
+
+    toBinary(bytes_to_send);
+    
  
     // Send specified text (remaining command line arguments)
     DWORD bytes_written, total_bytes_written = 0;
-    fprintf(stderr, "Sending bytes...");
+    fprintf(stderr, "\n>>> Enviando datos...");
     if(!WriteFile(hSerial, bytes_to_send, 3, &bytes_written, NULL))
     {
         fprintf(stderr, "Error\n");
         CloseHandle(hSerial);
         return 1;
     }   
-    fprintf(stderr, "%d bytes written\n", bytes_written);
+    fprintf(stderr, "Enviados\n", bytes_written);
 
     /*------------------------------------ Setting Receive Mask ----------------------------------------------*/
             
     if (SetCommMask(hSerial, EV_RXCHAR)==0)  //Configure Windows to Monitor the serial device for Character Reception
         printf("\n\n    Error! in Setting CommMask");
-    else
-        printf("\n\n    Setting CommMask successfull");
-
     
 
     /*-------------------------- Program will Wait here till a Character is received ------------------------*/				
-    printf("\n\n    Waiting for Data Reception");
+    printf("\n<<< Esperando la respuesta...");
 
     if ( WaitCommEvent(hSerial, &dwEventMask, NULL)==0)//Wait for the character to be received
         {
@@ -94,28 +105,17 @@ int main()
         }
     else //If  WaitCommEvent()==True Read the RXed data using ReadFile();
         {
-            printf("\n\n    Characters Received");
-            do
-                {
-                    ReadFile(hSerial, &TempChar, sizeof(TempChar), &NoBytesRead, NULL);
-                    SerialBuffer[i] = TempChar;
-                    i++;
-                }
-            while (NoBytesRead > 0);
-
-            
+            printf("Recibida\n");
+            ReadFile(hSerial, &TempChar, sizeof(TempChar), &NoBytesRead, NULL);
 
             /*------------Printing the RXed String to Console----------------------*/
 
-            printf("\n\n    ");
-            int j =0;
-            for (j = 0; j < i-1; j++)		// j < i-1 to remove the dupliated last character
-                printf("%c", SerialBuffer[j]);
+            printf("\n-> Resultado: %d\n",TempChar);
 
         }	
      
     // Close serial port
-    fprintf(stderr, "Closing serial port...");
+    fprintf(stderr, "\nCerrando puerto serie...");
     if (CloseHandle(hSerial) == 0)
     {
         fprintf(stderr, "Error\n");
@@ -125,4 +125,36 @@ int main()
  
     // exit normally
     return 0;
+}
+
+void toBinary(char *bytes_to_send){
+    bytes_to_send[0] -= 48;
+    bytes_to_send[1] -= 48;
+    switch(bytes_to_send[2]){
+        case '+': 
+            bytes_to_send[2] = 32;
+            break;
+        case '-': 
+            bytes_to_send[2] = 34;
+            break;
+        case '&': 
+            bytes_to_send[2] = 36;
+            break;
+        case '|': 
+            bytes_to_send[2] = 37;
+            break;
+        case '/': 
+            bytes_to_send[2] = 38;
+            break;
+        case '>': 
+            bytes_to_send[2] = 3;
+            break;
+        case '^': 
+            bytes_to_send[2] = 2;
+            break;
+        case '*': 
+            bytes_to_send[2] = 39;
+            break;
+    }
+    
 }
