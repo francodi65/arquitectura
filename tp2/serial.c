@@ -68,10 +68,10 @@ int main()
     }
    // getc(stdin);
     printf("\nIngrese el primer numero: ");
-    scanf("\n%c",&bytes_to_send[0]);
+    scanf("\n%d",&bytes_to_send[0]);
     //getc(stdin);
     printf("\nIngrese el segundo numero: ");
-    scanf("\n%c",&bytes_to_send[1]);
+    scanf("\n%d",&bytes_to_send[1]);
     //getc(stdin);
     printf("\nIngrese el operador: ");
     scanf("\n%c",&bytes_to_send[2]);
@@ -128,8 +128,8 @@ int main()
 }
 
 void toBinary(char *bytes_to_send){
-    bytes_to_send[0] -= 48;
-    bytes_to_send[1] -= 48;
+    //bytes_to_send[0] -= 48;
+    //bytes_to_send[1] -= 48;
     switch(bytes_to_send[2]){
         case '+': 
             bytes_to_send[2] = 32;
