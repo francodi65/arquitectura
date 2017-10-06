@@ -1,0 +1,5 @@
+verilog work "pc.v"
+verilog work "ins_deco.v"
+verilog work "datapath.v"
+verilog work "control.v"
+verilog work "cpu.v"
