@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2017-10-06T17:02:34</DateModified>
+  <DateModified>2017-11-16T16:38:55</DateModified>
   <ModuleName>cpu</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
   <SavedFilePath>C:/Users/Franco/Git/arquitectura/tp3/iseconfig/cpu.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/Franco/Git/arquitectura/tp3</ImplementationReportsDirectory>
+  <ImplementationReportsDirectory>C:/Users/Franco/Git/arquitectura/tp3\</ImplementationReportsDirectory>
   <DateInitialized>2017-10-06T17:02:34</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

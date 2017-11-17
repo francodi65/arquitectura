@@ -1,1 +1,4 @@
+verilog work "signal_extension.v"
+verilog work "alu.v"
+verilog work "acc.v"
 verilog work "datapath.v"

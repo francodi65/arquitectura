@@ -19,15 +19,15 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module ins_deco(
-    output wr_pc,
-    output [1:0] sel_a,
-    output sel_b,
-    output wr_acc,
-    output op,
-    output wr_ram,
-    output rd_ram,
-    input [4:0] opcode
-    );
+				output wr_pc,
+				output [1:0] sel_a,
+				output sel_b,
+				output wr_acc,
+				output op,
+				output wr_ram,
+				output rd_ram,
+				input [4:0] opcode
+				);
 
 
 endmodule

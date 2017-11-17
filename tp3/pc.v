@@ -21,9 +21,19 @@
 module pc(
 				input clk,
 				input reset,
-				input wr_pc,
-				output [10:0] addr
+				input enable,
+				output reg [10:0] addr
 				);
+
+	always @(posedge clk, posedge reset) 
+	begin
+		if (reset)
+			addr = 0;
+		else if (enable)
+			addr= addr +1;
+		else
+			addr = addr;
+	end
 
 
 endmodule

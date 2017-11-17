@@ -33,10 +33,10 @@ module control(
 
 	wire wr_pc;
 	reg [4:0] opcode;
-	
+
 	pc pc_unit
-		(.clk(clk), .reset(reset), .wr_pc(wr_pc), .addr(addr));
-	
+		(.clk(clk), .reset(reset), .enable(wr_pc), .addr(addr));
+
 	ins_deco ins_deco_unit
 		(.wr_pc(wr_pc), .sel_a(sel_a), .sel_b(sel_b), .wr_acc(wr_acc),
 		 .op(op), .wr_ram(wr_ram), .rd_ram(rd_ram), .opcode(opcode));

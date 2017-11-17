@@ -1,0 +1,6 @@
+verilog work "signal_extension.v"
+verilog work "alu.v"
+verilog work "acc.v"
+verilog work "datapath.v"
+verilog work "datapath_test.v"
+verilog work "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"
