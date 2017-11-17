@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "C:/Users/Franco/Git/arquitectura/tp3/datapath_test_isim_beh.exe" -prj "C:/Users/Franco/Git/arquitectura/tp3/datapath_test_beh.prj" "work.datapath_test" "work.glbl" 
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "C:/Users/Franco/Git/arquitectura/tp3/cpu_test_isim_beh.exe" -prj "C:/Users/Franco/Git/arquitectura/tp3/cpu_test_beh.prj" "work.cpu_test" "work.glbl" 

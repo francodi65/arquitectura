@@ -20,8 +20,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 module control(
 				input clk, reset,
-				input [10:0] addr,
-				output [15:0] data,
+				input [15:0] data,
+				output [10:0] addr,
 				output [1:0] sel_a,
 				output sel_b,
 				output wr_acc,
@@ -32,7 +32,10 @@ module control(
 				);
 
 	wire wr_pc;
-	reg [4:0] opcode;
+	wire [4:0] opcode;
+	
+	assign operand = data[10:0];
+	assign opcode = data[15:11];
 
 	pc pc_unit
 		(.clk(clk), .reset(reset), .enable(wr_pc), .addr(addr));

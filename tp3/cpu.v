@@ -37,6 +37,9 @@ module cpu(
 	wire rd_ram;
 	wire [10:0] operand;
 	
+	assign wr = wr_ram;
+	assign rd = rd_ram;
+	
 
 	control control_unit 
 		(.clk(clk), .reset(reset), .addr(addr_program), .data(data),
