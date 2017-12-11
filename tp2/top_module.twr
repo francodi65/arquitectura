@@ -2,8 +2,8 @@
 Release 14.7 Trace  (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s 5
--n 3 -fastpaths -xml top_module.twx top_module.ncd -o top_module.twr
+D:\Programas\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise
+-v 3 -s 5 -n 3 -fastpaths -xml top_module.twx top_module.ncd -o top_module.twr
 top_module.pcf -ucf keys.ucf
 
 Design file:              top_module.ncd
@@ -74,7 +74,7 @@ clk            |    6.194|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Thu Oct 05 17:01:50 2017 
+Analysis completed Wed Oct 18 17:24:25 2017 
 --------------------------------------------------------------------------------
 
 Trace Settings:

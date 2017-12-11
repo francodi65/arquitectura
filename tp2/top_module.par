@@ -1,14 +1,14 @@
 Release 14.7 par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-DESKTOP-9FH6SV1::  Thu Oct 05 17:01:39 2017
+LAPTOP-BE7H6RVF::  Wed Oct 18 17:24:15 2017
 
 par -w -intstyle ise -ol high -t 1 top_module_map.ncd top_module.ncd
 top_module.pcf 
 
 
 Constraints file: top_module.pcf.
-Loading device for application Rf_Device from file '3s100e.nph' in environment C:\Xilinx\14.7\ISE_DS\ISE\.
+Loading device for application Rf_Device from file '3s100e.nph' in environment D:\Programas\Xilinx\14.7\ISE_DS\ISE\.
    "top_module" is an NCD, version 3.2, device xc3s100e, package cp132, speed -5
 
 Initializing temperature to 85.000 Celsius. (default - Range: -40.000 to 100.000 Celsius)
@@ -53,12 +53,12 @@ Placer effort level (-pl):    High
 Placer cost table entry (-t): 1
 Router effort level (-rl):    High 
 
-Starting initial Timing Analysis.  REAL time: 0 secs 
-Finished initial Timing Analysis.  REAL time: 0 secs 
+Starting initial Timing Analysis.  REAL time: 1 secs 
+Finished initial Timing Analysis.  REAL time: 1 secs 
 
 
 Starting Placer
-Total REAL time at the beginning of Placer: 0 secs 
+Total REAL time at the beginning of Placer: 1 secs 
 Total CPU  time at the beginning of Placer: 0 secs 
 
 Phase 1.1  Initial Placement Analysis
@@ -121,16 +121,16 @@ Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 7
 
 Updating file: top_module.ncd with current fully routed design.
 
-Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 8 secs 
+Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
 
-Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 8 secs 
+Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
 
-Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 8 secs 
+Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
 
-Phase 11  : 0 unrouted; (Par is working to improve performance)     REAL time: 8 secs 
+Phase 11  : 0 unrouted; (Par is working to improve performance)     REAL time: 7 secs 
 
-Total REAL time to Router completion: 8 secs 
-Total CPU time to Router completion: 8 secs 
+Total REAL time to Router completion: 7 secs 
+Total CPU time to Router completion: 7 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -185,10 +185,10 @@ Generating Pad Report.
 
 All signals are completely routed.
 
-Total REAL time to PAR completion: 8 secs 
-Total CPU time to PAR completion: 8 secs 
+Total REAL time to PAR completion: 7 secs 
+Total CPU time to PAR completion: 7 secs 
 
-Peak Memory Usage:  295 MB
+Peak Memory Usage:  363 MB
 
 Placement: Completed - No errors found.
 Routing: Completed - No errors found.

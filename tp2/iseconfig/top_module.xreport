@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2017-10-05T16:53:36</DateModified>
+  <DateModified>2017-12-08T20:37:16</DateModified>
   <ModuleName>top_module</ModuleName>
   <SummaryTimeStamp>2017-10-05T16:52:55</SummaryTimeStamp>
-  <SavedFilePath>C:/Users/Franco/Git/arquitectura/tp2/iseconfig/top_module.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/Franco/Git/arquitectura/tp2\</ImplementationReportsDirectory>
+  <SavedFilePath>C:/Users/Juanma/arquitectura/tp2/iseconfig/top_module.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Users/Juanma/arquitectura/tp2\</ImplementationReportsDirectory>
   <DateInitialized>2017-09-26T20:38:53</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

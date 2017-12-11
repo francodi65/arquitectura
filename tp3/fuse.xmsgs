@@ -5,8 +5,5 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="329" delta="unknown" >"C:/Users/Franco/Git/arquitectura/tp3/cpu_test.v" Line 49: Target &lt;<arg fmt="%s" index="1">in_data</arg>&gt; of concurrent assignment or output port connection should be a net type.
-</msg>
-
 </messages>
 

@@ -1,5 +1,8 @@
+verilog work "signal_extension.v"
 verilog work "pc.v"
 verilog work "ins_deco.v"
+verilog work "alu.v"
+verilog work "acc.v"
 verilog work "datapath.v"
 verilog work "control.v"
 verilog work "cpu.v"

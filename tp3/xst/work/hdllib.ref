@@ -1,8 +1,9 @@
-MO datapath NULL datapath.v vlg27/datapath.bin 1510869217
-MO cpu NULL cpu.v vlg50/cpu.bin 1507323104
-MO ins_deco NULL ins_deco.v vlg20/ins__deco.bin 1510878978
-MO signal_extension NULL signal_extension.v vlg56/signal__extension.bin 1510869217
-MO pc NULL pc.v vlg13/pc.bin 1510878978
-MO acc NULL acc.v vlg4B/acc.bin 1510869217
-MO control NULL control.v vlg61/control.bin 1510878978
-MO alu NULL alu.v vlg0A/alu.bin 1510869217
+MO data_memory NULL data_memory.v vlg4A/data__memory.bin 1512946779
+MO datapath NULL datapath.v vlg27/datapath.bin 1512941775
+MO cpu NULL cpu.v vlg50/cpu.bin 1512941775
+MO ins_deco NULL ins_deco.v vlg20/ins__deco.bin 1512941775
+MO signal_extension NULL signal_extension.v vlg56/signal__extension.bin 1512941775
+MO pc NULL pc.v vlg13/pc.bin 1512941775
+MO acc NULL acc.v vlg4B/acc.bin 1512941775
+MO control NULL control.v vlg61/control.bin 1512941775
+MO alu NULL alu.v vlg0A/alu.bin 1512941775

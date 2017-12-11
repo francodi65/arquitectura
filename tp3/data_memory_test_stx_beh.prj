@@ -1,0 +1,3 @@
+verilog isim_temp "data_memory.v"
+verilog isim_temp "data_memory_test.v"
+verilog isim_temp "D:/Programas/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"
