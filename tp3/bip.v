@@ -29,24 +29,19 @@ module bip#(
 	 
 	wire [ADDR_BITS-1:0]addr_program;
 	wire [DATA_WIDTH-1:0]instruction;
-	wire rd;
 	wire wr;
 	wire [ADDR_BITS-1:0]addr_data;
 	wire [DATA_WIDTH-1:0]in_data;
 	wire [DATA_WIDTH-1:0]out_data;
 	
-	wire write;
-
-	//assign write = wr && ~rd;
-	assign write = wr;
 
 	cpu cpu_unit 
 	(.clk(clk), .reset(reset), .addr_program(addr_program), .data(instruction),
-	 .rd(rd), .wr(wr), .addr_data(addr_data), .in_data(in_data),
+	 .wr(wr), .addr_data(addr_data), .in_data(in_data),
 	 .out_data(out_data), .acc(acc));
 	 
 	data_memory data_memory_unit
-	(.clk(clk), .write(write), .addr_data(addr_data), .out_data(in_data),
+	(.clk(clk), .write(wr), .addr_data(addr_data), .out_data(in_data),
 	 .in_data(out_data));
 
 	program_memory program_memory_unit

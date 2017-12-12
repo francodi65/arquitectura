@@ -3,10 +3,10 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
-<application name="pn" timeStamp="Tue Dec 12 02:28:15 2017">
+<application name="pn" timeStamp="Tue Dec 12 12:43:00 2017">
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="FF79EBB81C2D4ADB81732FFF298CEEB5" type="project"/>
-<property name="ProjectIteration" value="0" type="project"/>
+<property name="ProjectIteration" value="9" type="project"/>
 <property name="ProjectFile" value="C:/Users/Franco/Git/arquitectura/tp3/tp3.xise" type="project"/>
 <property name="ProjectCreationTimestamp" value="2017-10-06T15:35:21" type="project"/>
 </section>
@@ -26,11 +26,13 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="PROP_UserConstraintEditorPreference" value="Text Editor" type="process"/>
 <property name="PROP_intProjectCreationTimestamp" value="2017-10-06T15:35:21" type="design"/>
 <property name="PROP_intWbtProjectID" value="FF79EBB81C2D4ADB81732FFF298CEEB5" type="design"/>
+<property name="PROP_intWbtProjectIteration" value="9" type="process"/>
 <property name="PROP_intWorkingDirLocWRTProjDir" value="Same" type="design"/>
 <property name="PROP_intWorkingDirUsed" value="No" type="design"/>
+<property name="PROP_lockPinsUcfFile" value="changed" type="process"/>
 <property name="PROP_selectedSimRootSourceNode_behav" value="work.bip_test" type="process"/>
 <property name="PROP_xilxBitgStart_IntDone" value="true" type="process"/>
-<property name="PROP_AutoTop" value="true" type="design"/>
+<property name="PROP_AutoTop" value="false" type="design"/>
 <property name="PROP_DevFamily" value="Spartan3E" type="design"/>
 <property name="PROP_DevDevice" value="xc3s100e" type="design"/>
 <property name="PROP_DevFamilyPMName" value="spartan3e" type="design"/>
@@ -39,6 +41,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="PROP_Synthesis_Tool" value="XST (VHDL/Verilog)" type="design"/>
 <property name="PROP_DevSpeed" value="-5" type="design"/>
 <property name="PROP_PreferredLanguage" value="Verilog" type="design"/>
+<property name="FILE_UCF" value="1" type="source"/>
 <property name="FILE_VERILOG" value="20" type="source"/>
 </section>
 </application>

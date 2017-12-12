@@ -17,6 +17,7 @@ Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/bip.v" into library
 Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/bip_test.v" into library work
 Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
+WARNING:HDLCompiler:1016 - "C:/Users/Franco/Git/arquitectura/tp3/cpu.v" Line 45: Port rd_ram is not connected to this instance
 Completed static elaboration
 Compiling module pc
 Compiling module ins_deco
@@ -35,5 +36,5 @@ Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
 Compiled 13 Verilog Units
 Built simulation executable C:/Users/Franco/Git/arquitectura/tp3/bip_test_isim_beh.exe
-Fuse Memory Usage: 27892 KB
+Fuse Memory Usage: 27960 KB
 Fuse CPU Usage: 406 ms
