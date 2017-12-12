@@ -19,25 +19,34 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module data_memory #(
-  parameter RAM_WIDTH = 16,                       // Specify RAM data width
-  parameter RAM_DEPTH = 2048                      // Specify RAM depth (number of entries)
-)(
-	input clk,
-	input	write,
-	input [10:0] addr_data,
-	output [RAM_WIDTH-1:0] out_data,
-	input [RAM_WIDTH-1:0] in_data
-    );
-reg [RAM_WIDTH-1:0] ram_vec[RAM_DEPTH-1:0];
-reg [10:0] addr;
+				parameter RAM_WIDTH = 16,                       // Specify RAM data width
+				parameter RAM_ADDR_BITS= 11                      // Specify RAM depth (number of entries)
+				)(
+				input clk,
+				input	write,
+				input [RAM_ADDR_BITS-1:0] addr_data,
+				output reg[RAM_WIDTH-1:0] out_data,
+				input [RAM_WIDTH-1:0] in_data
+				);
+	reg [RAM_WIDTH-1:0] ram_vec [(2**RAM_ADDR_BITS)-1:0];
+	
+	
+   //  The forllowing code is only necessary if you wish to initialize the RAM 
+   //  contents via an external file (use $readmemb for binary data)
+   //initial
+      //$readmemh("<data_file_name>", <rom_name>, <begin_address>, <end_address>);
 
-always @(posedge clk)
-begin
-	//if (<ram_enable>) creo que no hace falta cs
-		if (write)
-			ram_vec[addr_data] <= in_data;
-		else
-			addr <= addr_data;	
-end
-assign out_data = ram_vec[addr];
+
+	always @(negedge clk)
+	begin
+		//if (<ram_enable>) creo que no hace falta cs
+			if (write)
+				ram_vec[addr_data] <= in_data;
+			else
+				out_data <= ram_vec[addr_data];
+	end
+	
+
 endmodule
+
+

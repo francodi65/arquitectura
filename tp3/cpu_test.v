@@ -34,6 +34,7 @@ module cpu_test;
 	wire [10:0] addr_program;
 	wire rd;
 	wire wr;
+	wire acc;
 	wire [10:0] addr_data;
 	wire [15:0] out_data;
 
@@ -47,7 +48,8 @@ module cpu_test;
 		.wr(wr), 
 		.addr_data(addr_data), 
 		.in_data(in_data), 
-		.out_data(out_data)
+		.out_data(out_data),
+		.acc(acc)
 	);
 	
 	initial begin

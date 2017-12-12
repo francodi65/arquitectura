@@ -19,7 +19,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module datapath(
-				input clk, reset,
+				input clk,
 				input [10:0] operand,
 				input [1:0] sel_a,
 				input sel_b,
@@ -27,7 +27,8 @@ module datapath(
 				input op,
 				input [15:0] in_data,
 				output [10:0] addr,	
-				output [15:0] out_data
+				output [15:0] out_data,
+				output [15:0] acc
 				);
 				
 	wire [15:0] extended_operand, alu_out, a_operand, b_operand;
@@ -61,7 +62,7 @@ module datapath(
 	end
 	
 	assign b_operand = b_selected;
-	
+	assign acc = a_operand;
 		
 	alu alu_unit
 		(.a(a_operand), .b(b_operand), .op(op), .out_data(alu_out));

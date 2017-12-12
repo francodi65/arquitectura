@@ -18,15 +18,19 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module cpu(
+module cpu#(
+				parameter ADDR_BITS = 11,
+				parameter DATA_WIDTH = 16
+				)(
 				input clk, reset,
-				output [10:0] addr_program,
-				input [15:0] data,
+				output [ADDR_BITS-1:0] addr_program,
+				input [DATA_WIDTH-1:0] data,
 				output rd,
 				output wr,
-				output [10:0] addr_data,
-				output [15:0] in_data,
-				input [15:0] out_data
+				output [ADDR_BITS-1:0] addr_data,
+				input [DATA_WIDTH-1:0] in_data,
+				output [DATA_WIDTH-1:0] out_data,
+				output [DATA_WIDTH-1:0] acc
 				);
 	
 	wire [1:0] sel_a;
@@ -47,9 +51,9 @@ module cpu(
 		 .wr_ram(wr_ram), .rd_ram(rd_ram), .operand(operand));
 	
 	datapath datapath_unit
-		(.clk(clk), .reset(reset), .operand(operand), .sel_a(sel_a),
+		(.clk(clk), .operand(operand), .sel_a(sel_a),
 		 .sel_b(sel_b), .wr_acc(wr_acc), .op(op), .addr(addr_data),
-		 .in_data(in_data), .out_data(out_data));
+		 .in_data(in_data), .out_data(out_data), .acc(acc));
 	 
 
 

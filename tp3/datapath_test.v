@@ -37,6 +37,7 @@ module datapath_test;
 	// Outputs
 	wire [10:0] addr;
 	wire [15:0] out_data;
+	wire [15:0] acc;
 
 	// Instantiate the Unit Under Test (UUT)
 	datapath uut (
@@ -49,7 +50,8 @@ module datapath_test;
 		.op(op), 
 		.in_data(in_data), 
 		.addr(addr), 
-		.out_data(out_data)
+		.out_data(out_data),
+		.acc(acc)
 	);
 	
 	initial begin

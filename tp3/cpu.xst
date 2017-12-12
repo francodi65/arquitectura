@@ -1,5 +1,5 @@
-set -tmpdir "C:/Users/Juanma/arquitectura/tp3/xst/projnav.tmp"
-set -xsthdpdir "C:/Users/Juanma/arquitectura/tp3/xst"
+set -tmpdir "C:/Users/Franco/Git/arquitectura/tp3/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/Franco/Git/arquitectura/tp3/xst"
 elaborate
 -ifn cpu.prj
 -ifmt mixed

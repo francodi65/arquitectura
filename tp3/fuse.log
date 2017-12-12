@@ -1,16 +1,39 @@
-Running: D:\Programas\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -o C:/Users/Juanma/arquitectura/tp3/data_memory_isim_beh.exe -prj C:/Users/Juanma/arquitectura/tp3/data_memory_beh.prj data_memory work.glbl 
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -o C:/Users/Franco/Git/arquitectura/tp3/bip_test_isim_beh.exe -prj C:/Users/Franco/Git/arquitectura/tp3/bip_test_beh.prj work.bip_test work.glbl 
 ISim P.20131013 (signature 0x7708f090)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
-Analyzing Verilog file "C:/Users/Juanma/arquitectura/tp3/data_memory.v" into library work
-Analyzing Verilog file "D:/Programas/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/signal_extension.v" into library work
+Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/pc.v" into library work
+Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/ins_deco.v" into library work
+Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/alu.v" into library work
+Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/acc.v" into library work
+Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/datapath.v" into library work
+Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/control.v" into library work
+Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/program_memory.v" into library work
+Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/data_memory.v" into library work
+Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/cpu.v" into library work
+Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/bip.v" into library work
+Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/bip_test.v" into library work
+Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
 Completed static elaboration
+Compiling module pc
+Compiling module ins_deco
+Compiling module control
+Compiling module signal_extension
+Compiling module acc
+Compiling module alu
+Compiling module datapath
+Compiling module cpu
 Compiling module data_memory
+Compiling module program_memory
+Compiling module bip
+Compiling module bip_test
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Compiled 2 Verilog Units
-Built simulation executable C:/Users/Juanma/arquitectura/tp3/data_memory_isim_beh.exe
-Fuse Memory Usage: 27328 KB
-Fuse CPU Usage: 281 ms
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 13 Verilog Units
+Built simulation executable C:/Users/Franco/Git/arquitectura/tp3/bip_test_isim_beh.exe
+Fuse Memory Usage: 27892 KB
+Fuse CPU Usage: 406 ms

@@ -1,0 +1,539 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.08 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.08 secs
+ 
+--> Reading design: bip.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "bip.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "bip"
+Output Format                      : NGC
+Target Device                      : xc3s100e-5-cp132
+
+---- Source Options
+Top Module Name                    : bip
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "signal_extension.v" in library work
+Compiling verilog file "pc.v" in library work
+Module <signal_extension> compiled
+Compiling verilog file "ins_deco.v" in library work
+Module <pc> compiled
+Compiling verilog file "alu.v" in library work
+Module <ins_deco> compiled
+Compiling verilog file "acc.v" in library work
+Module <alu> compiled
+Compiling verilog file "datapath.v" in library work
+Module <acc> compiled
+Compiling verilog file "control.v" in library work
+Module <datapath> compiled
+Compiling verilog file "program_memory.v" in library work
+Module <control> compiled
+Compiling verilog file "data_memory.v" in library work
+Module <program_memory> compiled
+Compiling verilog file "cpu.v" in library work
+Module <data_memory> compiled
+Compiling verilog file "bip.v" in library work
+Module <cpu> compiled
+Module <bip> compiled
+No errors in compilation
+Analysis of file <"bip.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <bip> in library <work> with parameters.
+	ADDR_BITS = "00000000000000000000000000001011"
+	DATA_WIDTH = "00000000000000000000000000010000"
+
+Analyzing hierarchy for module <cpu> in library <work> with parameters.
+	ADDR_BITS = "00000000000000000000000000001011"
+	DATA_WIDTH = "00000000000000000000000000010000"
+
+Analyzing hierarchy for module <data_memory> in library <work> with parameters.
+	RAM_ADDR_BITS = "00000000000000000000000000001011"
+	RAM_WIDTH = "00000000000000000000000000010000"
+
+Analyzing hierarchy for module <program_memory> in library <work> with parameters.
+	RAM_ADDR_BITS = "00000000000000000000000000001011"
+	RAM_WIDTH = "00000000000000000000000000010000"
+
+Analyzing hierarchy for module <control> in library <work>.
+
+Analyzing hierarchy for module <datapath> in library <work>.
+
+Analyzing hierarchy for module <pc> in library <work>.
+
+Analyzing hierarchy for module <ins_deco> in library <work>.
+
+Analyzing hierarchy for module <signal_extension> in library <work>.
+
+Analyzing hierarchy for module <acc> in library <work>.
+
+Analyzing hierarchy for module <alu> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <bip>.
+	ADDR_BITS = 32'sb00000000000000000000000000001011
+	DATA_WIDTH = 32'sb00000000000000000000000000010000
+Module <bip> is correct for synthesis.
+ 
+Analyzing module <cpu> in library <work>.
+	ADDR_BITS = 32'sb00000000000000000000000000001011
+	DATA_WIDTH = 32'sb00000000000000000000000000010000
+Module <cpu> is correct for synthesis.
+ 
+Analyzing module <control> in library <work>.
+Module <control> is correct for synthesis.
+ 
+Analyzing module <pc> in library <work>.
+Module <pc> is correct for synthesis.
+ 
+Analyzing module <ins_deco> in library <work>.
+Module <ins_deco> is correct for synthesis.
+ 
+Analyzing module <datapath> in library <work>.
+Module <datapath> is correct for synthesis.
+ 
+Analyzing module <signal_extension> in library <work>.
+Module <signal_extension> is correct for synthesis.
+ 
+Analyzing module <acc> in library <work>.
+Module <acc> is correct for synthesis.
+ 
+Analyzing module <alu> in library <work>.
+Module <alu> is correct for synthesis.
+ 
+Analyzing module <data_memory> in library <work>.
+	RAM_ADDR_BITS = 32'sb00000000000000000000000000001011
+	RAM_WIDTH = 32'sb00000000000000000000000000010000
+Module <data_memory> is correct for synthesis.
+ 
+Analyzing module <program_memory> in library <work>.
+	RAM_ADDR_BITS = 32'sb00000000000000000000000000001011
+	RAM_WIDTH = 32'sb00000000000000000000000000010000
+INFO:Xst:2546 - "program_memory.v" line 36: reading initialization file "binario.bin".
+WARNING:Xst:2319 - "program_memory.v" line 36: Signal ram_vec in initial block is partially initialized. The initialization will be ignored.
+Module <program_memory> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <data_memory>.
+    Related source file is "data_memory.v".
+    Found 2048x16-bit single-port RAM <Mram_ram_vec> for signal <ram_vec>.
+    Found 16-bit register for signal <out_data>.
+    Summary:
+	inferred   1 RAM(s).
+	inferred  16 D-type flip-flop(s).
+Unit <data_memory> synthesized.
+
+
+Synthesizing Unit <program_memory>.
+    Related source file is "program_memory.v".
+WARNING:Xst:653 - Signal <ram_vec> is used but never assigned. This sourceless signal will be automatically connected to value 0000000000000000.
+    Found 16-bit register for signal <out_data>.
+    Summary:
+	inferred  16 D-type flip-flop(s).
+Unit <program_memory> synthesized.
+
+
+Synthesizing Unit <pc>.
+    Related source file is "pc.v".
+    Found 11-bit up counter for signal <addr>.
+    Summary:
+	inferred   1 Counter(s).
+Unit <pc> synthesized.
+
+
+Synthesizing Unit <ins_deco>.
+    Related source file is "ins_deco.v".
+    Found 4x2-bit ROM for signal <$rom0000>.
+    Summary:
+	inferred   1 ROM(s).
+Unit <ins_deco> synthesized.
+
+
+Synthesizing Unit <signal_extension>.
+    Related source file is "signal_extension.v".
+Unit <signal_extension> synthesized.
+
+
+Synthesizing Unit <acc>.
+    Related source file is "acc.v".
+    Found 16-bit register for signal <out_data>.
+    Summary:
+	inferred  16 D-type flip-flop(s).
+Unit <acc> synthesized.
+
+
+Synthesizing Unit <alu>.
+    Related source file is "alu.v".
+    Found 16-bit addsub for signal <out_data>.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+Unit <alu> synthesized.
+
+
+Synthesizing Unit <control>.
+    Related source file is "control.v".
+Unit <control> synthesized.
+
+
+Synthesizing Unit <datapath>.
+    Related source file is "datapath.v".
+    Found 16-bit 4-to-1 multiplexer for signal <a_selected>.
+    Summary:
+	inferred  16 Multiplexer(s).
+Unit <datapath> synthesized.
+
+
+Synthesizing Unit <cpu>.
+    Related source file is "cpu.v".
+Unit <cpu> synthesized.
+
+
+Synthesizing Unit <bip>.
+    Related source file is "bip.v".
+WARNING:Xst:646 - Signal <rd> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+Unit <bip> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 2048x16-bit single-port RAM                           : 1
+# ROMs                                                 : 1
+ 4x2-bit ROM                                           : 1
+# Adders/Subtractors                                   : 1
+ 16-bit addsub                                         : 1
+# Counters                                             : 1
+ 11-bit up counter                                     : 1
+# Registers                                            : 3
+ 16-bit register                                       : 3
+# Multiplexers                                         : 1
+ 16-bit 4-to-1 multiplexer                             : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:1290 - Hierarchical block <pc_unit> is unconnected in block <control_unit>.
+   It will be removed from the design.
+INFO:Xst:2261 - The FF/Latch <out_data_0> in Unit <program_memory_unit> is equivalent to the following 15 FFs/Latches, which will be removed : <out_data_1> <out_data_2> <out_data_3> <out_data_4> <out_data_5> <out_data_6> <out_data_7> <out_data_8> <out_data_9> <out_data_10> <out_data_11> <out_data_12> <out_data_13> <out_data_14> <out_data_15> 
+WARNING:Xst:1710 - FF/Latch <out_data_0> (without init value) has a constant value of 0 in block <program_memory_unit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <out_data_15> (without init value) has a constant value of 0 in block <acc_unit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <out_data_14> (without init value) has a constant value of 0 in block <acc_unit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <out_data_13> (without init value) has a constant value of 0 in block <acc_unit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <out_data_12> (without init value) has a constant value of 0 in block <acc_unit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <out_data_11> (without init value) has a constant value of 0 in block <acc_unit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <out_data_10> (without init value) has a constant value of 0 in block <acc_unit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <out_data_9> (without init value) has a constant value of 0 in block <acc_unit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <out_data_8> (without init value) has a constant value of 0 in block <acc_unit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <out_data_7> (without init value) has a constant value of 0 in block <acc_unit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <out_data_6> (without init value) has a constant value of 0 in block <acc_unit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <out_data_5> (without init value) has a constant value of 0 in block <acc_unit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <out_data_4> (without init value) has a constant value of 0 in block <acc_unit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <out_data_3> (without init value) has a constant value of 0 in block <acc_unit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <out_data_2> (without init value) has a constant value of 0 in block <acc_unit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <out_data_1> (without init value) has a constant value of 0 in block <acc_unit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <out_data_0> (without init value) has a constant value of 0 in block <acc_unit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <out_data_0> is unconnected in block <data_memory_unit>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <out_data_1> is unconnected in block <data_memory_unit>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <out_data_2> is unconnected in block <data_memory_unit>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <out_data_3> is unconnected in block <data_memory_unit>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <out_data_4> is unconnected in block <data_memory_unit>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <out_data_5> is unconnected in block <data_memory_unit>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <out_data_6> is unconnected in block <data_memory_unit>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <out_data_7> is unconnected in block <data_memory_unit>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <out_data_8> is unconnected in block <data_memory_unit>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <out_data_9> is unconnected in block <data_memory_unit>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <out_data_10> is unconnected in block <data_memory_unit>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <out_data_11> is unconnected in block <data_memory_unit>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <out_data_12> is unconnected in block <data_memory_unit>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <out_data_13> is unconnected in block <data_memory_unit>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <out_data_14> is unconnected in block <data_memory_unit>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <out_data_15> is unconnected in block <data_memory_unit>.
+WARNING:Xst:1290 - Hierarchical block <control_unit> is unconnected in block <cpu_unit>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <signal_extension_unit> is unconnected in block <datapath_unit>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <alu_unit> is unconnected in block <datapath_unit>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <data_memory_unit> is unconnected in block <bip>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <program_memory_unit> is unconnected in block <bip>.
+   It will be removed from the design.
+WARNING:Xst:2404 -  FFs/Latches <out_data<15:0>> (without init value) have a constant value of 0 in block <program_memory>.
+
+Synthesizing (advanced) Unit <data_memory>.
+INFO:Xst:3226 - The RAM <Mram_ram_vec> will be implemented as a BLOCK RAM, absorbing the following register(s): <out_data>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 2048-word x 16-bit                  |          |
+    |     mode           | no-change                           |          |
+    |     clkA           | connected to signal <clk>           | fall     |
+    |     weA            | connected to signal <write>         | high     |
+    |     addrA          | connected to signal <addr_data>     |          |
+    |     diA            | connected to signal <in_data>       |          |
+    |     doA            | connected to signal <out_data>      |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+Unit <data_memory> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 2048x16-bit single-port block RAM                     : 1
+# ROMs                                                 : 1
+ 4x2-bit ROM                                           : 1
+# Adders/Subtractors                                   : 1
+ 16-bit addsub                                         : 1
+# Counters                                             : 1
+ 11-bit up counter                                     : 1
+# Registers                                            : 16
+ Flip-Flops                                            : 16
+# Multiplexers                                         : 1
+ 16-bit 4-to-1 multiplexer                             : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <bip> ...
+
+Optimizing unit <acc> ...
+
+Optimizing unit <datapath> ...
+WARNING:Xst:1710 - FF/Latch <cpu_unit/datapath_unit/acc_unit/out_data_0> (without init value) has a constant value of 0 in block <bip>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cpu_unit/datapath_unit/acc_unit/out_data_1> (without init value) has a constant value of 0 in block <bip>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cpu_unit/datapath_unit/acc_unit/out_data_2> (without init value) has a constant value of 0 in block <bip>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cpu_unit/datapath_unit/acc_unit/out_data_3> (without init value) has a constant value of 0 in block <bip>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cpu_unit/datapath_unit/acc_unit/out_data_4> (without init value) has a constant value of 0 in block <bip>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cpu_unit/datapath_unit/acc_unit/out_data_5> (without init value) has a constant value of 0 in block <bip>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cpu_unit/datapath_unit/acc_unit/out_data_6> (without init value) has a constant value of 0 in block <bip>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cpu_unit/datapath_unit/acc_unit/out_data_7> (without init value) has a constant value of 0 in block <bip>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cpu_unit/datapath_unit/acc_unit/out_data_8> (without init value) has a constant value of 0 in block <bip>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cpu_unit/datapath_unit/acc_unit/out_data_9> (without init value) has a constant value of 0 in block <bip>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cpu_unit/datapath_unit/acc_unit/out_data_10> (without init value) has a constant value of 0 in block <bip>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cpu_unit/datapath_unit/acc_unit/out_data_11> (without init value) has a constant value of 0 in block <bip>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cpu_unit/datapath_unit/acc_unit/out_data_12> (without init value) has a constant value of 0 in block <bip>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cpu_unit/datapath_unit/acc_unit/out_data_13> (without init value) has a constant value of 0 in block <bip>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cpu_unit/datapath_unit/acc_unit/out_data_14> (without init value) has a constant value of 0 in block <bip>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cpu_unit/datapath_unit/acc_unit/out_data_15> (without init value) has a constant value of 0 in block <bip>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <data_memory_unit/Mram_ram_vec1> of sequential type is unconnected in block <bip>.
+WARNING:Xst:2677 - Node <data_memory_unit/Mram_ram_vec2> of sequential type is unconnected in block <bip>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block bip, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Found no macro
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : bip.ngr
+Top Level Output File Name         : bip
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 18
+
+Cell Usage :
+# BELS                             : 1
+#      GND                         : 1
+# IO Buffers                       : 16
+#      OBUF                        : 16
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s100ecp132-5 
+
+ Number of Slices:                        0  out of    960     0%  
+ Number of IOs:                          18
+ Number of bonded IOBs:                  16  out of     83    19%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+No clock signals found in this design
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: No path found
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: No path found
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 4.90 secs
+ 
+--> 
+
+Total memory usage is 357468 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   61 (   0 filtered)
+Number of infos    :    4 (   0 filtered)
+

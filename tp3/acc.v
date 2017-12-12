@@ -24,7 +24,7 @@ module acc(
 				input [15:0] in_data,
 				output reg[15:0] out_data
 				);
-	 
+	 //reg [15:0]acc;
 	always @(posedge clk)
 	begin
 		if (enable)
