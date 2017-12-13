@@ -77,3 +77,15 @@ par -w -intstyle ise -ol high -t 1 bip_map.ncd bip.ncd bip.pcf
 trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml bip.twx bip.ncd -o bip.twr bip.pcf -ucf cf.ucf 
 bitgen -intstyle ise -f bip.ut bip.ncd 
 xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/bip.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/bip.syr" 
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/bip.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/bip.syr" 
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/bip.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/bip.syr" 
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/bip.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/bip.syr" 
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/bip.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/bip.syr" 
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/bip.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/bip.syr" 
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/bip.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/bip.syr" 
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/bip.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/bip.syr" 
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/bip.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/bip.syr" 
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/bip.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/bip.syr" 
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/bip.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/bip.syr" 
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/bip.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/bip.syr" 
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/bip.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/bip.syr" 

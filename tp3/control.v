@@ -28,10 +28,11 @@ module control(
 				output op,
 				output wr_ram,
 				output rd_ram,
-				output [10:0] operand
+				output [10:0] operand,
+				output wr_pc
 				);
 
-	wire wr_pc;
+	//wire wr_pc;
 	wire [4:0] opcode;
 	
 	assign operand = data[10:0];

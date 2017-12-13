@@ -29,7 +29,8 @@ module cpu#(
 				output [ADDR_BITS-1:0] addr_data,
 				input [DATA_WIDTH-1:0] in_data,
 				output [DATA_WIDTH-1:0] out_data,
-				output [DATA_WIDTH-1:0] acc
+				output [DATA_WIDTH-1:0] acc,
+				output wr_pc
 				);
 	
 	wire [1:0] sel_a;
@@ -45,7 +46,7 @@ module cpu#(
 	control control_unit 
 		(.clk(clk), .reset(reset), .addr(addr_program), .data(data),
 		 .sel_a(sel_a), .sel_b(sel_b), .wr_acc(wr_acc), .op(op),
-		 .wr_ram(wr_ram), .operand(operand));
+		 .wr_ram(wr_ram), .operand(operand), .wr_pc(wr_pc));
 	
 	datapath datapath_unit
 		(.clk(clk), .operand(operand), .sel_a(sel_a),

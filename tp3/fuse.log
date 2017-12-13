@@ -8,8 +8,13 @@ Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/pc.v" into library 
 Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/ins_deco.v" into library work
 Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/alu.v" into library work
 Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/acc.v" into library work
+Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/uart_tx.v" into library work
+Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/uart_rx.v" into library work
+Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/flag_buf.v" into library work
 Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/datapath.v" into library work
 Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/control.v" into library work
+Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/baud_gen.v" into library work
+Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/uart.v" into library work
 Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/program_memory.v" into library work
 Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/data_memory.v" into library work
 Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/cpu.v" into library work
@@ -17,7 +22,7 @@ Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/bip.v" into library
 Analyzing Verilog file "C:/Users/Franco/Git/arquitectura/tp3/bip_test.v" into library work
 Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
-WARNING:HDLCompiler:1016 - "C:/Users/Franco/Git/arquitectura/tp3/cpu.v" Line 45: Port rd_ram is not connected to this instance
+WARNING:HDLCompiler:1016 - "C:/Users/Franco/Git/arquitectura/tp3/cpu.v" Line 46: Port rd_ram is not connected to this instance
 Completed static elaboration
 Compiling module pc
 Compiling module ins_deco
@@ -29,12 +34,17 @@ Compiling module datapath
 Compiling module cpu
 Compiling module data_memory
 Compiling module program_memory
+Compiling module baud_gen(N=8,M=163)
+Compiling module uart_rx(DBIT=8,SB_TICK=16)
+Compiling module flag_buf(W=8)
+Compiling module uart_tx(DBIT=8,SB_TICK=16)
+Compiling module uart
 Compiling module bip
 Compiling module bip_test
 Compiling module glbl
 Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
-Compiled 13 Verilog Units
+Compiled 18 Verilog Units
 Built simulation executable C:/Users/Franco/Git/arquitectura/tp3/bip_test_isim_beh.exe
-Fuse Memory Usage: 27960 KB
-Fuse CPU Usage: 406 ms
+Fuse Memory Usage: 28516 KB
+Fuse CPU Usage: 468 ms

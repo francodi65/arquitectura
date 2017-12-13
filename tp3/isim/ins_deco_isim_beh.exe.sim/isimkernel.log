@@ -1,0 +1,29 @@
+Command line:
+   ins_deco_isim_beh.exe
+     -simmode  gui
+     -simrunnum  1
+     -socket  20170
+
+Tue Dec 12 22:20:11 2017
+
+
+ Elaboration Time: 0.0625 sec
+
+ Current Memory Usage: 877.507 Meg
+
+ Total Signals          : 14
+ Total Nets             : 26
+ Total Signal Drivers   : 12
+ Total Blocks           : 2
+ Total Primitive Blocks : 2
+ Total Processes        : 15
+ Total Traceable Variables  : 25
+ Total Scalar Nets and Variables : 114
+Total Line Count : 91
+
+ Total Simulation Time: 0.0625 sec
+
+ Current Memory Usage: 877.507 Meg
+
+Tue Dec 12 22:20:13 2017
+

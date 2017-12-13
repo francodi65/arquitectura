@@ -25,7 +25,7 @@ module acc(
 				output reg[15:0] out_data
 				);
 	 //reg [15:0]acc;
-	always @(posedge clk)
+	always @(negedge clk)
 	begin
 		if (enable)
 			out_data = in_data;

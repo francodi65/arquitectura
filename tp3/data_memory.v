@@ -37,7 +37,7 @@ module data_memory #(
       //$readmemh("<data_file_name>", <rom_name>, <begin_address>, <end_address>);
 
 
-	always @(negedge clk)
+	always @(posedge clk)
 	begin
 		//if (<ram_enable>) creo que no hace falta cs
 			if (write)

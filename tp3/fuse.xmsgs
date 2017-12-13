@@ -5,7 +5,7 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"C:/Users/Franco/Git/arquitectura/tp3/cpu.v" Line 45: Port <arg fmt="%s" index="1">rd_ram</arg> is not connected to this instance
+<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"C:/Users/Franco/Git/arquitectura/tp3/cpu.v" Line 46: Port <arg fmt="%s" index="1">rd_ram</arg> is not connected to this instance
 </msg>
 
 </messages>

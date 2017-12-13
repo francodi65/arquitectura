@@ -28,7 +28,9 @@ module ins_deco(
 				output reg rd_ram,
 				input [4:0] opcode
 				);
-
+	initial
+		wr_pc = 0;
+	
 	always @(*)
 	begin
 		case(opcode)
@@ -114,7 +116,7 @@ module ins_deco(
 				end
 			default:
 				begin
-					wr_pc  = 1;
+					wr_pc  = 0;
 					sel_a  = 'bx;
 					sel_b  = 'bx;
 					wr_acc = 0;
