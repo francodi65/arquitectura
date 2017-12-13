@@ -23,14 +23,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 module bip_test;
-   wire [1:0] state, next_state;
+   /*wire [1:0] state, next_state;
 	wire restart_state;
 	wire [7:0] clk_counter;
 	wire rd_uart, wr_uart;
 	wire tx_full, rx_empty;
 	wire [7:0] r_data;
 	wire [7:0] w_data;
-	wire wr_pc;
+	wire wr_pc;*/
 
 	// Inputs
 	reg clk;
@@ -47,10 +47,10 @@ module bip_test;
 		.reset(reset), 
 		.acc(acc),
 		.rx(rx),
-		.tx(tx),
-		.state(state), .next_state(next_state), .restart_state(restart_state),
+		.tx(tx)
+		/*.state(state), .next_state(next_state), .restart_state(restart_state),
 		.clk_counter(clk_counter), .rd_uart(rd_uart), .wr_uart(wr_uart), .wr_pc(wr_pc),
-		.tx_full(tx_full), .rx_empty(rx_empty), .r_data(r_data), .w_data(w_data)
+		.tx_full(tx_full), .rx_empty(rx_empty), .r_data(r_data), .w_data(w_data)*/
 	);
 	
 	initial begin

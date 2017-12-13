@@ -28,8 +28,10 @@ module ins_deco(
 				output reg rd_ram,
 				input [4:0] opcode
 				);
-	initial
+	initial begin
 		wr_pc = 0;
+		wr_ram = 0;
+	end
 	
 	always @(*)
 	begin

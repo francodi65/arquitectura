@@ -54,7 +54,7 @@ static void Initial_56_0(char *t0)
     unsigned int t23;
     char *t24;
 
-LAB0:    t1 = (t0 + 4608U);
+LAB0:    t1 = (t0 + 2848U);
     t2 = *((char **)t1);
     if (t2 == 0)
         goto LAB2;
@@ -65,20 +65,20 @@ LAB2:    xsi_set_current_line(56, ng0);
 
 LAB4:    xsi_set_current_line(57, ng0);
     t2 = ((char*)((ng1)));
-    t3 = (t0 + 3368);
+    t3 = (t0 + 1608);
     xsi_vlogvar_assign_value(t3, t2, 0, 0, 1);
     xsi_set_current_line(58, ng0);
 
 LAB5:    xsi_set_current_line(58, ng0);
 
 LAB6:    xsi_set_current_line(59, ng0);
-    t2 = (t0 + 4416);
+    t2 = (t0 + 2656);
     xsi_process_wait(t2, 10LL);
     *((char **)t1) = &&LAB7;
 
 LAB1:    return;
 LAB7:    xsi_set_current_line(59, ng0);
-    t3 = (t0 + 3368);
+    t3 = (t0 + 1608);
     t5 = (t3 + 56U);
     t6 = *((char **)t5);
     memset(t4, 0, 8);
@@ -111,7 +111,7 @@ LAB12:    t22 = *((unsigned int *)t4);
     *((unsigned int *)t4) = (t22 & 1U);
     t23 = *((unsigned int *)t14);
     *((unsigned int *)t14) = (t23 & 1U);
-    t24 = (t0 + 3368);
+    t24 = (t0 + 1608);
     xsi_vlogvar_assign_value(t24, t4, 0, 0, 1);
     goto LAB5;
 
@@ -137,7 +137,7 @@ static void Initial_63_1(char *t0)
     char *t3;
     char *t4;
 
-LAB0:    t1 = (t0 + 4856U);
+LAB0:    t1 = (t0 + 3096U);
     t2 = *((char **)t1);
     if (t2 == 0)
         goto LAB2;
@@ -148,130 +148,130 @@ LAB2:    xsi_set_current_line(63, ng0);
 
 LAB4:    xsi_set_current_line(65, ng0);
     t2 = ((char*)((ng1)));
-    t3 = (t0 + 3528);
+    t3 = (t0 + 1768);
     xsi_vlogvar_assign_value(t3, t2, 0, 0, 1);
     xsi_set_current_line(66, ng0);
     t2 = ((char*)((ng1)));
-    t3 = (t0 + 3688);
+    t3 = (t0 + 1928);
     xsi_vlogvar_assign_value(t3, t2, 0, 0, 1);
     xsi_set_current_line(69, ng0);
-    t2 = (t0 + 4664);
+    t2 = (t0 + 2904);
     xsi_process_wait(t2, 10000LL);
     *((char **)t1) = &&LAB5;
 
 LAB1:    return;
 LAB5:    xsi_set_current_line(70, ng0);
     t2 = ((char*)((ng2)));
-    t3 = (t0 + 3528);
+    t3 = (t0 + 1768);
     xsi_vlogvar_assign_value(t3, t2, 0, 0, 1);
     xsi_set_current_line(72, ng0);
-    t2 = (t0 + 4664);
+    t2 = (t0 + 2904);
     xsi_process_wait(t2, 1000LL);
     *((char **)t1) = &&LAB6;
     goto LAB1;
 
 LAB6:    xsi_set_current_line(72, ng0);
     t3 = ((char*)((ng2)));
-    t4 = (t0 + 3688);
+    t4 = (t0 + 1928);
     xsi_vlogvar_assign_value(t4, t3, 0, 0, 1);
     xsi_set_current_line(74, ng0);
-    t2 = (t0 + 4664);
+    t2 = (t0 + 2904);
     xsi_process_wait(t2, 52000LL);
     *((char **)t1) = &&LAB7;
     goto LAB1;
 
 LAB7:    xsi_set_current_line(74, ng0);
     t3 = ((char*)((ng2)));
-    t4 = (t0 + 3688);
+    t4 = (t0 + 1928);
     xsi_vlogvar_assign_value(t4, t3, 0, 0, 1);
     xsi_set_current_line(75, ng0);
-    t2 = (t0 + 4664);
+    t2 = (t0 + 2904);
     xsi_process_wait(t2, 52000LL);
     *((char **)t1) = &&LAB8;
     goto LAB1;
 
 LAB8:    xsi_set_current_line(75, ng0);
     t3 = ((char*)((ng2)));
-    t4 = (t0 + 3688);
+    t4 = (t0 + 1928);
     xsi_vlogvar_assign_value(t4, t3, 0, 0, 1);
     xsi_set_current_line(76, ng0);
-    t2 = (t0 + 4664);
+    t2 = (t0 + 2904);
     xsi_process_wait(t2, 52000LL);
     *((char **)t1) = &&LAB9;
     goto LAB1;
 
 LAB9:    xsi_set_current_line(76, ng0);
     t3 = ((char*)((ng2)));
-    t4 = (t0 + 3688);
+    t4 = (t0 + 1928);
     xsi_vlogvar_assign_value(t4, t3, 0, 0, 1);
     xsi_set_current_line(77, ng0);
-    t2 = (t0 + 4664);
+    t2 = (t0 + 2904);
     xsi_process_wait(t2, 52000LL);
     *((char **)t1) = &&LAB10;
     goto LAB1;
 
 LAB10:    xsi_set_current_line(77, ng0);
     t3 = ((char*)((ng1)));
-    t4 = (t0 + 3688);
+    t4 = (t0 + 1928);
     xsi_vlogvar_assign_value(t4, t3, 0, 0, 1);
     xsi_set_current_line(78, ng0);
-    t2 = (t0 + 4664);
+    t2 = (t0 + 2904);
     xsi_process_wait(t2, 52000LL);
     *((char **)t1) = &&LAB11;
     goto LAB1;
 
 LAB11:    xsi_set_current_line(78, ng0);
     t3 = ((char*)((ng2)));
-    t4 = (t0 + 3688);
+    t4 = (t0 + 1928);
     xsi_vlogvar_assign_value(t4, t3, 0, 0, 1);
     xsi_set_current_line(79, ng0);
-    t2 = (t0 + 4664);
+    t2 = (t0 + 2904);
     xsi_process_wait(t2, 52000LL);
     *((char **)t1) = &&LAB12;
     goto LAB1;
 
 LAB12:    xsi_set_current_line(79, ng0);
     t3 = ((char*)((ng2)));
-    t4 = (t0 + 3688);
+    t4 = (t0 + 1928);
     xsi_vlogvar_assign_value(t4, t3, 0, 0, 1);
     xsi_set_current_line(80, ng0);
-    t2 = (t0 + 4664);
+    t2 = (t0 + 2904);
     xsi_process_wait(t2, 52000LL);
     *((char **)t1) = &&LAB13;
     goto LAB1;
 
 LAB13:    xsi_set_current_line(80, ng0);
     t3 = ((char*)((ng2)));
-    t4 = (t0 + 3688);
+    t4 = (t0 + 1928);
     xsi_vlogvar_assign_value(t4, t3, 0, 0, 1);
     xsi_set_current_line(81, ng0);
-    t2 = (t0 + 4664);
+    t2 = (t0 + 2904);
     xsi_process_wait(t2, 52000LL);
     *((char **)t1) = &&LAB14;
     goto LAB1;
 
 LAB14:    xsi_set_current_line(81, ng0);
     t3 = ((char*)((ng2)));
-    t4 = (t0 + 3688);
+    t4 = (t0 + 1928);
     xsi_vlogvar_assign_value(t4, t3, 0, 0, 1);
     xsi_set_current_line(83, ng0);
-    t2 = (t0 + 4664);
+    t2 = (t0 + 2904);
     xsi_process_wait(t2, 52000LL);
     *((char **)t1) = &&LAB15;
     goto LAB1;
 
 LAB15:    xsi_set_current_line(83, ng0);
     t3 = ((char*)((ng1)));
-    t4 = (t0 + 3688);
+    t4 = (t0 + 1928);
     xsi_vlogvar_assign_value(t4, t3, 0, 0, 1);
     goto LAB1;
 
 }
 
 
-extern void work_m_00000000002077718284_0392118670_init()
+extern void work_m_00000000002851085638_0392118670_init()
 {
 	static char *pe[] = {(void *)Initial_56_0,(void *)Initial_63_1};
-	xsi_register_didat("work_m_00000000002077718284_0392118670", "isim/bip_test_isim_beh.exe.sim/work/m_00000000002077718284_0392118670.didat");
+	xsi_register_didat("work_m_00000000002851085638_0392118670", "isim/bip_test_isim_beh.exe.sim/work/m_00000000002851085638_0392118670.didat");
 	xsi_register_executes(pe);
 }

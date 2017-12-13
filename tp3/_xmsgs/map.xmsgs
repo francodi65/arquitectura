@@ -11,8 +11,5 @@
 <msg type="info" file="LIT" num="244" delta="old" >All of the single ended outputs in this design are using slew rate limited output drivers. The delay on speed critical single ended outputs can be dramatically reduced by designating them as fast outputs.
 </msg>
 
-<msg type="warning" file="PhysDesignRules" num="812" delta="old" >Dangling pin &lt;<arg fmt="%s" index="1">DOA7</arg>&gt; on block:&lt;<arg fmt="%s" index="2">data_memory_unit/Mram_ram_vec2.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
 </messages>
 

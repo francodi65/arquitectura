@@ -26,15 +26,15 @@ module bip#(
 				input reset,
 				output [DATA_WIDTH-1:0] acc,
 				input rx,
-				output tx,
-				output reg [1:0] state, next_state,
+				output tx
+				/*output reg [1:0] state, next_state,
 				output reg restart_state,
 				output reg [7:0] clk_counter,
 				output reg rd_uart, wr_uart,
 				output wire tx_full, rx_empty,
 				output wire [7:0] r_data,
 				output reg [7:0] w_data,
-				output wire wr_pc
+				output wire wr_pc*/
 				);
 	 
 	wire [ADDR_BITS-1:0]addr_program;
@@ -43,7 +43,7 @@ module bip#(
 	wire [ADDR_BITS-1:0]addr_data;
 	wire [DATA_WIDTH-1:0]in_data;
 	wire [DATA_WIDTH-1:0]out_data;
-	//wire wr_pc;
+	wire wr_pc;
 	reg restart;
 	
 	localparam  [1:0]
@@ -52,14 +52,15 @@ module bip#(
 	clk_count  	=  2'b10, 
 	acc_content =  2'b11;
 	
-	/*reg [1:0] state, next_state;
+	reg [1:0] state, next_state;
 	reg restart_state;
 	reg [7:0] clk_counter;
 	reg rd_uart, wr_uart;
 	wire tx_full, rx_empty;
 	wire [7:0] r_data;
 	reg [7:0] w_data;
-	*/
+	reg [7:0]w;
+	
 
 	cpu cpu_unit 
 	(.clk(clk), .reset(restart), .addr_program(addr_program), .data(instruction),
@@ -86,11 +87,13 @@ module bip#(
 			begin
 				state = stop;
 				restart = 1;
+				w_data = 0;
 			end
 		else
 			begin
 				state = next_state;
 				restart = restart_state;
+				w_data = w;
 			end
 	end
 
@@ -104,10 +107,12 @@ module bip#(
 			clk_counter = clk_counter;
 	end
 	
-	always @*
+	always @(*)
 	begin
 	next_state = state;	
 	restart_state = restart;
+	wr_uart = 0;
+	w= w_data;
 	case(state)
 		stop:
 			if(~rx_empty && r_data == 8)
@@ -115,31 +120,31 @@ module bip#(
 					restart_state = 0;
 					next_state = start;
 					rd_uart = 1'b1;
-					wr_uart = 1'b0;
+					//wr_uart = 1'b0;
 				end
 			else 
 				begin
 					rd_uart= 1'b0;
-					wr_uart = 1'b0;
+					//wr_uart = 1'b0;
 				end
 		start:
 			if (~wr_pc)
 				begin
-					w_data = clk_counter;
+					w = clk_counter;
 					next_state = clk_count;
 					restart_state = 0;
-					wr_uart = 1'b1;
+					wr_uart = 1'b0;
 					rd_uart= 1'b0;
 				end
 			else 
 				begin
 					rd_uart= 1'b0;
-					wr_uart = 1'b0;
+					//wr_uart = 1'b0;
 				end		
 		clk_count:
 			if(~tx_full)
 				begin
-					w_data = acc;
+					w = acc;
 					next_state = acc_content;
 					restart_state = 0;
 					wr_uart = 1'b1;
@@ -149,20 +154,20 @@ module bip#(
 			else 
 				begin
 					rd_uart= 1'b0;
-					wr_uart = 1'b0;
+					//wr_uart = 1'b0;
 				end
 		acc_content:
 			if(~tx_full)
 				begin
 					next_state= stop;
 					restart_state = 0;
-					rd_uart= 1'b1;
-					wr_uart = 1'b0;
+					rd_uart= 1'b0;
+					wr_uart = 1'b1;
 				end
 			else 
 				begin
 					rd_uart= 1'b0;
-					wr_uart = 1'b0;
+					//wr_uart = 1'b0;
 				end
 	endcase
 end

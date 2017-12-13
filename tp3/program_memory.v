@@ -27,11 +27,11 @@ module program_memory#(
 				output reg [RAM_WIDTH-1:0] out_data
 				);
 
-	reg [RAM_WIDTH-1:0] ram_vec [(2**RAM_ADDR_BITS)-1:0];
+	reg [RAM_WIDTH-1:0] ram_vec [128-1:0];
 	//reg [RAM_WIDTH-1:0] ram_vec [8:0];
-	reg write;
+	wire write;
 	
-	
+	assign write = 0;
    //  The forllowing code is only necessary if you wish to initialize the RAM 
    //  contents via an external file (use $readmemb for binary data)
    initial
@@ -45,8 +45,7 @@ module program_memory#(
 		ram_vec[5]= 16'b0000100000000010;
 		ram_vec[6]= 16'b0001000000000000;
 		ram_vec[7]= 16'b0001000000000010;
-		ram_vec[8]= 16'b0000000000000000;*/
-		write = 0;
+		ram_vec[8]= 16'b0000000000000000;*/		
 	end
 
 
