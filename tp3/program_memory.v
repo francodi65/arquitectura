@@ -27,8 +27,8 @@ module program_memory#(
 				output reg [RAM_WIDTH-1:0] out_data
 				);
 
-	reg [RAM_WIDTH-1:0] ram_vec [128-1:0];
-	//reg [RAM_WIDTH-1:0] ram_vec [8:0];
+	//reg [RAM_WIDTH-1:0] ram_vec [128-1:0];
+	reg [RAM_WIDTH-1:0] ram_vec [29:0];
 	wire write;
 	
 	assign write = 0;
@@ -37,15 +37,6 @@ module program_memory#(
    initial
 	begin
       $readmemb("binario.bin", ram_vec);
-		/*ram_vec[0]= 16'b0001100000000011;
-		ram_vec[1]= 16'b0000100000000000;
-		ram_vec[2]= 16'b0001100000001000;
-		ram_vec[3]= 16'b0010100000000010;
-		ram_vec[4]= 16'b0011000000000000;
-		ram_vec[5]= 16'b0000100000000010;
-		ram_vec[6]= 16'b0001000000000000;
-		ram_vec[7]= 16'b0001000000000010;
-		ram_vec[8]= 16'b0000000000000000;*/		
 	end
 
 

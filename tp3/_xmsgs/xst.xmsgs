@@ -5,28 +5,25 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="info" file="Xst" num="1433" delta="new" >Contents of array &lt;<arg fmt="%s" index="1">ram_vec</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">ram_vec</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
 </msg>
 
-<msg type="info" file="Xst" num="1433" delta="new" >Contents of array &lt;<arg fmt="%s" index="1">ram_vec</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">ram_vec</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
 </msg>
 
 <msg type="info" file="Xst" num="2546" delta="old" >&quot;<arg fmt="%s" index="1">program_memory.v</arg>&quot; line <arg fmt="%d" index="2">39</arg>: reading initialization file &quot;<arg fmt="%s" index="3">binario.bin</arg>&quot;.
 </msg>
 
-<msg type="warning" file="Xst" num="2319" delta="old" >&quot;<arg fmt="%s" index="1">program_memory.v</arg>&quot; line <arg fmt="%d" index="2">39</arg>: Signal <arg fmt="%s" index="3">ram_vec</arg> in initial block is partially initialized. The initialization will be ignored.
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">ram_vec</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
 </msg>
 
-<msg type="info" file="Xst" num="1433" delta="new" >Contents of array &lt;<arg fmt="%s" index="1">ram_vec</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">ram_vec</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
 </msg>
 
-<msg type="info" file="Xst" num="1433" delta="new" >Contents of array &lt;<arg fmt="%s" index="1">ram_vec</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">addr_data&lt;10:7&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">addr_data&lt;10:7&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-</msg>
-
-<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">addr&lt;10:7&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">addr&lt;10:5&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
 <msg type="info" file="Xst" num="2117" delta="old" >HDL ADVISOR - Mux Selector &lt;<arg fmt="%s" index="1">state_reg</arg>&gt; of Case statement line <arg fmt="%s" index="2">71</arg> was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
@@ -41,7 +38,7 @@
 	- use the attribute &apos;<arg fmt="%s" index="7">safe_implementation</arg> <arg fmt="%s" index="8">yes</arg>&apos; to force XST to perform a safe (but less efficient) optimization
 </msg>
 
-<msg type="info" file="Xst" num="2117" delta="old" >HDL ADVISOR - Mux Selector &lt;<arg fmt="%s" index="1">state</arg>&gt; of Case statement line <arg fmt="%s" index="2">116</arg> was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+<msg type="info" file="Xst" num="2117" delta="new" >HDL ADVISOR - Mux Selector &lt;<arg fmt="%s" index="1">state</arg>&gt; of Case statement line <arg fmt="%s" index="2">121</arg> was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
 	- add an &apos;<arg fmt="%s" index="3">INIT</arg>&apos; attribute on signal &lt;<arg fmt="%s" index="4">state</arg>&gt; (optimization is then done without any risk)
 	- use the attribute &apos;<arg fmt="%s" index="5">signal_encoding</arg> <arg fmt="%s" index="6">user</arg>&apos; to avoid onehot optimization
 	- use the attribute &apos;<arg fmt="%s" index="7">safe_implementation</arg> <arg fmt="%s" index="8">yes</arg>&apos; to force XST to perform a safe (but less efficient) optimization
@@ -52,21 +49,58 @@
 
 <msg type="info" file="Xst" num="3226" delta="old" >The RAM &lt;<arg fmt="%s" index="1">data_memory_unit/Mram_ram_vec</arg>&gt; will be implemented as a BLOCK RAM, absorbing the following register(s):</msg>
 
-<msg type="info" file="Xst" num="3038" delta="old" >The RAM &lt;<arg fmt="%s" index="1">Mram_ram_vec</arg>&gt; appears to be read-only. If that was not your intent please check the write enable description.
+<msg type="info" file="Xst" num="3231" delta="old" >The small RAM &lt;<arg fmt="%s" index="1">Mram_ram_vec</arg>&gt; will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
 </msg>
 
-<msg type="info" file="Xst" num="3226" delta="old" >The RAM &lt;<arg fmt="%s" index="1">Mram_ram_vec</arg>&gt; will be implemented as a BLOCK RAM, absorbing the following register(s):</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">cpu_unit/control_unit/pc_unit/addr_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">bip</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">cpu_unit/control_unit/pc_unit/addr_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">bip</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">cpu_unit/control_unit/pc_unit/addr_8</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">bip</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">cpu_unit/control_unit/pc_unit/addr_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">bip</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">cpu_unit/control_unit/pc_unit/addr_9</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">bip</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">cpu_unit/control_unit/pc_unit/addr_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">bip</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">cpu_unit/control_unit/pc_unit/addr_10</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">bip</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">cpu_unit/control_unit/pc_unit/addr_8</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">bip</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">cpu_unit/control_unit/pc_unit/addr_9</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">bip</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">cpu_unit/control_unit/pc_unit/addr_10</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">bip</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="old" >RAMs &lt;<arg fmt="%s" index="1">program_memory_unit/Mram_ram_vec3</arg>&gt;, &lt;<arg fmt="%s" index="2">program_memory_unit/Mram_ram_vec5</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="old" >RAMs &lt;<arg fmt="%s" index="1">program_memory_unit/Mram_ram_vec3</arg>&gt;, &lt;<arg fmt="%s" index="2">program_memory_unit/Mram_ram_vec6</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="old" >RAMs &lt;<arg fmt="%s" index="1">program_memory_unit/Mram_ram_vec3</arg>&gt;, &lt;<arg fmt="%s" index="2">program_memory_unit/Mram_ram_vec7</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="old" >RAMs &lt;<arg fmt="%s" index="1">program_memory_unit/Mram_ram_vec3</arg>&gt;, &lt;<arg fmt="%s" index="2">program_memory_unit/Mram_ram_vec8</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="old" >RAMs &lt;<arg fmt="%s" index="1">program_memory_unit/Mram_ram_vec3</arg>&gt;, &lt;<arg fmt="%s" index="2">program_memory_unit/Mram_ram_vec9</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="old" >RAMs &lt;<arg fmt="%s" index="1">program_memory_unit/Mram_ram_vec3</arg>&gt;, &lt;<arg fmt="%s" index="2">program_memory_unit/Mram_ram_vec10</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="old" >RAMs &lt;<arg fmt="%s" index="1">program_memory_unit/Mram_ram_vec3</arg>&gt;, &lt;<arg fmt="%s" index="2">program_memory_unit/Mram_ram_vec11</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="old" >RAMs &lt;<arg fmt="%s" index="1">program_memory_unit/Mram_ram_vec3</arg>&gt;, &lt;<arg fmt="%s" index="2">program_memory_unit/Mram_ram_vec15</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2399" delta="old" >RAMs &lt;<arg fmt="%s" index="1">program_memory_unit/Mram_ram_vec3</arg>&gt;, &lt;<arg fmt="%s" index="2">program_memory_unit/Mram_ram_vec16</arg>&gt; are equivalent, second RAM is removed
+</msg>
+
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">program_memory_unit/out_data_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">bip</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">9 FFs/Latches</arg> : <arg fmt="%s" index="4">&lt;program_memory_unit/out_data_4&gt; &lt;program_memory_unit/out_data_5&gt; &lt;program_memory_unit/out_data_6&gt; &lt;program_memory_unit/out_data_7&gt; &lt;program_memory_unit/out_data_8&gt; &lt;program_memory_unit/out_data_9&gt; &lt;program_memory_unit/out_data_10&gt; &lt;program_memory_unit/out_data_14&gt; &lt;program_memory_unit/out_data_15&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">program_memory_unit/out_data_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">bip</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">9 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;program_memory_unit/out_data_4&gt; &lt;program_memory_unit/out_data_5&gt; &lt;program_memory_unit/out_data_6&gt; &lt;program_memory_unit/out_data_7&gt; &lt;program_memory_unit/out_data_8&gt; &lt;program_memory_unit/out_data_9&gt; &lt;program_memory_unit/out_data_10&gt; &lt;program_memory_unit/out_data_14&gt; &lt;program_memory_unit/out_data_15&gt; </arg>
 </msg>
 
 </messages>

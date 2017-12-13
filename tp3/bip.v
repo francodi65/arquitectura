@@ -45,6 +45,7 @@ module bip#(
 	wire [DATA_WIDTH-1:0]out_data;
 	wire wr_pc;
 	reg restart;
+
 	
 	localparam  [1:0]
 	stop			=  2'b00,
@@ -61,7 +62,7 @@ module bip#(
 	reg [7:0] w_data;
 	reg [7:0]w;
 	
-
+	
 	cpu cpu_unit 
 	(.clk(clk), .reset(restart), .addr_program(addr_program), .data(instruction),
 	 .wr(wr), .addr_data(addr_data), .in_data(in_data),
@@ -74,13 +75,24 @@ module bip#(
 	program_memory program_memory_unit
 	(.clk(clk),  .addr(addr_program), .out_data(instruction));
 	
+	
 	uart uart_unit
 	(.clk(clk), .reset(reset), .rd_uart(rd_uart), .wr_uart(wr_uart), 
 	 .tx_full(tx_full), .rx_empty(rx_empty), .w_data(w_data),
 	 .r_data(r_data), .rx(rx), .tx(tx));	
 	 
+	// Contador, cuenta cuando le mandan la señal de start desde la uart
+	always @(posedge clk)
+	begin
+		if (state==stop)
+			clk_counter = 0;
+		else if (state==start)
+			clk_counter = clk_counter + 1;
+		else
+			clk_counter = clk_counter;
+	end
 	
-
+	// Maquina de estado de la uart
 	always @(posedge clk, posedge reset) 
 	begin
 		if (reset)
@@ -97,21 +109,14 @@ module bip#(
 			end
 	end
 
-	always @(posedge clk)
-	begin
-		if (state==stop)
-			clk_counter = 0;
-		else if (state==start)
-			clk_counter = clk_counter + 1;
-		else
-			clk_counter = clk_counter;
-	end
+	
 	
 	always @(*)
 	begin
 	next_state = state;	
 	restart_state = restart;
 	wr_uart = 0;
+	rd_uart = 0;
 	w= w_data;
 	case(state)
 		stop:
@@ -120,12 +125,6 @@ module bip#(
 					restart_state = 0;
 					next_state = start;
 					rd_uart = 1'b1;
-					//wr_uart = 1'b0;
-				end
-			else 
-				begin
-					rd_uart= 1'b0;
-					//wr_uart = 1'b0;
 				end
 		start:
 			if (~wr_pc)
@@ -133,14 +132,7 @@ module bip#(
 					w = clk_counter;
 					next_state = clk_count;
 					restart_state = 0;
-					wr_uart = 1'b0;
-					rd_uart= 1'b0;
 				end
-			else 
-				begin
-					rd_uart= 1'b0;
-					//wr_uart = 1'b0;
-				end		
 		clk_count:
 			if(~tx_full)
 				begin
@@ -148,26 +140,14 @@ module bip#(
 					next_state = acc_content;
 					restart_state = 0;
 					wr_uart = 1'b1;
-					rd_uart= 1'b0;
 					next_state= acc_content;
-				end
-			else 
-				begin
-					rd_uart= 1'b0;
-					//wr_uart = 1'b0;
 				end
 		acc_content:
 			if(~tx_full)
 				begin
 					next_state= stop;
 					restart_state = 0;
-					rd_uart= 1'b0;
 					wr_uart = 1'b1;
-				end
-			else 
-				begin
-					rd_uart= 1'b0;
-					//wr_uart = 1'b0;
 				end
 	endcase
 end

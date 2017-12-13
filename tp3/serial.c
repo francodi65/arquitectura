@@ -68,10 +68,13 @@ int main()
         return 1;
     }
    // getc(stdin);
-    printf("\nPara comenzar, presione enter: ");
-    scanf("\n%d",&bytes_to_send[0]);
-   // bytes_to_send[0]= 8;
-    printf("aca %d\n", bytes_to_send[0]);
+   bytes_to_send[0] = 0;
+   while( bytes_to_send[0]!=1)
+   {
+        printf("\nPara comenzar, envie un uno: ");
+        scanf("\n%d",&bytes_to_send[0]);
+   }
+   bytes_to_send[0]= 8;
 
     
  
