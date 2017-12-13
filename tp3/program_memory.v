@@ -27,8 +27,8 @@ module program_memory#(
 				output reg [RAM_WIDTH-1:0] out_data
 				);
 
-	//reg [RAM_WIDTH-1:0] ram_vec [128-1:0];
-	reg [RAM_WIDTH-1:0] ram_vec [29:0];
+	reg [RAM_WIDTH-1:0] ram_vec [(2**RAM_ADDR_BITS)-1:0];
+	//reg [RAM_WIDTH-1:0] ram_vec [29:0];
 	wire write;
 	
 	assign write = 0;

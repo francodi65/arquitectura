@@ -1,8 +1,11 @@
 Release 14.7 Drc P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Wed Dec 13 11:36:33 2017
+Wed Dec 13 12:28:53 2017
 
 drc -z bip.ncd bip.pcf
 
-DRC detected 0 errors and 0 warnings.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA7> on
+   block:<data_memory_unit/Mram_ram_vec2.A>:<RAMB16_RAMB16A>.
+DRC detected 0 errors and 1 warnings.  Please see the previously displayed
+individual error or warning messages for more details.

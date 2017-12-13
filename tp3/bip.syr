@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Reading design: bip.prj
 
@@ -249,16 +249,12 @@ Module <alu> is correct for synthesis.
 Analyzing module <data_memory> in library <work>.
 	RAM_ADDR_BITS = 32'sb00000000000000000000000000001011
 	RAM_WIDTH = 32'sb00000000000000000000000000010000
-INFO:Xst:1433 - Contents of array <ram_vec> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
-INFO:Xst:1433 - Contents of array <ram_vec> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
 Module <data_memory> is correct for synthesis.
  
 Analyzing module <program_memory> in library <work>.
 	RAM_ADDR_BITS = 32'sb00000000000000000000000000001011
 	RAM_WIDTH = 32'sb00000000000000000000000000010000
 INFO:Xst:2546 - "program_memory.v" line 39: reading initialization file "binario.bin".
-INFO:Xst:1433 - Contents of array <ram_vec> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
-INFO:Xst:1433 - Contents of array <ram_vec> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
 Module <program_memory> is correct for synthesis.
  
 Analyzing module <uart> in library <work>.
@@ -305,8 +301,7 @@ Performing bidirectional port resolution...
 
 Synthesizing Unit <data_memory>.
     Related source file is "data_memory.v".
-WARNING:Xst:647 - Input <addr_data<10:7>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 128x16-bit single-port RAM <Mram_ram_vec> for signal <ram_vec>.
+    Found 2048x16-bit single-port RAM <Mram_ram_vec> for signal <ram_vec>.
     Found 16-bit register for signal <out_data>.
     Summary:
 	inferred   1 RAM(s).
@@ -316,8 +311,7 @@ Unit <data_memory> synthesized.
 
 Synthesizing Unit <program_memory>.
     Related source file is "program_memory.v".
-WARNING:Xst:647 - Input <addr<10:5>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 30x16-bit single-port RAM <Mram_ram_vec> for signal <ram_vec>.
+    Found 2048x16-bit single-port RAM <Mram_ram_vec> for signal <ram_vec>.
     Found 16-bit register for signal <out_data>.
     Summary:
 	inferred   1 RAM(s).
@@ -502,8 +496,7 @@ HDL Synthesis Report
 
 Macro Statistics
 # RAMs                                                 : 2
- 128x16-bit single-port RAM                            : 1
- 30x16-bit single-port RAM                             : 1
+ 2048x16-bit single-port RAM                           : 2
 # ROMs                                                 : 1
  4x2-bit ROM                                           : 1
 # Adders/Subtractors                                   : 6
@@ -566,7 +559,7 @@ INFO:Xst:3226 - The RAM <data_memory_unit/Mram_ram_vec> will be implemented as a
     | ram_type           | Block                               |          |
     -----------------------------------------------------------------------
     | Port A                                                              |
-    |     aspect ratio   | 128-word x 16-bit                   |          |
+    |     aspect ratio   | 2048-word x 16-bit                  |          |
     |     mode           | no-change                           |          |
     |     clkA           | connected to signal <clk>           | rise     |
     |     weA            | connected to signal <wr>            | high     |
@@ -579,17 +572,21 @@ INFO:Xst:3226 - The RAM <data_memory_unit/Mram_ram_vec> will be implemented as a
 Unit <bip> synthesized (advanced).
 
 Synthesizing (advanced) Unit <program_memory>.
-INFO:Xst:3231 - The small RAM <Mram_ram_vec> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+INFO:Xst:3038 - The RAM <Mram_ram_vec> appears to be read-only. If that was not your intent please check the write enable description.
+INFO:Xst:3226 - The RAM <Mram_ram_vec> will be implemented as a BLOCK RAM, absorbing the following register(s): <out_data>
     -----------------------------------------------------------------------
-    | ram_type           | Distributed                         |          |
+    | ram_type           | Block                               |          |
     -----------------------------------------------------------------------
     | Port A                                                              |
-    |     aspect ratio   | 30-word x 16-bit                    |          |
+    |     aspect ratio   | 2048-word x 16-bit                  |          |
+    |     mode           | write-first                         |          |
     |     clkA           | connected to signal <clk>           | fall     |
     |     weA            | connected to signal <GND>           | high     |
     |     addrA          | connected to signal <addr>          |          |
     |     diA            | connected to signal <GND>           |          |
-    |     doA            | connected to internal node          |          |
+    |     doA            | connected to signal <out_data>      |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
     -----------------------------------------------------------------------
 Unit <program_memory> synthesized (advanced).
 
@@ -598,8 +595,7 @@ Advanced HDL Synthesis Report
 
 Macro Statistics
 # RAMs                                                 : 2
- 128x16-bit single-port block RAM                      : 1
- 30x16-bit single-port distributed RAM                 : 1
+ 2048x16-bit single-port block RAM                     : 2
 # ROMs                                                 : 1
  4x2-bit ROM                                           : 1
 # Adders/Subtractors                                   : 6
@@ -610,8 +606,8 @@ Macro Statistics
 # Counters                                             : 2
  11-bit up counter                                     : 1
  8-bit up counter                                      : 1
-# Registers                                            : 104
- Flip-Flops                                            : 104
+# Registers                                            : 88
+ Flip-Flops                                            : 88
 # Multiplexers                                         : 1
  16-bit 4-to-1 multiplexer                             : 1
 
@@ -620,12 +616,6 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:2677 - Node <cpu_unit/control_unit/pc_unit/addr_5> of sequential type is unconnected in block <bip>.
-WARNING:Xst:2677 - Node <cpu_unit/control_unit/pc_unit/addr_6> of sequential type is unconnected in block <bip>.
-WARNING:Xst:2677 - Node <cpu_unit/control_unit/pc_unit/addr_7> of sequential type is unconnected in block <bip>.
-WARNING:Xst:2677 - Node <cpu_unit/control_unit/pc_unit/addr_8> of sequential type is unconnected in block <bip>.
-WARNING:Xst:2677 - Node <cpu_unit/control_unit/pc_unit/addr_9> of sequential type is unconnected in block <bip>.
-WARNING:Xst:2677 - Node <cpu_unit/control_unit/pc_unit/addr_10> of sequential type is unconnected in block <bip>.
 
 Optimizing unit <bip> ...
 
@@ -641,18 +631,7 @@ Optimizing unit <uart_tx> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-INFO:Xst:2399 - RAMs <program_memory_unit/Mram_ram_vec3>, <program_memory_unit/Mram_ram_vec5> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <program_memory_unit/Mram_ram_vec3>, <program_memory_unit/Mram_ram_vec6> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <program_memory_unit/Mram_ram_vec3>, <program_memory_unit/Mram_ram_vec7> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <program_memory_unit/Mram_ram_vec3>, <program_memory_unit/Mram_ram_vec8> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <program_memory_unit/Mram_ram_vec3>, <program_memory_unit/Mram_ram_vec9> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <program_memory_unit/Mram_ram_vec3>, <program_memory_unit/Mram_ram_vec10> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <program_memory_unit/Mram_ram_vec3>, <program_memory_unit/Mram_ram_vec11> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <program_memory_unit/Mram_ram_vec3>, <program_memory_unit/Mram_ram_vec15> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <program_memory_unit/Mram_ram_vec3>, <program_memory_unit/Mram_ram_vec16> are equivalent, second RAM is removed
-Found area constraint ratio of 100 (+ 5) on block bip, actual ratio is 13.
-INFO:Xst:2260 - The FF/Latch <program_memory_unit/out_data_2> in Unit <bip> is equivalent to the following 9 FFs/Latches : <program_memory_unit/out_data_4> <program_memory_unit/out_data_5> <program_memory_unit/out_data_6> <program_memory_unit/out_data_7> <program_memory_unit/out_data_8> <program_memory_unit/out_data_9> <program_memory_unit/out_data_10> <program_memory_unit/out_data_14> <program_memory_unit/out_data_15> 
-INFO:Xst:2261 - The FF/Latch <program_memory_unit/out_data_2> in Unit <bip> is equivalent to the following 9 FFs/Latches, which will be removed : <program_memory_unit/out_data_4> <program_memory_unit/out_data_5> <program_memory_unit/out_data_6> <program_memory_unit/out_data_7> <program_memory_unit/out_data_8> <program_memory_unit/out_data_9> <program_memory_unit/out_data_10> <program_memory_unit/out_data_14> <program_memory_unit/out_data_15> 
+Found area constraint ratio of 100 (+ 5) on block bip, actual ratio is 12.
 
 Final Macro Processing ...
 
@@ -660,8 +639,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 108
- Flip-Flops                                            : 108
+# Registers                                            : 107
+ Flip-Flops                                            : 107
 
 =========================================================================
 
@@ -690,30 +669,29 @@ Design Statistics
 # IOs                              : 20
 
 Cell Usage :
-# BELS                             : 272
+# BELS                             : 291
 #      GND                         : 1
-#      INV                         : 4
-#      LUT1                        : 11
+#      INV                         : 3
+#      LUT1                        : 17
 #      LUT2                        : 17
-#      LUT3                        : 55
-#      LUT3_D                      : 1
+#      LUT2_D                      : 1
+#      LUT3                        : 54
 #      LUT3_L                      : 11
-#      LUT4                        : 102
+#      LUT4                        : 103
+#      LUT4_D                      : 2
 #      LUT4_L                      : 8
-#      MUXCY                       : 26
+#      MUXCY                       : 32
 #      MUXF5                       : 6
 #      VCC                         : 1
-#      XORCY                       : 29
-# FlipFlops/Latches                : 108
-#      FD_1                        : 7
+#      XORCY                       : 35
+# FlipFlops/Latches                : 107
 #      FDC                         : 54
-#      FDCE                        : 21
+#      FDCE                        : 27
 #      FDE_1                       : 16
 #      FDP                         : 2
 #      FDRE                        : 8
-# RAMS                             : 8
-#      RAM32X1S                    : 7
-#      RAMB16_S18                  : 1
+# RAMS                             : 4
+#      RAMB16_S9                   : 4
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
 # IO Buffers                       : 19
@@ -726,14 +704,12 @@ Device utilization summary:
 
 Selected Device : 3s100ecp132-5 
 
- Number of Slices:                      115  out of    960    11%  
- Number of Slice Flip Flops:            108  out of   1920     5%  
- Number of 4 input LUTs:                223  out of   1920    11%  
-    Number used as logic:               209
-    Number used as RAMs:                 14
+ Number of Slices:                      112  out of    960    11%  
+ Number of Slice Flip Flops:            107  out of   1920     5%  
+ Number of 4 input LUTs:                216  out of   1920    11%  
  Number of IOs:                          20
  Number of bonded IOBs:                  20  out of     83    24%  
- Number of BRAMs:                         1  out of      4    25%  
+ Number of BRAMs:                         4  out of      4   100%  
  Number of GCLKs:                         1  out of     24     4%  
 
 ---------------------------
@@ -757,7 +733,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 116   |
+clk                                | BUFGP                  | 111   |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -766,7 +742,7 @@ Asynchronous Control Signals Information:
 Control Signal                     | Buffer(FF name)                           | Load  |
 -----------------------------------+-------------------------------------------+-------+
 reset                              | IBUF                                      | 72    |
-restart(restart:Q)                 | NONE(cpu_unit/control_unit/pc_unit/addr_0)| 5     |
+restart(restart:Q)                 | NONE(cpu_unit/control_unit/pc_unit/addr_0)| 11    |
 -----------------------------------+-------------------------------------------+-------+
 
 Timing Summary:
@@ -785,19 +761,19 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
   Clock period: 15.042ns (frequency: 66.481MHz)
-  Total number of paths / destination ports: 2668 / 220
+  Total number of paths / destination ports: 2754 / 228
 -------------------------------------------------------------------------
 Delay:               7.521ns (Levels of Logic = 19)
-  Source:            data_memory_unit/Mram_ram_vec (RAM)
+  Source:            data_memory_unit/Mram_ram_vec1 (RAM)
   Destination:       cpu_unit/datapath_unit/acc_unit/out_data_15 (FF)
   Source Clock:      clk rising
   Destination Clock: clk falling
 
-  Data Path: data_memory_unit/Mram_ram_vec to cpu_unit/datapath_unit/acc_unit/out_data_15
+  Data Path: data_memory_unit/Mram_ram_vec1 to cpu_unit/datapath_unit/acc_unit/out_data_15
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     RAMB16_S18:CLK->DO0    2   2.436   0.410  data_memory_unit/Mram_ram_vec (in_data<0>)
+     RAMB16_S9:CLK->DO0    2   2.436   0.410  data_memory_unit/Mram_ram_vec1 (in_data<0>)
      LUT3:I2->O            1   0.612   0.387  cpu_unit/datapath_unit/b_selected<0>1 (cpu_unit/datapath_unit/b_selected<0>)
      LUT3:I2->O            1   0.612   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_lut<0> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_lut<0>)
      MUXCY:S->O            1   0.404   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<0> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<0>)
@@ -838,7 +814,7 @@ Offset:              4.953ns (Levels of Logic = 5)
      IBUF:I->O             4   1.106   0.502  rx_IBUF (rx_IBUF)
      LUT4:I3->O            3   0.612   0.454  uart_unit/uart_rx_unit/s_next<0>15 (uart_unit/uart_rx_unit/N16)
      LUT4:I3->O            1   0.612   0.509  uart_unit/uart_rx_unit/s_next<2>10 (uart_unit/uart_rx_unit/s_next<2>10)
-     LUT3:I0->O            1   0.612   0.000  uart_unit/uart_rx_unit/s_next<2>34_G (N129)
+     LUT3:I0->O            1   0.612   0.000  uart_unit/uart_rx_unit/s_next<2>34_G (N152)
      MUXF5:I1->O           1   0.278   0.000  uart_unit/uart_rx_unit/s_next<2>34 (uart_unit/uart_rx_unit/s_next<2>)
      FDC:D                     0.268          uart_unit/uart_rx_unit/s_reg_2
     ----------------------------------------
@@ -867,14 +843,14 @@ Offset:              4.182ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 5.46 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 7.64 secs
  
 --> 
 
-Total memory usage is 340304 kilobytes
+Total memory usage is 356484 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    8 (   0 filtered)
-Number of infos    :   22 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    8 (   0 filtered)
 

@@ -1,9 +1,8 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Wed Dec 13 11:36:21 2017
+// Written by: Map P.20131013 on Wed Dec 13 12:28:37 2017
 //! **************************************************************************
 
 SCHEMATIC START;
-NET "clk_BUFGP/IBUFG" BEL "clk_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
 COMP "clk" LOCATE = SITE "B8" LEVEL 1;
 COMP "acc<0>" LOCATE = SITE "M5" LEVEL 1;
 COMP "acc<1>" LOCATE = SITE "M11" LEVEL 1;
@@ -16,5 +15,6 @@ COMP "acc<7>" LOCATE = SITE "G1" LEVEL 1;
 COMP "rx" LOCATE = SITE "J3" LEVEL 1;
 COMP "tx" LOCATE = SITE "B5" LEVEL 1;
 COMP "reset" LOCATE = SITE "C11" LEVEL 1;
+NET "clk_BUFGP/IBUFG" BEL "clk_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
 SCHEMATIC END;
 

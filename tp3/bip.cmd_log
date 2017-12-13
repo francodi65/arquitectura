@@ -348,3 +348,10 @@ map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o bip_map
 par -w -intstyle ise -ol high -t 1 bip_map.ncd bip.ncd bip.pcf 
 trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml bip.twx bip.ncd -o bip.twr bip.pcf -ucf cf.ucf 
 bitgen -intstyle ise -f bip.ut bip.ncd 
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/bip.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/bip.syr" 
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/bip.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/bip.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc cf.ucf -p xc3s100e-cp132-5 bip.ngc bip.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o bip_map.ncd bip.ngd bip.pcf 
+par -w -intstyle ise -ol high -t 1 bip_map.ncd bip.ncd bip.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml bip.twx bip.ncd -o bip.twr bip.pcf -ucf cf.ucf 
+bitgen -intstyle ise -f bip.ut bip.ncd 
