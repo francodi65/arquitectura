@@ -1,0 +1,16 @@
+MO data_memory NULL data_memory.v vlg4A/data__memory.bin 1539732374
+MO datapath NULL datapath.v vlg27/datapath.bin 1539732374
+MO flag_buf NULL flag_buf.v vlg6A/flag__buf.bin 1539732374
+MO cpu NULL cpu.v vlg50/cpu.bin 1539732374
+MO ins_deco NULL ins_deco.v vlg20/ins__deco.bin 1539732374
+MO signal_extension NULL signal_extension.v vlg56/signal__extension.bin 1539732374
+MO pc NULL pc.v vlg13/pc.bin 1539732374
+MO acc NULL acc.v vlg4B/acc.bin 1539732374
+MO program_memory NULL program_memory.v vlg68/program__memory.bin 1539732374
+MO control NULL control.v vlg61/control.bin 1539732374
+MO uart NULL uart.v vlg48/uart.bin 1539732374
+MO uart_rx NULL uart_rx.v vlg21/uart__rx.bin 1539732374
+MO alu NULL alu.v vlg0A/alu.bin 1539732374
+MO uart_tx NULL uart_tx.v vlg2B/uart__tx.bin 1539732374
+MO baud_gen NULL baud_gen.v vlg59/baud__gen.bin 1539732374
+MO bip NULL bip.v vlg0F/bip.bin 1539732374

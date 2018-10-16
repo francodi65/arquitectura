@@ -1,0 +1,3 @@
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/cpu.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/cpu.syr" 
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/cpu.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/cpu.syr" 
+xst -intstyle ise -ifn "C:/Users/Franco/Git/arquitectura/tp3/cpu.xst" -ofn "C:/Users/Franco/Git/arquitectura/tp3/cpu.syr" 

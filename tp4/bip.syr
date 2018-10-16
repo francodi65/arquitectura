@@ -1,0 +1,856 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.08 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.08 secs
+ 
+--> Reading design: bip.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "bip.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "bip"
+Output Format                      : NGC
+Target Device                      : xc3s100e-5-cp132
+
+---- Source Options
+Top Module Name                    : bip
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "signal_extension.v" in library work
+Compiling verilog file "pc.v" in library work
+Module <signal_extension> compiled
+Compiling verilog file "ins_deco.v" in library work
+Module <pc> compiled
+Compiling verilog file "alu.v" in library work
+Module <ins_deco> compiled
+Compiling verilog file "acc.v" in library work
+Module <alu> compiled
+Compiling verilog file "uart_tx.v" in library work
+Module <acc> compiled
+Compiling verilog file "uart_rx.v" in library work
+Module <uart_tx> compiled
+Compiling verilog file "flag_buf.v" in library work
+Module <uart_rx> compiled
+Compiling verilog file "datapath.v" in library work
+Module <flag_buf> compiled
+Compiling verilog file "control.v" in library work
+Module <datapath> compiled
+Compiling verilog file "baud_gen.v" in library work
+Module <control> compiled
+Compiling verilog file "uart.v" in library work
+Module <baud_gen> compiled
+Compiling verilog file "program_memory.v" in library work
+Module <uart> compiled
+Compiling verilog file "data_memory.v" in library work
+Module <program_memory> compiled
+Compiling verilog file "cpu.v" in library work
+Module <data_memory> compiled
+Compiling verilog file "bip.v" in library work
+Module <cpu> compiled
+Module <bip> compiled
+No errors in compilation
+Analysis of file <"bip.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <bip> in library <work> with parameters.
+	ADDR_BITS = "00000000000000000000000000001011"
+	DATA_WIDTH = "00000000000000000000000000010000"
+	acc_content = "11"
+	clk_count = "10"
+	start = "01"
+	stop = "00"
+
+Analyzing hierarchy for module <cpu> in library <work> with parameters.
+	ADDR_BITS = "00000000000000000000000000001011"
+	DATA_WIDTH = "00000000000000000000000000010000"
+
+Analyzing hierarchy for module <data_memory> in library <work> with parameters.
+	RAM_ADDR_BITS = "00000000000000000000000000001011"
+	RAM_WIDTH = "00000000000000000000000000010000"
+
+Analyzing hierarchy for module <program_memory> in library <work> with parameters.
+	RAM_ADDR_BITS = "00000000000000000000000000001011"
+	RAM_WIDTH = "00000000000000000000000000010000"
+
+Analyzing hierarchy for module <uart> in library <work> with parameters.
+	DBIT = "00000000000000000000000000001000"
+	DVSR = "00000000000000000000000010100011"
+	DVSR_BIT = "00000000000000000000000000001000"
+	FIF0_W = "00000000000000000000000000000010"
+	SB_TICK = "00000000000000000000000000010000"
+
+Analyzing hierarchy for module <control> in library <work>.
+
+Analyzing hierarchy for module <datapath> in library <work>.
+
+Analyzing hierarchy for module <baud_gen> in library <work> with parameters.
+	M = "00000000000000000000000010100011"
+	N = "00000000000000000000000000001000"
+
+Analyzing hierarchy for module <uart_rx> in library <work> with parameters.
+	DBIT = "00000000000000000000000000001000"
+	SB_TICK = "00000000000000000000000000010000"
+	data = "10"
+	idle = "00"
+	start = "01"
+	stop = "11"
+
+Analyzing hierarchy for module <flag_buf> in library <work> with parameters.
+	W = "00000000000000000000000000001000"
+
+Analyzing hierarchy for module <uart_tx> in library <work> with parameters.
+	DBIT = "00000000000000000000000000001000"
+	SB_TICK = "00000000000000000000000000010000"
+	data = "10"
+	idle = "00"
+	start = "01"
+	stop = "11"
+
+Analyzing hierarchy for module <pc> in library <work>.
+
+Analyzing hierarchy for module <ins_deco> in library <work>.
+
+Analyzing hierarchy for module <signal_extension> in library <work>.
+
+Analyzing hierarchy for module <acc> in library <work>.
+
+Analyzing hierarchy for module <alu> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <bip>.
+	ADDR_BITS = 32'sb00000000000000000000000000001011
+	DATA_WIDTH = 32'sb00000000000000000000000000010000
+	acc_content = 2'b11
+	clk_count = 2'b10
+	start = 2'b01
+	stop = 2'b00
+Module <bip> is correct for synthesis.
+ 
+Analyzing module <cpu> in library <work>.
+	ADDR_BITS = 32'sb00000000000000000000000000001011
+	DATA_WIDTH = 32'sb00000000000000000000000000010000
+Module <cpu> is correct for synthesis.
+ 
+Analyzing module <control> in library <work>.
+Module <control> is correct for synthesis.
+ 
+Analyzing module <pc> in library <work>.
+Module <pc> is correct for synthesis.
+ 
+Analyzing module <ins_deco> in library <work>.
+Module <ins_deco> is correct for synthesis.
+ 
+Analyzing module <datapath> in library <work>.
+Module <datapath> is correct for synthesis.
+ 
+Analyzing module <signal_extension> in library <work>.
+Module <signal_extension> is correct for synthesis.
+ 
+Analyzing module <acc> in library <work>.
+Module <acc> is correct for synthesis.
+ 
+Analyzing module <alu> in library <work>.
+Module <alu> is correct for synthesis.
+ 
+Analyzing module <data_memory> in library <work>.
+	RAM_ADDR_BITS = 32'sb00000000000000000000000000001011
+	RAM_WIDTH = 32'sb00000000000000000000000000010000
+Module <data_memory> is correct for synthesis.
+ 
+Analyzing module <program_memory> in library <work>.
+	RAM_ADDR_BITS = 32'sb00000000000000000000000000001011
+	RAM_WIDTH = 32'sb00000000000000000000000000010000
+INFO:Xst:2546 - "program_memory.v" line 39: reading initialization file "binario.bin".
+Module <program_memory> is correct for synthesis.
+ 
+Analyzing module <uart> in library <work>.
+	DBIT = 32'sb00000000000000000000000000001000
+	DVSR = 32'sb00000000000000000000000010100011
+	DVSR_BIT = 32'sb00000000000000000000000000001000
+	FIF0_W = 32'sb00000000000000000000000000000010
+	SB_TICK = 32'sb00000000000000000000000000010000
+Module <uart> is correct for synthesis.
+ 
+Analyzing module <baud_gen> in library <work>.
+	M = 32'sb00000000000000000000000010100011
+	N = 32'sb00000000000000000000000000001000
+Module <baud_gen> is correct for synthesis.
+ 
+Analyzing module <uart_rx> in library <work>.
+	DBIT = 32'sb00000000000000000000000000001000
+	SB_TICK = 32'sb00000000000000000000000000010000
+	data = 2'b10
+	idle = 2'b00
+	start = 2'b01
+	stop = 2'b11
+Module <uart_rx> is correct for synthesis.
+ 
+Analyzing module <flag_buf> in library <work>.
+	W = 32'sb00000000000000000000000000001000
+Module <flag_buf> is correct for synthesis.
+ 
+Analyzing module <uart_tx> in library <work>.
+	DBIT = 32'sb00000000000000000000000000001000
+	SB_TICK = 32'sb00000000000000000000000000010000
+	data = 2'b10
+	idle = 2'b00
+	start = 2'b01
+	stop = 2'b11
+Module <uart_tx> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <data_memory>.
+    Related source file is "data_memory.v".
+    Found 2048x16-bit single-port RAM <Mram_ram_vec> for signal <ram_vec>.
+    Found 16-bit register for signal <out_data>.
+    Summary:
+	inferred   1 RAM(s).
+	inferred  16 D-type flip-flop(s).
+Unit <data_memory> synthesized.
+
+
+Synthesizing Unit <program_memory>.
+    Related source file is "program_memory.v".
+    Found 2048x16-bit single-port RAM <Mram_ram_vec> for signal <ram_vec>.
+    Found 16-bit register for signal <out_data>.
+    Summary:
+	inferred   1 RAM(s).
+	inferred  16 D-type flip-flop(s).
+Unit <program_memory> synthesized.
+
+
+Synthesizing Unit <pc>.
+    Related source file is "pc.v".
+    Found 11-bit up counter for signal <addr>.
+    Summary:
+	inferred   1 Counter(s).
+Unit <pc> synthesized.
+
+
+Synthesizing Unit <ins_deco>.
+    Related source file is "ins_deco.v".
+    Found 4x2-bit ROM for signal <$rom0000>.
+    Summary:
+	inferred   1 ROM(s).
+Unit <ins_deco> synthesized.
+
+
+Synthesizing Unit <signal_extension>.
+    Related source file is "signal_extension.v".
+Unit <signal_extension> synthesized.
+
+
+Synthesizing Unit <acc>.
+    Related source file is "acc.v".
+    Found 16-bit register for signal <out_data>.
+    Summary:
+	inferred  16 D-type flip-flop(s).
+Unit <acc> synthesized.
+
+
+Synthesizing Unit <alu>.
+    Related source file is "alu.v".
+    Found 16-bit addsub for signal <out_data>.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+Unit <alu> synthesized.
+
+
+Synthesizing Unit <baud_gen>.
+    Related source file is "baud_gen.v".
+    Found 8-bit adder for signal <r_next$addsub0000> created at line 45.
+    Found 8-bit register for signal <r_reg>.
+    Summary:
+	inferred   8 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <baud_gen> synthesized.
+
+
+Synthesizing Unit <uart_rx>.
+    Related source file is "uart_rx.v".
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state_reg> of Case statement line 71 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <state_reg> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Found finite state machine <FSM_0> for signal <state_reg>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 12                                             |
+    | Inputs             | 5                                              |
+    | Outputs            | 4                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Reset              | reset                     (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 00                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 8-bit register for signal <b_reg>.
+    Found 3-bit adder for signal <n_next$addsub0000> created at line 97.
+    Found 3-bit register for signal <n_reg>.
+    Found 4-bit adder for signal <s_next$share0000> created at line 71.
+    Found 4-bit register for signal <s_reg>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  15 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+Unit <uart_rx> synthesized.
+
+
+Synthesizing Unit <flag_buf>.
+    Related source file is "flag_buf.v".
+    Found 8-bit register for signal <buf_reg>.
+    Found 1-bit register for signal <flag_reg>.
+    Summary:
+	inferred   9 D-type flip-flop(s).
+Unit <flag_buf> synthesized.
+
+
+Synthesizing Unit <uart_tx>.
+    Related source file is "uart_tx.v".
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state_reg> of Case statement line 75 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <state_reg> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Found finite state machine <FSM_1> for signal <state_reg>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 12                                             |
+    | Inputs             | 4                                              |
+    | Outputs            | 4                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Reset              | reset                     (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 00                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 8-bit register for signal <b_reg>.
+    Found 3-bit adder for signal <n_next$addsub0000> created at line 110.
+    Found 3-bit register for signal <n_reg>.
+    Found 4-bit adder for signal <s_next$share0000> created at line 75.
+    Found 4-bit register for signal <s_reg>.
+    Found 1-bit register for signal <tx_reg>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  16 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+Unit <uart_tx> synthesized.
+
+
+Synthesizing Unit <uart>.
+    Related source file is "uart.v".
+Unit <uart> synthesized.
+
+
+Synthesizing Unit <control>.
+    Related source file is "control.v".
+Unit <control> synthesized.
+
+
+Synthesizing Unit <datapath>.
+    Related source file is "datapath.v".
+    Found 16-bit 4-to-1 multiplexer for signal <a_selected>.
+    Summary:
+	inferred  16 Multiplexer(s).
+Unit <datapath> synthesized.
+
+
+Synthesizing Unit <cpu>.
+    Related source file is "cpu.v".
+Unit <cpu> synthesized.
+
+
+Synthesizing Unit <bip>.
+    Related source file is "bip.v".
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 121 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <state> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Found finite state machine <FSM_2> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 9                                              |
+    | Inputs             | 4                                              |
+    | Outputs            | 4                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Reset              | reset                     (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 00                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 8-bit up counter for signal <clk_counter>.
+    Found 1-bit register for signal <restart>.
+    Found 8-bit register for signal <w_data>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 Counter(s).
+	inferred   9 D-type flip-flop(s).
+Unit <bip> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 2
+ 2048x16-bit single-port RAM                           : 2
+# ROMs                                                 : 1
+ 4x2-bit ROM                                           : 1
+# Adders/Subtractors                                   : 6
+ 16-bit addsub                                         : 1
+ 3-bit adder                                           : 2
+ 4-bit adder                                           : 2
+ 8-bit adder                                           : 1
+# Counters                                             : 2
+ 11-bit up counter                                     : 1
+ 8-bit up counter                                      : 1
+# Registers                                            : 17
+ 1-bit register                                        : 4
+ 16-bit register                                       : 3
+ 3-bit register                                        : 2
+ 4-bit register                                        : 2
+ 8-bit register                                        : 6
+# Multiplexers                                         : 1
+ 16-bit 4-to-1 multiplexer                             : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_2> for best encoding.
+Optimizing FSM <state/FSM> on signal <state[1:2]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 01    | 01
+ 10    | 11
+ 11    | 10
+-------------------
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <uart_unit/uart_tx_unit/state_reg/FSM> on signal <state_reg[1:2]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 01    | 01
+ 10    | 11
+ 11    | 10
+-------------------
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <uart_unit/uart_rx_unit/state_reg/FSM> on signal <state_reg[1:2]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 01    | 01
+ 10    | 11
+ 11    | 10
+-------------------
+
+Synthesizing (advanced) Unit <bip>.
+INFO:Xst:3226 - The RAM <data_memory_unit/Mram_ram_vec> will be implemented as a BLOCK RAM, absorbing the following register(s): <data_memory_unit/out_data>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 2048-word x 16-bit                  |          |
+    |     mode           | no-change                           |          |
+    |     clkA           | connected to signal <clk>           | rise     |
+    |     weA            | connected to signal <wr>            | high     |
+    |     addrA          | connected to signal <instruction>   |          |
+    |     diA            | connected to signal <acc>           |          |
+    |     doA            | connected to signal <in_data>       |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+Unit <bip> synthesized (advanced).
+
+Synthesizing (advanced) Unit <program_memory>.
+INFO:Xst:3038 - The RAM <Mram_ram_vec> appears to be read-only. If that was not your intent please check the write enable description.
+INFO:Xst:3226 - The RAM <Mram_ram_vec> will be implemented as a BLOCK RAM, absorbing the following register(s): <out_data>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 2048-word x 16-bit                  |          |
+    |     mode           | write-first                         |          |
+    |     clkA           | connected to signal <clk>           | fall     |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <addr>          |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <out_data>      |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+Unit <program_memory> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 2
+ 2048x16-bit single-port block RAM                     : 2
+# ROMs                                                 : 1
+ 4x2-bit ROM                                           : 1
+# Adders/Subtractors                                   : 6
+ 16-bit addsub                                         : 1
+ 3-bit adder                                           : 2
+ 4-bit adder                                           : 2
+ 8-bit adder                                           : 1
+# Counters                                             : 2
+ 11-bit up counter                                     : 1
+ 8-bit up counter                                      : 1
+# Registers                                            : 88
+ Flip-Flops                                            : 88
+# Multiplexers                                         : 1
+ 16-bit 4-to-1 multiplexer                             : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <bip> ...
+
+Optimizing unit <acc> ...
+
+Optimizing unit <baud_gen> ...
+
+Optimizing unit <uart_rx> ...
+
+Optimizing unit <flag_buf> ...
+
+Optimizing unit <uart_tx> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block bip, actual ratio is 12.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 107
+ Flip-Flops                                            : 107
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : bip.ngr
+Top Level Output File Name         : bip
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 20
+
+Cell Usage :
+# BELS                             : 291
+#      GND                         : 1
+#      INV                         : 3
+#      LUT1                        : 17
+#      LUT2                        : 17
+#      LUT2_D                      : 1
+#      LUT3                        : 54
+#      LUT3_L                      : 11
+#      LUT4                        : 103
+#      LUT4_D                      : 2
+#      LUT4_L                      : 8
+#      MUXCY                       : 32
+#      MUXF5                       : 6
+#      VCC                         : 1
+#      XORCY                       : 35
+# FlipFlops/Latches                : 107
+#      FDC                         : 54
+#      FDCE                        : 27
+#      FDE_1                       : 16
+#      FDP                         : 2
+#      FDRE                        : 8
+# RAMS                             : 4
+#      RAMB16_S9                   : 4
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 19
+#      IBUF                        : 2
+#      OBUF                        : 17
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s100ecp132-5 
+
+ Number of Slices:                      112  out of    960    11%  
+ Number of Slice Flip Flops:            107  out of   1920     5%  
+ Number of 4 input LUTs:                216  out of   1920    11%  
+ Number of IOs:                          20
+ Number of bonded IOBs:                  20  out of     83    24%  
+ Number of BRAMs:                         4  out of      4   100%  
+ Number of GCLKs:                         1  out of     24     4%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 111   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+-------------------------------------------+-------+
+Control Signal                     | Buffer(FF name)                           | Load  |
+-----------------------------------+-------------------------------------------+-------+
+reset                              | IBUF                                      | 72    |
+restart(restart:Q)                 | NONE(cpu_unit/control_unit/pc_unit/addr_0)| 11    |
+-----------------------------------+-------------------------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 15.042ns (Maximum Frequency: 66.481MHz)
+   Minimum input arrival time before clock: 4.953ns
+   Maximum output required time after clock: 4.182ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 15.042ns (frequency: 66.481MHz)
+  Total number of paths / destination ports: 2754 / 228
+-------------------------------------------------------------------------
+Delay:               7.521ns (Levels of Logic = 19)
+  Source:            data_memory_unit/Mram_ram_vec1 (RAM)
+  Destination:       cpu_unit/datapath_unit/acc_unit/out_data_15 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk falling
+
+  Data Path: data_memory_unit/Mram_ram_vec1 to cpu_unit/datapath_unit/acc_unit/out_data_15
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     RAMB16_S9:CLK->DO0    2   2.436   0.410  data_memory_unit/Mram_ram_vec1 (in_data<0>)
+     LUT3:I2->O            1   0.612   0.387  cpu_unit/datapath_unit/b_selected<0>1 (cpu_unit/datapath_unit/b_selected<0>)
+     LUT3:I2->O            1   0.612   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_lut<0> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_lut<0>)
+     MUXCY:S->O            1   0.404   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<0> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<0>)
+     MUXCY:CI->O           1   0.052   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<1> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<1>)
+     MUXCY:CI->O           1   0.052   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<2> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<2>)
+     MUXCY:CI->O           1   0.052   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<3> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<3>)
+     MUXCY:CI->O           1   0.052   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<4> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<4>)
+     MUXCY:CI->O           1   0.052   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<5> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<5>)
+     MUXCY:CI->O           1   0.052   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<6> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<6>)
+     MUXCY:CI->O           1   0.052   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<7> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<7>)
+     MUXCY:CI->O           1   0.052   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<8> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<8>)
+     MUXCY:CI->O           1   0.052   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<9> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<9>)
+     MUXCY:CI->O           1   0.052   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<10> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<10>)
+     MUXCY:CI->O           1   0.052   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<11> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<11>)
+     MUXCY:CI->O           1   0.052   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<12> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<12>)
+     MUXCY:CI->O           1   0.052   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<13> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<13>)
+     MUXCY:CI->O           0   0.051   0.000  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<14> (cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_cy<14>)
+     XORCY:CI->O           1   0.699   0.360  cpu_unit/datapath_unit/alu_unit/Maddsub_out_data_xor<15> (cpu_unit/datapath_unit/alu_out<15>)
+     LUT4:I3->O            1   0.612   0.000  cpu_unit/datapath_unit/Mmux_a_selected91 (cpu_unit/datapath_unit/a_selected<15>)
+     FDE_1:D                   0.268          cpu_unit/datapath_unit/acc_unit/out_data_15
+    ----------------------------------------
+    Total                      7.521ns (6.364ns logic, 1.157ns route)
+                                       (84.6% logic, 15.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 6 / 6
+-------------------------------------------------------------------------
+Offset:              4.953ns (Levels of Logic = 5)
+  Source:            rx (PAD)
+  Destination:       uart_unit/uart_rx_unit/s_reg_2 (FF)
+  Destination Clock: clk rising
+
+  Data Path: rx to uart_unit/uart_rx_unit/s_reg_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             4   1.106   0.502  rx_IBUF (rx_IBUF)
+     LUT4:I3->O            3   0.612   0.454  uart_unit/uart_rx_unit/s_next<0>15 (uart_unit/uart_rx_unit/N16)
+     LUT4:I3->O            1   0.612   0.509  uart_unit/uart_rx_unit/s_next<2>10 (uart_unit/uart_rx_unit/s_next<2>10)
+     LUT3:I0->O            1   0.612   0.000  uart_unit/uart_rx_unit/s_next<2>34_G (N152)
+     MUXF5:I1->O           1   0.278   0.000  uart_unit/uart_rx_unit/s_next<2>34 (uart_unit/uart_rx_unit/s_next<2>)
+     FDC:D                     0.268          uart_unit/uart_rx_unit/s_reg_2
+    ----------------------------------------
+    Total                      4.953ns (3.488ns logic, 1.465ns route)
+                                       (70.4% logic, 29.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 17 / 17
+-------------------------------------------------------------------------
+Offset:              4.182ns (Levels of Logic = 1)
+  Source:            cpu_unit/datapath_unit/acc_unit/out_data_7 (FF)
+  Destination:       acc<7> (PAD)
+  Source Clock:      clk falling
+
+  Data Path: cpu_unit/datapath_unit/acc_unit/out_data_7 to acc<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE_1:C->Q            4   0.514   0.499  cpu_unit/datapath_unit/acc_unit/out_data_7 (cpu_unit/datapath_unit/acc_unit/out_data_7)
+     OBUF:I->O                 3.169          acc_7_OBUF (acc<7>)
+    ----------------------------------------
+    Total                      4.182ns (3.683ns logic, 0.499ns route)
+                                       (88.1% logic, 11.9% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.78 secs
+ 
+--> 
+
+Total memory usage is 4551080 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    8 (   0 filtered)
+
