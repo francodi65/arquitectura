@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "D:/Users/Franco/Git/arquitectura/tp4/IFetch.xst" -ofn "D:/Users/Franco/Git/arquitectura/tp4/IFetch.syr" 
