@@ -18,13 +18,13 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module adder(
-				input [31:0] adder_in,
-				output [31:0] adder_out
+module adder#(
+				parameter BUS_WIDTH = 32
+				)(
+				input [BUS_WIDTH-1:0] adder_in,
+				output [BUS_WIDTH-1:0] adder_out
 				);
 				
 	assign adder_out = adder_in + 1;
-
-
 
 endmodule

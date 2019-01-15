@@ -1,1 +1,5 @@
-MO adder NULL adder.v vlg54/adder.bin 1540858377
+MO adder NULL adder.v vlg54/adder.bin 1547514308
+MO inst_mem NULL inst_mem.v vlg44/inst__mem.bin 1547514308
+MO mux_pc NULL mux_pc.v vlg28/mux__pc.bin 1547514308
+MO IFetch NULL IFetch.v vlg7F/_i_fetch.bin 1547514308
+MO pc NULL pc.v vlg13/pc.bin 1547514308

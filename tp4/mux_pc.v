@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    20:29:30 10/29/2018 
+// Create Date:    20:53:47 01/14/2019 
 // Design Name: 
-// Module Name:    pc 
+// Module Name:    mux_pc 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,25 +18,15 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module pc#(
+module mux_pc#(
 				parameter BUS_WIDTH = 32
 				)(
-				input clk,
-				input reset,
-				input enable,
-				input [BUS_WIDTH-1:0] pc_in,
-				output reg [BUS_WIDTH-1:0] pc_out
+				input mux_select,
+				input [BUS_WIDTH-1:0] mux1_in,
+				input [BUS_WIDTH-1:0] mux2_in,
+				output[BUS_WIDTH-1:0] mux_out
 				);
-
-	always @(posedge clk, posedge reset) 
-	begin
-		if (reset)
-			pc_out = 0;
-		else if (enable)
-			pc_out = pc_in;
-		else
-			pc_out = pc_out;
-	end
-
+	 
+	assign mux_out = mux_select ? mux1_in : mux2_in;
 
 endmodule

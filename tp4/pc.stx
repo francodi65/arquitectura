@@ -17,19 +17,19 @@ Total CPU time to Xst completion: 0.09 secs
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling verilog file "adder.v" in library work
-Module <adder> compiled
+Compiling verilog file "pc.v" in library work
+Module <pc> compiled
 No errors in compilation
-Analysis of file <"adder.prj"> succeeded.
+Analysis of file <"pc.prj"> succeeded.
  
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> 
 
-Total memory usage is 4490084 kilobytes
+Total memory usage is 4490088 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    1 (   0 filtered)

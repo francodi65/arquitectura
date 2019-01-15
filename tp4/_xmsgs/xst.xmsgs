@@ -5,4 +5,13 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;IFetch.v&quot; line 41 </arg>Connection to input port &apos;<arg fmt="%s" index="2">addr_data</arg>&apos; does not match port size
+</msg>
+
+<msg type="info" file="Xst" num="3038" delta="old" >The RAM &lt;<arg fmt="%s" index="1">Mram_ram_vec</arg>&gt; appears to be read-only. If that was not your intent please check the write enable description.
+</msg>
+
+<msg type="info" file="Xst" num="3230" delta="old" >The RAM description &lt;<arg fmt="%s" index="1">Mram_ram_vec</arg>&gt; will not be implemented on the device block RAM because of limited available resources. If you would like this RAM to be implemented in block RAM, please select a larger device or increase the value specified by the BRAM_Utilization_Ratio constraint.
+</msg>
+
 </messages>

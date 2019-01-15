@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 3.00 secs
-Total CPU time to Xst completion: 2.60 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.52 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 3.00 secs
-Total CPU time to Xst completion: 2.60 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.52 secs
  
 --> Reading design: IFetch.prj
 
@@ -68,7 +68,7 @@ Automatic Register Balancing       : No
 
 ---- Target Options
 Add IO Buffers                     : YES
-Global Maximum Fanout              : 500
+Global Maximum Fanout              : 100000
 Add Generic Clock Buffer(BUFG)     : 24
 Register Duplication               : YES
 Slice Packing                      : YES
@@ -100,3 +100,160 @@ Slice Utilization Ratio Delta      : 5
 
 =========================================================================
 
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "pc.v" in library work
+Compiling verilog file "mux_pc.v" in library work
+Module <pc> compiled
+Compiling verilog file "inst_mem.v" in library work
+Module <mux_pc> compiled
+Compiling verilog file "adder.v" in library work
+Module <inst_mem> compiled
+Compiling verilog file "IFetch.v" in library work
+Module <adder> compiled
+Module <IFetch> compiled
+No errors in compilation
+Analysis of file <"IFetch.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <IFetch> in library <work> with parameters.
+	ADDR_BITS = "00000000000000000000000000100000"
+	DATA_WIDTH = "00000000000000000000000000100000"
+
+Analyzing hierarchy for module <adder> in library <work> with parameters.
+	BUS_WIDTH = "00000000000000000000000000100000"
+
+Analyzing hierarchy for module <inst_mem> in library <work> with parameters.
+	RAM_ADDR_BITS = "00000000000000000000000000010100"
+	RAM_WIDTH = "00000000000000000000000000100000"
+
+Analyzing hierarchy for module <mux_pc> in library <work> with parameters.
+	BUS_WIDTH = "00000000000000000000000000100000"
+
+Analyzing hierarchy for module <pc> in library <work> with parameters.
+	BUS_WIDTH = "00000000000000000000000000100000"
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <IFetch>.
+	ADDR_BITS = 32'sb00000000000000000000000000100000
+	DATA_WIDTH = 32'sb00000000000000000000000000100000
+Module <IFetch> is correct for synthesis.
+ 
+Analyzing module <adder> in library <work>.
+	BUS_WIDTH = 32'sb00000000000000000000000000100000
+Module <adder> is correct for synthesis.
+ 
+Analyzing module <inst_mem> in library <work>.
+	RAM_ADDR_BITS = 32'sb00000000000000000000000000010100
+	RAM_WIDTH = 32'sb00000000000000000000000000100000
+Module <inst_mem> is correct for synthesis.
+ 
+Analyzing module <mux_pc> in library <work>.
+	BUS_WIDTH = 32'sb00000000000000000000000000100000
+Module <mux_pc> is correct for synthesis.
+ 
+Analyzing module <pc> in library <work>.
+	BUS_WIDTH = 32'sb00000000000000000000000000100000
+Module <pc> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <adder>.
+    Related source file is "adder.v".
+    Found 32-bit adder for signal <adder_out>.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+Unit <adder> synthesized.
+
+
+Synthesizing Unit <inst_mem>.
+    Related source file is "inst_mem.v".
+    Found 1048576x32-bit single-port RAM <Mram_ram_vec> for signal <ram_vec>.
+    Found 32-bit register for signal <out_data>.
+    Summary:
+	inferred   1 RAM(s).
+	inferred  32 D-type flip-flop(s).
+Unit <inst_mem> synthesized.
+
+
+Synthesizing Unit <mux_pc>.
+    Related source file is "mux_pc.v".
+Unit <mux_pc> synthesized.
+
+
+Synthesizing Unit <pc>.
+    Related source file is "pc.v".
+    Found 32-bit register for signal <pc_out>.
+    Summary:
+	inferred  32 D-type flip-flop(s).
+Unit <pc> synthesized.
+
+
+Synthesizing Unit <IFetch>.
+    Related source file is "IFetch.v".
+Unit <IFetch> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 1048576x32-bit single-port RAM                        : 1
+# Adders/Subtractors                                   : 1
+ 32-bit adder                                          : 1
+# Registers                                            : 2
+ 32-bit register                                       : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <inst_mem>.
+INFO:Xst:3038 - The RAM <Mram_ram_vec> appears to be read-only. If that was not your intent please check the write enable description.
+INFO:Xst:3230 - The RAM description <Mram_ram_vec> will not be implemented on the device block RAM because of limited available resources. If you would like this RAM to be implemented in block RAM, please select a larger device or increase the value specified by the BRAM_Utilization_Ratio constraint.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 1048576-word x 32-bit               |          |
+    |     clkA           | connected to signal <clk>           | fall     |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <addr_data>     |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <inst_mem> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 1048576x32-bit single-port distributed RAM            : 1
+# Adders/Subtractors                                   : 1
+ 32-bit adder                                          : 1
+# Registers                                            : 64
+ Flip-Flops                                            : 64
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================

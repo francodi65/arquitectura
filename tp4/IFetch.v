@@ -18,8 +18,34 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module IFetch(
-    );
+module IFetch#(
+				parameter ADDR_BITS = 32,
+				parameter DATA_WIDTH = 32
+				)(
+				input clk,
+				input mux_select,
+				input pc_enable,
+				input pc_reset,
+				input [ADDR_BITS-1:0] branch_pc_in,
+				output[ADDR_BITS-1:0] next_pc_out,
+				output[DATA_WIDTH-1:0] instr_out
+				);
+	 
+	wire [ADDR_BITS-1:0] pc_out;
+	wire [ADDR_BITS-1:0] pc_in;
+
+	adder adder_unit 
+	(.adder_in(pc_out), .adder_out(next_pc_out));
+	
+	inst_mem inst_mem_unit
+	(.clk(clk), .addr_data(pc_out), .out_data(instr_out));
+
+	mux_pc mux_pc_unit
+	(.mux_select(mux_select), .mux1_in(branch_pc_in), .mux2_in(next_pc_out), .mux_out(pc_in));
+
+	pc pc_unit
+	(.clk(clk), .reset(pc_reset), .enable(pc_enable), .pc_in(pc_in),
+	.pc_out(pc_out));
 
 
 endmodule
