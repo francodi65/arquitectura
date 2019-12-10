@@ -1,5 +1,11 @@
-MO adder NULL adder.v vlg54/adder.bin 1547514308
-MO inst_mem NULL inst_mem.v vlg44/inst__mem.bin 1547514308
-MO mux_pc NULL mux_pc.v vlg28/mux__pc.bin 1547514308
-MO IFetch NULL IFetch.v vlg7F/_i_fetch.bin 1547514308
-MO pc NULL pc.v vlg13/pc.bin 1547514308
+MO adder NULL adder.v vlg54/adder.bin 1550533370
+MO inst_mem NULL inst_mem.v vlg44/inst__mem.bin 1550533370
+MO mux_pc NULL mux_pc.v vlg28/mux__pc.bin 1550533370
+MO IFetch NULL IFetch.v vlg7F/_i_fetch.bin 1550533370
+MO alu_inst_converter NULL alu_inst_converter.v vlg4A/alu__inst__converter.bin 1557174612
+MO IMemory NULL IMemory.v vlg5A/_i_memory.bin 1551734981
+MO IWriteBack NULL IWriteBack.v vlg25/_i_write_back.bin 1551745921
+MO pc NULL pc.v vlg13/pc.bin 1550533370
+MO data_mem NULL data_mem.v vlg40/data__mem.bin 1551734981
+MO decoder NULL decoder.v vlg02/decoder.bin 1557352077
+MO alu NULL alu.v vlg0A/alu.bin 1551748303

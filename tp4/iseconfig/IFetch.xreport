@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2019-01-14T19:46:11</DateModified>
+  <DateModified>2019-12-09T21:45:35</DateModified>
   <ModuleName>IFetch</ModuleName>
-  <SummaryTimeStamp>Unknown</SummaryTimeStamp>
+  <SummaryTimeStamp>2019-03-04T18:29:47</SummaryTimeStamp>
   <SavedFilePath>D:/Users/Franco/Git/arquitectura/tp4/iseconfig/IFetch.xreport</SavedFilePath>
   <ImplementationReportsDirectory>D:/Users/Franco/Git/arquitectura/tp4\</ImplementationReportsDirectory>
-  <DateInitialized>2018-10-29T20:28:23</DateInitialized>
+  <DateInitialized>2019-03-04T18:29:56</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
  <body>
