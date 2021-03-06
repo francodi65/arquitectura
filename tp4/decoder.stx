@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.15 secs
  
 --> Parameter xsthdpdir set to D:/Users/Franco/Git/arquitectura/tp4/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.15 secs
  
 --> WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
 
@@ -18,51 +18,41 @@ Total CPU time to Xst completion: 0.10 secs
 *                          HDL Compilation                              *
 =========================================================================
 Compiling verilog file "decoder.v" in library work
-ERROR:HDLCompilers:28 - "decoder.v" line 63 'reg_dst_selector' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 67 'inst' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 83 'inst' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 88 'mux_inst' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 89 'mem_rd' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 90 'mem_wr' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 91 'mux_branch' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 95 'zero' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 95 'inst' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 95 'zero' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 95 'inst' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 97 'mux_inst' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 101 'mux_inst' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 103 'mem_rd' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 104 'mem_wr' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 106 'mux_branch' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 110 'mux_inst' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 111 'mem_rd' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 112 'mem_wr' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 114 'mux_branch' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 122 'inst' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 124 'mem_rd' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 125 'mem_wr' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 130 'mem_rd' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 131 'mem_wr' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 134 'mux_inst' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 136 'mux_branch' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 137 'reg_dst_selector' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 141 'inst' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 152 'mux_inst' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 153 'mem_rd' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 154 'mem_wr' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 155 'mux_branch' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 156 'reg_dst_selector' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 162 'mux_inst' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 163 'mem_rd' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 164 'mem_wr' has not been declared
-ERROR:HDLCompilers:28 - "decoder.v" line 166 'mux_branch' has not been declared
+ERROR:HDLCompilers:26 - "decoder.v" line 31 unexpected token: 'output'
+ERROR:HDLCompilers:26 - "decoder.v" line 38 unexpected token: '['
+ERROR:HDLCompilers:26 - "decoder.v" line 38 expecting ':', found ']'
+ERROR:HDLCompilers:27 - "decoder.v" line 53 Illegal redeclaration of 'alu_op'
+ERROR:HDLCompilers:28 - "decoder.v" line 86 'wb_bus' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 87 'wb_bus' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 89 'mux_inst' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 92 'mux_branch' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 97 'zero' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 97 'zero' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 99 'mux_inst' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 103 'mux_inst' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 107 'wb_bus' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 108 'mux_branch' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 112 'mux_inst' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 115 'wb_bus' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 116 'mux_branch' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 128 'wb_bus' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 134 'wb_bus' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 136 'mux_inst' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 138 'mux_branch' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 143 'inst' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 152 'wb_bus' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 154 'mux_inst' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 157 'mux_branch' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 164 'mux_inst' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 167 'wb_bus' has not been declared
+ERROR:HDLCompilers:28 - "decoder.v" line 168 'mux_branch' has not been declared
 Module <decoder> compiled
 Analysis of file <"decoder.prj"> failed.
 --> 
 
-Total memory usage is 4490096 kilobytes
+Total memory usage is 4468184 kilobytes
 
-Number of errors   :   38 (   0 filtered)
+Number of errors   :   28 (   0 filtered)
 Number of warnings :    1 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

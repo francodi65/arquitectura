@@ -27,14 +27,16 @@ module decoder#(
 				input [5:0] funct,
 				output reg [EXEC_BUS_WIDTH-1:0] execute_bus,
 				output reg [MEM_BUS_WIDTH-1:0] memory_bus,
-				output reg [WB_BUS_WIDTH-1:0] wb_bus
+				output reg [WB_BUS_WIDTH-1:0] wb_bus,
+				output reg mux_inst,
+				output reg mux_branch
 				);
 
 //---------- Local variables declaration ----------//
 
 	// Execute bus bits
 	localparam  [EXEC_BUS_WIDTH-1:0]
-		//alu_op		=  [3:0], 
+		alu_op[3:0]	= [3:0],
 		alu_src  	=  4, 
 		reg_dst   	=  5;
 	
@@ -64,7 +66,7 @@ module decoder#(
 				case(opcode[2:0])
 					3'b000: // R-type
 					begin
-						case(inst[5:0])
+						case(funct[5:0])
 							 6'b000000: alu_op <= 4'b0000;
 							 6'b000010: alu_op <= 4'b0001;
 							 6'b000011: alu_op <= 4'b0010;
@@ -80,7 +82,7 @@ module decoder#(
 							 6'b101010: alu_op <= 4'b1001;
 							 default:   alu_op <= 4'b1111;
 						endcase
-						case(inst[5:0])
+						case(funct[5:0])
 							 6'b001000, 
 							 6'b001001: wb_bus[reg_write] <= 0;
 							 default: wb_bus[reg_write] <= 1; 
@@ -90,9 +92,10 @@ module decoder#(
 						memory_bus[mem_write] <= 0; //By default write disabled.
 						mux_branch <= 0;//Default branch pc.
 				  end
-				  3'b100,3'b101://Branch
+				  3'b100,
+				  3'b101://Branch
 				  begin
-						if((zero && !inst[26]) || (!zero && inst[26]))
+						if((zero && !opcode[0]) || (!zero && opcode[0]))
 						begin
 							 mux_inst <= 1; //branch address.
 						end
@@ -119,7 +122,7 @@ module decoder#(
 			3'b101://Stores 
 			begin
 				alu_op <= 4'b0011;
-				if(inst[29])
+				if(opcode[3])
 				begin
 					memory_bus[mem_read] <= 0;
 					memory_bus[mem_write] <= 1;
