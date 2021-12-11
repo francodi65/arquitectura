@@ -1,5 +1,6 @@
 ISim log file
 Running: D:\Users\Franco\Git\arquitectura\tp4\pc_test_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb D:/Users/Franco/Git/arquitectura/tp4/pc_test_isim_beh.wdb 
+INFO: There is another simulation running in the same directory. Using database file name isim1.wdb.
 ISim P.20131013 (signature 0x7708f090)
 WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
@@ -11,3 +12,4 @@ Time resolution is 1 ps
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
+Stopped at time : 70596310 ns : File "D:/Users/Franco/Git/arquitectura/tp4/pc_test.v" Line 47
