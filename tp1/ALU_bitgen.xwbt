@@ -1,8 +1,0 @@
-INTSTYLE=ise
-INFILE=C:\Users\Juanma\arquitectura\tp1\ALU.ncd
-OUTFILE=C:\Users\Juanma\arquitectura\tp1\ALU.bit
-FAMILY=Spartan6
-PART=xc6slx16-3csg324
-WORKINGDIR=C:\Users\Juanma\arquitectura\tp1
-LICENSE=WebPack
-USER_INFO=211382063_0_0_337

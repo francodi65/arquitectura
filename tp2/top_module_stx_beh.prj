@@ -1,8 +1,0 @@
-verilog isim_temp "uart_tx.v"
-verilog isim_temp "uart_rx.v"
-verilog isim_temp "baud_gen.v"
-verilog isim_temp "uart.v"
-verilog isim_temp "interfaz.v"
-verilog isim_temp "alu.v"
-verilog isim_temp "top_module.v"
-verilog isim_temp "D:/Programas/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"
