@@ -33,11 +33,10 @@ module decoder#(
 				);
 
 //---------- Local variables declaration ----------//
-	//wire execute_bus[3:0][0];
 	
 	// Execute bus bits
 	localparam  [EXEC_BUS_WIDTH-1:0]
-		//execute_bus[3:0]  = [0,3],
+	// alu_opcode  = [3:0],
 		alu_src  	=  4, 
 		reg_dst   	=  5;
 	

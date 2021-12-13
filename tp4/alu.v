@@ -22,10 +22,10 @@ module alu#(
 				parameter OP_BITS = 4,
 				parameter BUS_WIDTH = 32
 				)(
-				input signed [BUS_WIDTH-1:0] A,
-				input signed [BUS_WIDTH-1:0] B,
-				input signed [OP_BITS-1:0] OPCODE,
-				output reg [BUS_WIDTH-1:0] RESULT_OUT,
+				input signed [BUS_WIDTH-1:0] a,
+				input signed [BUS_WIDTH-1:0] b,
+				input signed [OP_BITS-1:0] opcode,
+				output reg [BUS_WIDTH-1:0] result_out,
 				output reg zero_flag
     );
 
@@ -33,26 +33,26 @@ always @(*)
 	begin
 		zero_flag = 0;
 
-		case (OPCODE)
-			4'b 0000: RESULT_OUT = A << B;
-			4'b 0001: RESULT_OUT = A >> B;
-			4'b 0010: RESULT_OUT = A >>> B;
-			4'b 0011: RESULT_OUT = A + B;
-			4'b 0100: RESULT_OUT = A & B;
-			4'b 0101: RESULT_OUT = A | B;
-			4'b 0110: RESULT_OUT = A ^ B;
-			4'b 0111: RESULT_OUT = ~(A | B);
+		case (opcode)
+			4'b 0000: result_out = a << b;
+			4'b 0001: result_out = a >> b;
+			4'b 0010: result_out = a >>> b;
+			4'b 0011: result_out = a + b;
+			4'b 0100: result_out = a & b;
+			4'b 0101: result_out = a | b;
+			4'b 0110: result_out = a ^ b;
+			4'b 0111: result_out = ~(a | b);
 			4'b 1000: 
 			begin
-				RESULT_OUT = A - B; 
-				zero_flag = A == B ? 1 : 0;
+				result_out = a - b; 
+				zero_flag = a == b ? 1 : 0;
 			end
 			4'b 1001:
 			begin
-				RESULT_OUT = A < B; 
-				zero_flag = A == B ? 1 : 0;
+				result_out = a < b; 
+				zero_flag = a == b ? 1 : 0;
 			end
-			default: RESULT_OUT = 0;
+			default: result_out = 0;
 		endcase	
 	end
 
