@@ -23,7 +23,7 @@ module IFetch#(
 				parameter DATA_WIDTH = 32
 				)(
 				input clk,
-				input mux_select,
+				input branch,
 				input pc_enable,
 				input pc_reset,
 				input [ADDR_BITS-1:0] branch_pc_in,
@@ -41,7 +41,7 @@ module IFetch#(
 	(.clk(clk), .addr_data(pc_out), .out_data(instr_out));
 
 	mux_pc mux_pc_unit
-	(.mux_select(mux_select), .mux1_in(branch_pc_in), .mux2_in(next_pc_out), .mux_out(pc_in));
+	(.mux_select(branch), .mux1_in(next_pc_out), .mux2_in(branch_pc_in), .mux_out(pc_in));
 
 	pc pc_unit
 	(.clk(clk), .reset(pc_reset), .enable(pc_enable), .pc_in(pc_in),

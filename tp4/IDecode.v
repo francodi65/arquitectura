@@ -40,7 +40,6 @@ module IDecode#(
 				output [ADDR_BITS-1:0] reg_rt_data_out,
 				output [REG_ADDR_BITS-1:0] add_reg_rs_out,
 				output [REG_ADDR_BITS-1:0] add_reg_rt_out,
-				output [REG_ADDR_BITS-1:0] add_reg_w_out,
 				output [ADDR_BITS-1:0] inm_data_out
 				//falta el fetch bus out
 				);
@@ -62,15 +61,14 @@ module IDecode#(
 	
 	assign add_reg_rs_out = add_reg_a;
 	assign add_reg_rt_out = add_reg_b;
-	assign add_reg_w_out = add_reg_w;
 	
 
-	decoder decoder_unit
+	decoder control_unit
 	(.opcode(pc_out), .funct(next_pc_out), .execute_bus(execute_bus_out), .memory_bus(memory_bus_out), .wb_bus(wb_bus_out)); //+ fetch bus out);
 	
 	register_bank register_bank_unit
-	(.clk(clk), .write_w(write_w), .addr_reg_a(addr_reg_a), .addr_reg_b(addr_reg_b), .addr_reg_w(add_reg_w_in), 
-	 .reg_w_data_in(reg_w_data_in), .reg_rs_data_out(reg_a_data_out), .reg_rt_data_out(reg_b_data_out));
+	(.clk(clk), .write_w(write_w), .addr_reg_a(addr_reg_rs), .addr_reg_b(addr_reg_rt), .addr_reg_w(add_reg_w_in), 
+	 .reg_w_data_in(reg_w_data_in), .reg_a_data_out(reg_rs_data_out), .reg_b_data_out(reg_rt_data_out));
 	 
 	sign_ext sing_ext_unit
 	(.data_in(inm_data), .data_out(inm_data_out));
