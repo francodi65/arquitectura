@@ -60,6 +60,8 @@ module IExecute#(
 	wire mux_reg_dest_select;
 	wire mux_shamt_select;
 	wire [DATA_WIDTH-1:0] alu_data;
+	wire [DATA_WIDTH-1:0] alu_data_a;
+	wire [DATA_WIDTH-1:0] alu_data_b;
 	
 	assign alu_opcode = execute_bus_in[3:0];
 	assign mux_alu_select = execute_bus_in[alu_src];
@@ -68,14 +70,20 @@ module IExecute#(
 	
 	// Determina si uso el RT o el INMEDIATE
 	mux_pc mux_alu_unit
-	(.mux_select(mux_alu_select), .mux1_in(reg_rt_data_in), .mux2_in(inmediate_data_in), .mux_out(alu_data_1));
+	(.mux_select(mux_alu_select), .mux1_in(reg_rt_data_in), .mux2_in(inmediate_data_in), .mux_out(alu_data_2));
 	
 	// Determina si uso el anterior o el SHAMT(shift)
 	mux_pc mux_alu_shamt_unit
-	(.mux_select(mux_shamt_select), .mux1_in(alu_data_1), .mux2_in(shamt_data_in), .mux_out(alu_data_2));
+	(.mux_select(mux_shamt_select), .mux1_in(reg_rs_data_in), .mux2_in(shamt_data_in), .mux_out(alu_data_1));
+	
+	mux_pc mux_alu_data_a_unit
+	(.mux_select(mux_shamt_select), .mux1_in(alu_data_2), .mux2_in(alu_data_1), .mux_out(alu_data_a));
+	
+	mux_pc mux_alu_data_b_unit
+	(.mux_select(mux_shamt_select), .mux1_in(alu_data_1), .mux2_in(alu_data_2), .mux_out(alu_data_b));
 
 	alu alu_unit
-	(.a(reg_rs_data_in), .b(alu_data_2), .opcode(alu_opcode), .result_out(alu_data), .zero_flag(alu_zero_flag));
+	(.a(alu_data_a), .b(alu_data_b), .opcode(alu_opcode), .result_out(alu_data), .zero_flag(alu_zero_flag));
 	
 	//Forwarding buses 
 	always @(posedge clk)
@@ -90,6 +98,5 @@ module IExecute#(
 	 else
 		add_reg_w_out <= add_reg_rt_in;
 	end
-	 
 
 endmodule

@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module data_mem #(
 				parameter RAM_WIDTH = 32,                       // Specify RAM data width
-				parameter RAM_ADDR_BITS= 10                     // Specify RAM depth (number of entries)
+				parameter RAM_ADDR_BITS= 5                     // Specify RAM depth (number of entries)
 				)(
 				input clk,
 				input write,

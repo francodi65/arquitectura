@@ -150,7 +150,7 @@ module decoder#(
 				execute_bus[reg_dst] <= 0;//By default rt
 				memory_bus[branch_flag] <= 0;//Default branch pc.
 				execute_bus[alu_src] <= 1;
-				execute_bus[shamt_flag] <= 0;
+				execute_bus[shamt_flag] <= 1;
 			end
 			3'b001://Inmediates
 			begin
