@@ -42,12 +42,11 @@ module register_bank#(
 	end
 
 
-	always @(posedge clk)
+	always @(negedge clk)
 	begin
 			if (write_w)
 				reg_vec[addr_reg_w] <= reg_w_data_in;
-			else
-				reg_a_data_out <= reg_vec[addr_reg_a];
-				reg_b_data_out <= reg_vec[addr_reg_b];
+			reg_a_data_out <= reg_vec[addr_reg_a];
+			reg_b_data_out <= reg_vec[addr_reg_b];
 	end
 endmodule

@@ -52,7 +52,7 @@ module IMemory#(
 	(.clk(clk), .write(memory_bus_in[mem_write]), .addr_data(addr_mem), .input_data(input_mem), .out_data(output_mem));
 	
 	//Forwarding buses 
-	always @(negedge clk)
+	always @(posedge clk)
    begin
 	 wb_bus_out <= wb_bus_in;
 	 reg_w_addr_out <= reg_w_addr_in;
