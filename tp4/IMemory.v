@@ -33,10 +33,12 @@ module IMemory#(
 				input [DATA_WIDTH-1:0] input_mem,
 				input [DATA_WIDTH-1:0] alu_data_in,
 				input [ADDR_BITS-1:0] reg_w_addr_in,
+				input [ADDR_BITS-1:0] branch_pc_in,
 				output [DATA_WIDTH-1:0] output_mem,
 				output branch,
 				output reg [WB_BUS_WIDTH-1:0] wb_bus_out,
 				output reg [ADDR_BITS-1:0] reg_w_addr_out,
+				output reg [ADDR_BITS-1:0] branch_pc_out,
 				output reg [DATA_WIDTH-1:0] alu_data_out
     );
 	 
@@ -57,6 +59,7 @@ module IMemory#(
 	 wb_bus_out <= wb_bus_in;
 	 reg_w_addr_out <= reg_w_addr_in;
 	 alu_data_out <= alu_data_in;
+	 branch_pc_out <= branch_pc_in;
 	end
 	
 	

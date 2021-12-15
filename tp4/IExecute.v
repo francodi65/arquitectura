@@ -43,7 +43,7 @@ module IExecute#(
 				output reg [WB_BUS_WIDTH-1:0] wb_bus_out,
 				output reg [DATA_WIDTH-1:0] reg_rt_data_out,
 				output reg [ADDR_BITS-1:0] next_pc_out,
-				output alu_zero_flag
+				output reg alu_zero_flag_out
 				);
 				
 	// Execute bus bits
@@ -79,6 +79,7 @@ module IExecute#(
 	mux_pc mux_alu_data_a_unit
 	(.mux_select(mux_shamt_select), .mux1_in(alu_data_2), .mux2_in(alu_data_1), .mux_out(alu_data_a));
 	
+	//Si es Shamt, invierto los registros
 	mux_pc mux_alu_data_b_unit
 	(.mux_select(mux_shamt_select), .mux1_in(alu_data_1), .mux2_in(alu_data_2), .mux_out(alu_data_b));
 
@@ -93,6 +94,7 @@ module IExecute#(
 	 reg_rt_data_out <= reg_rt_data_in;
 	 next_pc_out <= (inmediate_data_in << 2) + next_pc_in;
 	 alu_result_out <= alu_data;
+	 alu_zero_flag_out <= alu_zero_flag;
 	 if(mux_reg_dest_select)
 		add_reg_w_out <= add_reg_rd_in;
 	 else

@@ -31,7 +31,7 @@ module decoder#(
 				output reg [WB_BUS_WIDTH-1:0] wb_bus
 				);
 
-//---------- Local variables declaration ----------//
+//---------- Local variables ----------//
 	
 	// Execute bus bits
 	localparam  [EXEC_BUS_WIDTH-1:0]
@@ -58,7 +58,7 @@ module decoder#(
 		case(opcode[5:3])
 			3'b000: 
 			begin 
-				execute_bus[reg_dst] <= 1;//Out rd
+				execute_bus[reg_dst] <= 1;
 				execute_bus[alu_src] <= 0;
 				execute_bus[shamt_flag] <= 0;
 				execute_bus[3:0] <= 4'b1111;
@@ -98,9 +98,9 @@ module decoder#(
 							 6'b001001: wb_bus[reg_write] <= 0;
 							 default: wb_bus[reg_write] <= 1; 
 						endcase
-						memory_bus[mem_read] <= 0; //By default read disabled.
-						memory_bus[mem_write] <= 0; //By default write disabled.
-						memory_bus[branch_flag] <= 0;//Default branch pc.
+						memory_bus[mem_read] <= 0; //read disabled.
+						memory_bus[mem_write] <= 0; //write disabled.
+						memory_bus[branch_flag] <= 0;//branch pc.
 						wb_bus[mem_to_reg] <= 0;
 						if(nop_flag)
 							wb_bus[reg_write] <= 0;
@@ -110,20 +110,21 @@ module decoder#(
 				  3'b100,
 				  3'b101://Branch
 				  begin
-						memory_bus[mem_read] <= 0; //By default read disabled.
-						memory_bus[mem_write] <= 0; //By default write disabled.
-						wb_bus[reg_write] <= 0; //By default write register disabled.
+				      execute_bus[3:0] <= 4'b1000;
+						memory_bus[mem_read] <= 0; //read disabled.
+						memory_bus[mem_write] <= 0; //write disabled.
+						wb_bus[reg_write] <= 0; //register disabled.
 						wb_bus[mem_to_reg] <= 0;
-						memory_bus[branch_flag] <= 1;//Default branch pc.
+						memory_bus[branch_flag] <= 1;//branch pc.
 				  end
 				  default://Jump
 				  begin
 				      execute_bus[3:0] <= 4'b1111;
-						memory_bus[mem_read] <= 0; //By default read disabled.
-						memory_bus[mem_write] <= 0; //By default write disabled.
-						wb_bus[reg_write] <= 0; //By default write register disabled.
+						memory_bus[mem_read] <= 0; //read disabled.
+						memory_bus[mem_write] <= 0; //write disabled.
+						wb_bus[reg_write] <= 0; //register disabled.
 						wb_bus[mem_to_reg] <= 0;
-						memory_bus[branch_flag] <= 1;//PC jump address.
+						memory_bus[branch_flag] <= 1;//branch pc.
 				  end
 				endcase
 			end
@@ -136,7 +137,7 @@ module decoder#(
 				begin
 					memory_bus[mem_read] <= 0;
 					memory_bus[mem_write] <= 1;
-					wb_bus[reg_write] <= 0; //By default write register disabled.
+					wb_bus[reg_write] <= 0; //write register disabled.
 					wb_bus[mem_to_reg] <= 0;
 				end
 				else
@@ -147,8 +148,8 @@ module decoder#(
 					wb_bus[mem_to_reg] <= 1;
 					wb_bus[reg_write] <= 1; //Write register with memory data.
 				end 
-				execute_bus[reg_dst] <= 0;//By default rt
-				memory_bus[branch_flag] <= 0;//Default branch pc.
+				execute_bus[reg_dst] <= 0;//rt
+				memory_bus[branch_flag] <= 0;//branch pc.
 				execute_bus[alu_src] <= 1;
 				execute_bus[shamt_flag] <= 1;
 			end
@@ -165,24 +166,24 @@ module decoder#(
 				endcase
 				wb_bus[reg_write] <= 1;
 				wb_bus[mem_to_reg] <= 0;
-				execute_bus[reg_dst] <= 0;//By default rt
-				memory_bus[mem_read] <= 0; //By default read disabled.
-				memory_bus[mem_write] <= 0; //By default write disabled.
-				memory_bus[branch_flag] <= 0;//Default branch pc.
-				execute_bus[alu_src] <= 1;//Save ALU result into reg.
+				execute_bus[reg_dst] <= 0;//rt
+				memory_bus[mem_read] <= 0; //read disabled.
+				memory_bus[mem_write] <= 0; //write disabled.
+				memory_bus[branch_flag] <= 0;//branch pc.
+				execute_bus[alu_src] <= 1;
 				execute_bus[shamt_flag] <= 0;
 			end        
 			default:
 			begin
 				execute_bus[3:0] <= 4'b1111;
-				execute_bus[reg_dst] <= 0;//By default rt
-				execute_bus[alu_src] <= 0;//By default rt
+				execute_bus[reg_dst] <= 0;//rt
+				execute_bus[alu_src] <= 0;//rt
 				execute_bus[shamt_flag] <= 0;
-				memory_bus[mem_read] <= 0; //By default read disabled.
-				memory_bus[mem_write] <= 0; //By default write disabled.
-				wb_bus[reg_write] <= 0; //By default write register disabled.
+				memory_bus[mem_read] <= 0; //read disabled.
+				memory_bus[mem_write] <= 0; //write disabled.
+				wb_bus[reg_write] <= 0; //write register disabled.
 				wb_bus[mem_to_reg] <= 0;
-				memory_bus[branch_flag] <= 0;//Default branch pc.
+				memory_bus[branch_flag] <= 0;//branch pc.
 			end
 		endcase
 	end

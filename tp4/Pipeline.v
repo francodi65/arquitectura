@@ -98,6 +98,7 @@ module Pipeline#(
 	wire [DATA_WIDTH-1:0] reg_rt_data_from_execute;
 	wire [MEM_BUS_WIDTH-1:0] memory_bus_from_execute;
 	wire [WB_BUS_WIDTH-1:0] wb_bus_from_execute;
+	wire [DATA_WIDTH-1:0] branch_pc_from_execute;
 	 
 	 IExecute IExecute_unit(
 	 .clk(clk),
@@ -116,8 +117,8 @@ module Pipeline#(
 	 .memory_bus_out(memory_bus_from_execute),
 	 .wb_bus_out(wb_bus_from_execute),
 	 .reg_rt_data_out(reg_rt_data_from_execute),
-	 .next_pc_out(branch_pc),
-	 .alu_zero_flag(alu_zero_flag));
+	 .next_pc_out(branch_pc_from_execute),
+	 .alu_zero_flag_out(alu_zero_flag));
 	 
 	 
 	 // Memory wires
@@ -135,10 +136,12 @@ module Pipeline#(
 	 .alu_data_in(alu_result_data),
 	 .input_mem(reg_rt_data_from_execute),
 	 .reg_w_addr_in(reg_w_addr_from_execute),
+	 .branch_pc_in(branch_pc_from_execute),
 	 .output_mem(mem_data),
 	 .branch(branch_flag),
 	 .wb_bus_out(wb_bus_from_memory),
 	 .reg_w_addr_out(reg_w_addr),
+	 .branch_pc_out(branch_pc),
 	 .alu_data_out(alu_result_data_from_mem));
 	 
 	 // WB wires
