@@ -27,9 +27,10 @@ module sign_ext#(
     );
 
 
-	reg [EXT_DATA_WIDTH-DATA_WIDTH-1:0] ext = 0;
+	wire [EXT_DATA_WIDTH-DATA_WIDTH-1:0] extend = 0;
 
 	assign data_out[DATA_WIDTH-1:0] = data_in;
-	assign data_out[EXT_DATA_WIDTH-1:DATA_WIDTH] = ext;
+	assign data_out[EXT_DATA_WIDTH-1:DATA_WIDTH] = extend;
+
 	
 endmodule

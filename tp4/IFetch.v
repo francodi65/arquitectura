@@ -35,7 +35,7 @@ module IFetch#(
 	wire [ADDR_BITS-1:0] pc_in;
 
 	adder adder_unit 
-	(.adder_in(pc_out), .adder_out(next_pc_out));
+	(.clk(clk), .adder_in(pc_out), .adder_out(next_pc_out));
 	
 	inst_mem inst_mem_unit
 	(.clk(clk), .addr_data(pc_out), .out_data(instr_out));

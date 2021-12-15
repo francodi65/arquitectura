@@ -33,13 +33,13 @@ module inst_mem #(
 	assign write = 0;
    //  The forllowing code is only necessary if you wish to initialize the RAM 
    //  contents via an external file (use $readmemb for binary data)
-   //initial
-	//begin
-   //    $readmemb("binario.bin", ram_vec);
-	//end
+   initial
+	begin
+		$readmemb("instrucciones.bin", ram_vec);
+	end
 
 
-	always @(negedge clk)
+	always @(posedge clk)
 	begin
 			if (write)
 				ram_vec[addr_data] <= 0;

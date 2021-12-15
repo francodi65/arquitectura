@@ -8,8 +8,10 @@
 *.bit
 *.bld
 *.cmd_log
+*.cmd
 *.drc
 *.ll
+*.log
 *.lso
 *.msd
 *.msk
@@ -30,9 +32,12 @@
 *.twx
 *.unroutes
 *.ut
+*.wdb
+*.xmsgs
 *.xpi
 *.xst
 *_bitgen.xwbt
+*_beh.exe
 *_envsettings.html
 *_map.map
 *_map.mrp
@@ -70,5 +75,7 @@ xlnx_auto_0_xdb/
 xst/
 _ngo/
 _xmsgs/
+isim/
+netgen/
 
 # End of https://www.toptal.com/developers/gitignore/api/xilinxise

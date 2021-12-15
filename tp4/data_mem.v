@@ -38,7 +38,7 @@ module data_mem #(
 	//end
 
 
-	always @(negedge clk)
+	always @(posedge clk)
 	begin
 			if (write)
 				ram_vec[addr_data] <= input_data;

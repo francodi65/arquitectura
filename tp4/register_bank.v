@@ -36,10 +36,10 @@ module register_bank#(
 	
    //  The forllowing code is only necessary if you wish to initialize the RAM 
    //  contents via an external file (use $readmemb for binary data)
-   //initial
-	//begin
-   //    $readmemb("binario.bin", ram_vec);
-	//end
+   initial
+	begin
+       $readmemb("registros.bin", reg_vec);
+	end
 
 
 	always @(posedge clk)

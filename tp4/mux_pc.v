@@ -27,6 +27,6 @@ module mux_pc#(
 				output[BUS_WIDTH-1:0] mux_out
 				);
 	 
-	assign mux_out = mux_select ? mux1_in : mux2_in;
+	assign mux_out = mux_select ? mux2_in : mux1_in;
 
 endmodule

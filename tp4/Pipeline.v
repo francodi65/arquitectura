@@ -29,16 +29,21 @@ module Pipeline#(
 				)(
 				input clk,
 				input pc_enable,
-				input pc_reset
+				input pc_reset,
+				output [ADDR_BITS-1:0] pc_addr_out,
+				output [ADDR_BITS-1:0] pc_instr_out,
+				output [ADDR_BITS-1:0] reg_w_data_out,
+				output [ADDR_BITS-1:0] reg_rt_data_out,
+				output [ADDR_BITS-1:0] reg_rs_data_out
 				);
 				
 	 
-	// Temporal variables 
 	
-	wire [ADDR_BITS-1:0]branch_pc = 0;
+	
 	
 	// Fetch Wires
 	wire branch_flag;
+	wire [ADDR_BITS-1:0] branch_pc;
 	wire [ADDR_BITS-1:0] pc_addr;
 	wire [DATA_WIDTH-1:0] pc_instr;
 
@@ -56,7 +61,7 @@ module Pipeline#(
 	wire reg_write;
 	wire [ADDR_BITS-1:0]  reg_w_addr;
 	wire [DATA_WIDTH-1:0] reg_w_data;
-	wire [ADDR_BITS-1:0]  reg_rs_addr;
+	wire [ADDR_BITS-1:0]  reg_rd_addr;
 	wire [DATA_WIDTH-1:0] reg_rs_data;
 	wire [ADDR_BITS-1:0]  reg_rt_addr;
 	wire [DATA_WIDTH-1:0] reg_rt_data;
@@ -64,10 +69,12 @@ module Pipeline#(
 	wire [EXEC_BUS_WIDTH-1:0] execute_bus_from_decode;
 	wire [MEM_BUS_WIDTH-1:0] memory_bus_from_decode;
 	wire [WB_BUS_WIDTH-1:0] wb_bus_from_decode;
+	wire [ADDR_BITS-1:0] pc_addr_from_decode;
 	 
 	 IDecode IDecode_unit(
+	 .clk(clk),
 	 .write_w(reg_write),
-	 .pc_in(pc_addr),
+	 .next_pc_in(pc_addr),
 	 .inst_in(pc_instr),
 	 .reg_w_data_in(reg_w_data),
 	 .add_reg_w_in(reg_w_addr),
@@ -76,9 +83,10 @@ module Pipeline#(
 	 .wb_bus_out(wb_bus_from_decode),
 	 .reg_rs_data_out(reg_rs_data),
 	 .reg_rt_data_out(reg_rt_data),
-	 .add_reg_rs_out(reg_rs_addr),
 	 .add_reg_rt_out(reg_rt_addr),
-	 .inm_data_out(inm_data));
+	 .add_reg_rd_out(reg_rd_addr),
+	 .inm_data_out(inm_data),
+	 .next_pc_out(pc_addr_from_decode));
 	 
 	 // Execute wires
 	
@@ -97,13 +105,15 @@ module Pipeline#(
 	 .reg_rs_data_in(reg_rs_data),
 	 .reg_rt_data_in(reg_rt_data),
 	 .inmediate_data_in(inm_data),
-	 .add_reg_rs_in(reg_rs_addr),
+	 .add_reg_rd_in(reg_rd_addr),
 	 .add_reg_rt_in(reg_rt_addr),
+	 .next_pc_in(pc_addr_from_decode),
 	 .alu_result_out(alu_result_data),
 	 .add_reg_w_out(reg_w_addr_from_execute),
 	 .memory_bus_out(memory_bus_from_execute),
 	 .wb_bus_out(wb_bus_from_execute),
 	 .reg_rt_data_out(reg_rt_data_from_execute),
+	 .next_pc_out(branch_pc),
 	 .alu_zero_flag(alu_zero_flag));
 	 
 	 
@@ -124,7 +134,6 @@ module Pipeline#(
 	 .reg_w_addr_in(reg_w_addr_from_execute),
 	 .output_mem(mem_data),
 	 .branch(branch_flag),
-	 // branch_pc_addr falta
 	 .wb_bus_out(wb_bus_from_memory),
 	 .reg_w_addr_out(reg_w_addr),
 	 .alu_data_out(alu_result_data_from_mem));
@@ -138,6 +147,14 @@ module Pipeline#(
 	 .mem_data(mem_data),
 	 .alu_data(alu_result_data_from_mem),
 	 .reg_w_data(reg_w_data));
+	 
+	 
+	 // Debug variables 
+	assign pc_addr_out = pc_addr;
+	assign pc_instr_out = pc_instr;
+	assign reg_w_data_out = reg_w_data;
+	assign reg_rt_data_out = reg_rt_data;
+	assign reg_rs_data_out = reg_rs_data;
 	 
 
 endmodule

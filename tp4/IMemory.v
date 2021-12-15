@@ -19,7 +19,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module IMemory#(
-				parameter ADDR_BITS = 10,
+				parameter ADDR_BITS = 32,
 				parameter DATA_WIDTH = 32,
 				parameter EXEC_BUS_WIDTH = 6,
 				parameter MEM_BUS_WIDTH = 3,
@@ -52,7 +52,7 @@ module IMemory#(
 	(.clk(clk), .write(memory_bus_in[mem_write]), .addr_data(addr_mem), .input_data(input_mem), .out_data(output_mem));
 	
 	//Forwarding buses 
-	always @(posedge clk)
+	always @(negedge clk)
    begin
 	 wb_bus_out <= wb_bus_in;
 	 reg_w_addr_out <= reg_w_addr_in;

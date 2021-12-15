@@ -21,10 +21,14 @@
 module adder#(
 				parameter BUS_WIDTH = 32
 				)(
+				input clk,
 				input [BUS_WIDTH-1:0] adder_in,
-				output [BUS_WIDTH-1:0] adder_out
+				output reg [BUS_WIDTH-1:0] adder_out
 				);
-				
-	assign adder_out = adder_in + 1;
+	
+	always @(posedge clk)
+   begin
+	 adder_out <= adder_in + 1;
+	end
 
 endmodule

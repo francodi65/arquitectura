@@ -27,9 +27,7 @@ module decoder#(
 				input [5:0] funct,
 				output reg [EXEC_BUS_WIDTH-1:0] execute_bus,
 				output reg [MEM_BUS_WIDTH-1:0] memory_bus,
-				output reg [WB_BUS_WIDTH-1:0] wb_bus,
-				output reg mux_inst,
-				output reg mux_branch
+				output reg [WB_BUS_WIDTH-1:0] wb_bus
 				);
 
 //---------- Local variables declaration ----------//
@@ -51,8 +49,6 @@ module decoder#(
 		mem_to_reg 	=  0, 
 		reg_write  	=  1;
 		
-	localparam zero = 0;
-		
 //-----------------------------------------------//
 
 	always @(*) 
@@ -62,6 +58,7 @@ module decoder#(
 			begin 
 				execute_bus[reg_dst] <= 0;//Out rd
 				execute_bus[alu_src] <= 1;
+				execute_bus[3:0] <= 4'b1111;
 				case(opcode[2:0])
 					3'b000: // R-type
 					begin
@@ -86,34 +83,29 @@ module decoder#(
 							 6'b001001: wb_bus[reg_write] <= 0;
 							 default: wb_bus[reg_write] <= 1; 
 						endcase
-						mux_inst <= 0; //By default PC.
 						memory_bus[mem_read] <= 0; //By default read disabled.
 						memory_bus[mem_write] <= 0; //By default write disabled.
-						mux_branch <= 0;//Default branch pc.
+						memory_bus[branch_flag] <= 0;//Default branch pc.
+						wb_bus[mem_to_reg] <= 0;
+						wb_bus[reg_write] <= 0;
 				  end
 				  3'b100,
 				  3'b101://Branch
 				  begin
-						if((zero && !opcode[0]) || (!zero && opcode[0]))
-						begin
-							 mux_inst <= 1; //branch address.
-						end
-						else
-						begin
-							 mux_inst <= 0; //Default PC.
-						end
 						memory_bus[mem_read] <= 0; //By default read disabled.
 						memory_bus[mem_write] <= 0; //By default write disabled.
 						wb_bus[reg_write] <= 0; //By default write register disabled.
-						mux_branch <= 0;//Default branch pc.
+						wb_bus[mem_to_reg] <= 0;
+						memory_bus[branch_flag] <= 1;//Default branch pc.
 				  end
 				  default://Jump
 				  begin
-						mux_inst <= 1; //Branch address.
+				      execute_bus[3:0] <= 4'b1111;
 						memory_bus[mem_read] <= 0; //By default read disabled.
 						memory_bus[mem_write] <= 0; //By default write disabled.
 						wb_bus[reg_write] <= 0; //By default write register disabled.
-						mux_branch <= 1;//PC jump address.
+						wb_bus[mem_to_reg] <= 0;
+						memory_bus[branch_flag] <= 1;//PC jump address.
 				  end
 				endcase
 			end
@@ -122,20 +114,23 @@ module decoder#(
 			begin
 				execute_bus[3:0] <= 4'b0011;
 				if(opcode[3])
+				// Store
 				begin
 					memory_bus[mem_read] <= 0;
 					memory_bus[mem_write] <= 1;
 					wb_bus[reg_write] <= 0; //By default write register disabled.
+					wb_bus[mem_to_reg] <= 0;
 				end
 				else
+				// Load
 				begin
 					memory_bus[mem_read] <= 1;
-					memory_bus[mem_write] <= 0; 
+					memory_bus[mem_write] <= 0;
+					wb_bus[mem_to_reg] <= 1;
 					wb_bus[reg_write] <= 1; //Write register with memory data.
 				end 
-				mux_inst <= 0; //By default PC.
 				execute_bus[reg_dst] <= 1;//By default rt
-				mux_branch <= 0;//Default branch pc.
+				memory_bus[branch_flag] <= 0;//Default branch pc.
 				execute_bus[alu_src] <= 0;
 			end
 			3'b001://Inmediates
@@ -150,22 +145,23 @@ module decoder#(
 					default: execute_bus[3:0] <= 4'b1111;
 				endcase
 				wb_bus[reg_write] <= 1;
+				wb_bus[mem_to_reg] <= 0;
 				execute_bus[reg_dst] <= 1;//By default rt
-				mux_inst <= 0; //By default PC.
 				memory_bus[mem_read] <= 0; //By default read disabled.
 				memory_bus[mem_write] <= 0; //By default write disabled.
-				mux_branch <= 0;//Default branch pc.
+				memory_bus[branch_flag] <= 0;//Default branch pc.
 				execute_bus[alu_src] <= 1;//Save ALU result into reg.
 			end        
 			default:
 			begin
 				execute_bus[3:0] <= 4'b1111;
 				execute_bus[reg_dst] <= 1;//By default rt
-				mux_inst <= 0; //By default PC.
+				execute_bus[alu_src] <= 1;//By default rt
 				memory_bus[mem_read] <= 0; //By default read disabled.
 				memory_bus[mem_write] <= 0; //By default write disabled.
 				wb_bus[reg_write] <= 0; //By default write register disabled.
-				mux_branch <= 0;//Default branch pc.
+				wb_bus[mem_to_reg] <= 0;
+				memory_bus[branch_flag] <= 0;//Default branch pc.
 			end
 		endcase
 	end

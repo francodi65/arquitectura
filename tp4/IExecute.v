@@ -33,13 +33,15 @@ module IExecute#(
 				input [DATA_WIDTH-1:0] reg_rs_data_in,
 				input [DATA_WIDTH-1:0] reg_rt_data_in,
 				input [DATA_WIDTH-1:0] inmediate_data_in,
-				input [ADDR_BITS-1:0] add_reg_rs_in,
+				input [ADDR_BITS-1:0] add_reg_rd_in,
 				input [ADDR_BITS-1:0] add_reg_rt_in,
-				output[DATA_WIDTH-1:0] alu_result_out,
+				input [ADDR_BITS-1:0] next_pc_in,
+				output [DATA_WIDTH-1:0] alu_result_out,
 				output reg [DATA_WIDTH-1:0] add_reg_w_out,
 				output reg [MEM_BUS_WIDTH-1:0] memory_bus_out,
 				output reg [WB_BUS_WIDTH-1:0] wb_bus_out,
 				output reg [DATA_WIDTH-1:0] reg_rt_data_out,
+				output reg [ADDR_BITS-1:0] next_pc_out,
 				output alu_zero_flag
 				);
 				
@@ -64,7 +66,7 @@ module IExecute#(
 	(.mux_select(mux_alu_select), .mux1_in(reg_rt_data_in), .mux2_in(inmediate_data_in), .mux_out(alu_data_2));
 
 	alu alu_unit
-	(.a(reg_rs_data_in), .b(mux2_data), .opcode(alu_opcode), .result_out(addr_reg_b), .zero_flag(alu_zero_flag));
+	(.a(alu_data_1), .b(alu_data_2), .opcode(alu_opcode), .result_out(alu_result_out), .zero_flag(alu_zero_flag));
 	
 	//Forwarding buses 
 	always @(posedge clk)
@@ -72,10 +74,11 @@ module IExecute#(
 	 memory_bus_out <= memory_bus_in;
 	 wb_bus_out <= wb_bus_in;
 	 reg_rt_data_out <= reg_rt_data_in;
+	 next_pc_out <= (inmediate_data_in << 2) + next_pc_in;
 	 if(mux_reg_dest_select)
-		add_reg_w_out <= add_reg_rs_in;
-	 else
 		add_reg_w_out <= add_reg_rt_in;
+	 else
+		add_reg_w_out <= add_reg_rd_in;
 	end
 	 
 
