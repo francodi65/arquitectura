@@ -61,7 +61,7 @@ module pipeline_test;
 		pc_enable = 0;
 
 		// Wait 100 ns for global reset to finish
-		#10;
+		#5;
 		pc_reset = 1;
 		#1
 		pc_reset = 0;

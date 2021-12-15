@@ -22,7 +22,7 @@ module Pipeline#(
 				parameter ADDR_BITS = 32,
 				parameter DATA_WIDTH = 32,
 				parameter INM_DATA_WIDTH = 16,
-				parameter EXEC_BUS_WIDTH = 6,
+				parameter EXEC_BUS_WIDTH = 7,
 				parameter MEM_BUS_WIDTH = 3,
 				parameter WB_BUS_WIDTH = 2,
 				parameter REG_ADDR_BITS = 5
@@ -66,6 +66,7 @@ module Pipeline#(
 	wire [ADDR_BITS-1:0]  reg_rt_addr;
 	wire [DATA_WIDTH-1:0] reg_rt_data;
 	wire [DATA_WIDTH-1:0] inm_data;
+	wire [DATA_WIDTH-1:0] shamt_data;
 	wire [EXEC_BUS_WIDTH-1:0] execute_bus_from_decode;
 	wire [MEM_BUS_WIDTH-1:0] memory_bus_from_decode;
 	wire [WB_BUS_WIDTH-1:0] wb_bus_from_decode;
@@ -86,6 +87,7 @@ module Pipeline#(
 	 .add_reg_rt_out(reg_rt_addr),
 	 .add_reg_rd_out(reg_rd_addr),
 	 .inm_data_out(inm_data),
+	 .shamt_out(shamt_data),
 	 .next_pc_out(pc_addr_from_decode));
 	 
 	 // Execute wires
@@ -105,6 +107,7 @@ module Pipeline#(
 	 .reg_rs_data_in(reg_rs_data),
 	 .reg_rt_data_in(reg_rt_data),
 	 .inmediate_data_in(inm_data),
+	 .shamt_data_in(shamt_data),
 	 .add_reg_rd_in(reg_rd_addr),
 	 .add_reg_rt_in(reg_rt_addr),
 	 .next_pc_in(pc_addr_from_decode),

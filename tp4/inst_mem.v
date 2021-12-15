@@ -23,6 +23,7 @@ module inst_mem #(
 				parameter RAM_ADDR_BITS= 10                     // Specify RAM depth (number of entries)
 				)(
 				input clk,
+				input pc_enable,
 				input [RAM_ADDR_BITS-1:0] addr_data,
 				output reg[RAM_WIDTH-1:0] out_data
 				);
@@ -43,8 +44,10 @@ module inst_mem #(
 	begin
 			if (write)
 				ram_vec[addr_data] <= 0;
-			else
+			else if(pc_enable)
 				out_data <= ram_vec[addr_data];
+			else 
+				out_data <= 0;
 	end
 	
 

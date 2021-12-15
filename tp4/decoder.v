@@ -19,12 +19,13 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module decoder#(
-				parameter EXEC_BUS_WIDTH = 6,
+				parameter EXEC_BUS_WIDTH = 7,
 				parameter MEM_BUS_WIDTH = 3,
 				parameter WB_BUS_WIDTH = 2
 				)(
 				input [5:0] opcode,
 				input [5:0] funct,
+				input nop_flag,
 				output reg [EXEC_BUS_WIDTH-1:0] execute_bus,
 				output reg [MEM_BUS_WIDTH-1:0] memory_bus,
 				output reg [WB_BUS_WIDTH-1:0] wb_bus
@@ -36,7 +37,8 @@ module decoder#(
 	localparam  [EXEC_BUS_WIDTH-1:0]
 	// alu_opcode  = [3:0],
 		alu_src  	=  4, 
-		reg_dst   	=  5;
+		reg_dst   	=  5,
+		shamt_flag  =  6;
 	
 	// Memory bus bits
 	localparam  [MEM_BUS_WIDTH-1:0]
@@ -56,16 +58,29 @@ module decoder#(
 		case(opcode[5:3])
 			3'b000: 
 			begin 
-				execute_bus[reg_dst] <= 0;//Out rd
-				execute_bus[alu_src] <= 1;
+				execute_bus[reg_dst] <= 1;//Out rd
+				execute_bus[alu_src] <= 0;
+				execute_bus[shamt_flag] <= 0;
 				execute_bus[3:0] <= 4'b1111;
 				case(opcode[2:0])
 					3'b000: // R-type
 					begin
 						case(funct[5:0])
-							 6'b000000: execute_bus[3:0] <= 4'b0000;
-							 6'b000010: execute_bus[3:0] <= 4'b0001;
-							 6'b000011: execute_bus[3:0] <= 4'b0010;
+							 6'b000000: 
+							 begin
+								execute_bus[shamt_flag] <= 1;
+								execute_bus[3:0] <= 4'b0000;
+							 end
+							 6'b000010: 
+							 begin
+								execute_bus[shamt_flag] <= 1;
+								execute_bus[3:0] <= 4'b0001;
+							 end 
+							 6'b000011: 
+							 begin
+								execute_bus[shamt_flag] <= 1;
+								execute_bus[3:0] <= 4'b0010;
+							 end 
 							 6'b000100: execute_bus[3:0] <= 4'b0000;
 							 6'b000110: execute_bus[3:0] <= 4'b0001;
 							 6'b000111: execute_bus[3:0] <= 4'b0010;
@@ -87,7 +102,10 @@ module decoder#(
 						memory_bus[mem_write] <= 0; //By default write disabled.
 						memory_bus[branch_flag] <= 0;//Default branch pc.
 						wb_bus[mem_to_reg] <= 0;
-						wb_bus[reg_write] <= 0;
+						if(nop_flag)
+							wb_bus[reg_write] <= 0;
+						else
+							wb_bus[reg_write] <= 1;
 				  end
 				  3'b100,
 				  3'b101://Branch
@@ -129,9 +147,10 @@ module decoder#(
 					wb_bus[mem_to_reg] <= 1;
 					wb_bus[reg_write] <= 1; //Write register with memory data.
 				end 
-				execute_bus[reg_dst] <= 1;//By default rt
+				execute_bus[reg_dst] <= 0;//By default rt
 				memory_bus[branch_flag] <= 0;//Default branch pc.
-				execute_bus[alu_src] <= 0;
+				execute_bus[alu_src] <= 1;
+				execute_bus[shamt_flag] <= 0;
 			end
 			3'b001://Inmediates
 			begin
@@ -146,17 +165,19 @@ module decoder#(
 				endcase
 				wb_bus[reg_write] <= 1;
 				wb_bus[mem_to_reg] <= 0;
-				execute_bus[reg_dst] <= 1;//By default rt
+				execute_bus[reg_dst] <= 0;//By default rt
 				memory_bus[mem_read] <= 0; //By default read disabled.
 				memory_bus[mem_write] <= 0; //By default write disabled.
 				memory_bus[branch_flag] <= 0;//Default branch pc.
 				execute_bus[alu_src] <= 1;//Save ALU result into reg.
+				execute_bus[shamt_flag] <= 0;
 			end        
 			default:
 			begin
 				execute_bus[3:0] <= 4'b1111;
-				execute_bus[reg_dst] <= 1;//By default rt
-				execute_bus[alu_src] <= 1;//By default rt
+				execute_bus[reg_dst] <= 0;//By default rt
+				execute_bus[alu_src] <= 0;//By default rt
+				execute_bus[shamt_flag] <= 0;
 				memory_bus[mem_read] <= 0; //By default read disabled.
 				memory_bus[mem_write] <= 0; //By default write disabled.
 				wb_bus[reg_write] <= 0; //By default write register disabled.

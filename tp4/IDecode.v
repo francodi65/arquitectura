@@ -22,10 +22,11 @@ module IDecode#(
 				parameter ADDR_BITS = 32,
 				parameter DATA_WIDTH = 32,
 				parameter INM_DATA_WIDTH = 16,
-				parameter EXEC_BUS_WIDTH = 6,
+				parameter EXEC_BUS_WIDTH = 7,
 				parameter MEM_BUS_WIDTH = 3,
 				parameter WB_BUS_WIDTH = 2,
-				parameter REG_ADDR_BITS = 5
+				parameter REG_ADDR_BITS = 5,
+				parameter SHAMT_BITS = 5
 				)(
 				input clk,
 				input write_w,
@@ -41,6 +42,7 @@ module IDecode#(
 				output [REG_ADDR_BITS-1:0] add_reg_rt_out,
 				output [REG_ADDR_BITS-1:0] add_reg_rd_out,
 				output [ADDR_BITS-1:0] inm_data_out,
+				output [DATA_WIDTH-1:0] shamt_out,
 				output reg [ADDR_BITS-1:0] next_pc_out
 				);
 	 
@@ -49,7 +51,9 @@ module IDecode#(
 	wire [REG_ADDR_BITS-1:0] add_reg_a; // RS
 	wire [REG_ADDR_BITS-1:0] add_reg_b; // RT
 	wire [REG_ADDR_BITS-1:0] add_reg_w; // RD
-	wire [INM_DATA_WIDTH-1:0] inm_data; 
+	wire [INM_DATA_WIDTH-1:0] inm_data;
+	wire [DATA_WIDTH-SHAMT_BITS-1:0] shamt_ext = 0;
+	wire nop_flag;
 	
 	
 	assign opcode = inst_in[31:26];
@@ -61,10 +65,15 @@ module IDecode#(
 	
 	assign add_reg_rd_out = add_reg_w;
 	assign add_reg_rt_out = add_reg_b;
+
+	assign shamt_out[4:0] = inst_in[10:6];
+	assign shamt_out[DATA_WIDTH-1:5] = shamt_ext;
+	
+	assign nop_flag = inst_in? 0 : 1;
 	
 
 	decoder control_unit
-	(.opcode(opcode), .funct(funct), .execute_bus(execute_bus_out), .memory_bus(memory_bus_out), .wb_bus(wb_bus_out)); //+ fetch bus out);
+	(.opcode(opcode), .funct(funct), .nop_flag(nop_flag), .execute_bus(execute_bus_out), .memory_bus(memory_bus_out), .wb_bus(wb_bus_out)); //+ fetch bus out);
 	
 	register_bank register_bank_unit
 	(.clk(clk), .write_w(write_w), .addr_reg_a(add_reg_a), .addr_reg_b(add_reg_b), .addr_reg_w(add_reg_w_in), 

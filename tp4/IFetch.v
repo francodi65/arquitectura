@@ -35,10 +35,10 @@ module IFetch#(
 	wire [ADDR_BITS-1:0] pc_in;
 
 	adder adder_unit 
-	(.clk(clk), .adder_in(pc_out), .adder_out(next_pc_out));
+	(.adder_in(pc_out), .adder_out(next_pc_out));
 	
 	inst_mem inst_mem_unit
-	(.clk(clk), .addr_data(pc_out), .out_data(instr_out));
+	(.clk(clk), .pc_enable(pc_enable), .addr_data(pc_out), .out_data(instr_out));
 
 	mux_pc mux_pc_unit
 	(.mux_select(branch), .mux1_in(next_pc_out), .mux2_in(branch_pc_in), .mux_out(pc_in));

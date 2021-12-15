@@ -21,7 +21,7 @@
 module IMemory#(
 				parameter ADDR_BITS = 32,
 				parameter DATA_WIDTH = 32,
-				parameter EXEC_BUS_WIDTH = 6,
+				parameter EXEC_BUS_WIDTH = 7,
 				parameter MEM_BUS_WIDTH = 3,
 				parameter WB_BUS_WIDTH = 2
 				)(
