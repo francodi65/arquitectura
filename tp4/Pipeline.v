@@ -29,7 +29,7 @@ module Pipeline#(
 				parameter REG_ADDR_BITS = 5
 				)(
 				input clk,
-				input pc_enable,
+				input pc_enable_in,
 				input pc_reset,
 				output [ADDR_BITS-1:0] pc_addr_out,
 				output [ADDR_BITS-1:0] pc_instr_out,
@@ -44,15 +44,26 @@ module Pipeline#(
 	localparam  [WB_BUS_WIDTH-1:0]
 		mem_to_reg 	=  0, 
 		reg_write  	=  1;
+		
+	// Memory bus bits
+	localparam  [MEM_BUS_WIDTH-1:0]
+		mem_write 	=  0, 
+		mem_read  	=  1, 
+		branch_flg  =  2;
 
 //-----------------------------------------------//
 	
 	
 	// Fetch Wires
 	wire branch_flag;
+	wire stall_flag; // Parada de emergencia
+	wire pc_enable; // Parada de emergencia
 	wire [ADDR_BITS-1:0] branch_pc;
 	wire [ADDR_BITS-1:0] pc_addr;
 	wire [DATA_WIDTH-1:0] pc_instr;
+	
+	// Si el hazard unit detecto un riesgo, paro el PC
+	assign pc_enable = stall_flag? 0: pc_enable_in;
 
 	IFetch IFetch_unit(
 	 .clk(clk),
@@ -66,6 +77,7 @@ module Pipeline#(
 	 // Decode Wires
 	 
 	wire reg_write_flag;
+	wire reset_control_buses; // Mete burbuja cuando hay un hazard
 	wire [ADDR_BITS-1:0]  reg_w_addr;
 	wire [DATA_WIDTH-1:0] reg_w_data;
 	wire [ADDR_BITS-1:0]  reg_rd_addr;
@@ -79,10 +91,11 @@ module Pipeline#(
 	wire [MEM_BUS_WIDTH-1:0] memory_bus_from_decode;
 	wire [WB_BUS_WIDTH-1:0] wb_bus_from_decode;
 	wire [ADDR_BITS-1:0] pc_addr_from_decode;
-	 
+	
 	 IDecode IDecode_unit(
 	 .clk(clk),
 	 .write_w(reg_write_flag),
+	 .reset_control_buses(reset_control_buses),
 	 .next_pc_in(pc_addr),
 	 .inst_in(pc_instr),
 	 .reg_w_data_in(reg_w_data),
@@ -182,6 +195,16 @@ module Pipeline#(
 	 .reg_rt_add_from_dec(reg_rt_addr),
 	 .fw_mux_rs_select(fw_mux_rs_select),
 	 .fw_mux_rt_select(fw_mux_rt_select));
+	 
+	 //Hazard Detector wires
+	 
+	 HazardDetector HazardDetector_unit(
+	 .mem_to_reg_flag(memory_bus_from_execute[mem_read]),
+	 .reg_rt_from_execute(reg_w_addr_from_execute), // En ese caso W siempre va a ser RT
+	 .reg_rs_from_decode(reg_rs_addr),
+	 .reg_rt_from_decode(reg_rt_addr),
+	 .stall_flag(stall_flag),
+	 .reset_control_buses(reset_control_buses));
 	 
 	 // Debug variables 
 	assign pc_addr_out = pc_addr;

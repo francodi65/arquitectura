@@ -30,6 +30,7 @@ module IDecode#(
 				)(
 				input clk,
 				input write_w,
+				input reset_control_buses,
 				input [ADDR_BITS-1:0] next_pc_in,
 				input [DATA_WIDTH-1:0] inst_in,
 				input [ADDR_BITS-1:0] reg_w_data_in,
@@ -55,23 +56,26 @@ module IDecode#(
 	wire [INM_DATA_WIDTH-1:0] inm_data;
 	wire [DATA_WIDTH-SHAMT_BITS-1:0] shamt_ext = 0;
 	wire nop_flag;
+	wire [DATA_WIDTH-1:0] nop = 0;
+	wire [DATA_WIDTH-1:0] instr_to_execute;
 	
+	// Si el Hazard detecto riesgo, inserto burbuja
+	assign instr_to_execute = reset_control_buses? nop: inst_in;
+	assign nop_flag = instr_to_execute? 0 : 1;
 	
-	assign opcode = inst_in[31:26];
-	assign funct = inst_in[5:0];
-	assign add_reg_a = inst_in[25:21];
-	assign add_reg_b = inst_in[20:16];
-	assign add_reg_d = inst_in[15:11];
-	assign inm_data = inst_in[15:0];
+	assign opcode = instr_to_execute[31:26];
+	assign funct = instr_to_execute[5:0];
+	assign add_reg_a = instr_to_execute[25:21];
+	assign add_reg_b = instr_to_execute[20:16];
+	assign add_reg_d = instr_to_execute[15:11];
+	assign inm_data = instr_to_execute[15:0];
 	
 	assign add_reg_rs_out = add_reg_a;
 	assign add_reg_rt_out = add_reg_b;
 	assign add_reg_rd_out = add_reg_d;
 
-	assign shamt_out[4:0] = inst_in[10:6];
+	assign shamt_out[4:0] = instr_to_execute[10:6];
 	assign shamt_out[DATA_WIDTH-1:5] = shamt_ext;
-	
-	assign nop_flag = inst_in? 0 : 1;
 	
 
 	decoder control_unit
@@ -81,7 +85,7 @@ module IDecode#(
 	(.clk(clk), .write_w(write_w), .addr_reg_a(add_reg_a), .addr_reg_b(add_reg_b), .addr_reg_w(add_reg_w_in), 
 	 .reg_w_data_in(reg_w_data_in), .reg_a_data_out(reg_rs_data_out), .reg_b_data_out(reg_rt_data_out));
 	 
-	sign_ext sing_ext_unit
+	sign_ext sign_ext_unit
 	(.data_in(inm_data), .data_out(inm_data_out));
 	
 	//Forwarding buses 

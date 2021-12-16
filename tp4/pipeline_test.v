@@ -39,7 +39,7 @@ module pipeline_test;
 	// Instantiate the Unit Under Test (UUT)
 	Pipeline uut (
 		.clk(clk), 
-		.pc_enable(pc_enable), 
+		.pc_enable_in(pc_enable), 
 		.pc_reset(pc_reset), 
 		.pc_addr_out(pc_addr_out), 
 		.pc_instr_out(pc_instr_out), 
@@ -66,7 +66,7 @@ module pipeline_test;
 		#1
 		pc_reset = 0;
 		pc_enable = 1;
-		#20;
+		#100;
 		pc_reset = 0;
 		pc_enable = 0;
 
