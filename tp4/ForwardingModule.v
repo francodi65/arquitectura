@@ -24,6 +24,7 @@ module ForwardingModule#(
 				parameter REG_ADD_WIDTH = 5,
 				parameter FW_BUS_WIDTH = 2
 				)(
+				input clk,
 				input reg_write_from_mem,
 				input reg_write_from_wb,
 				input [ADDR_BITS-1:0] reg_rd_add_from_mem,

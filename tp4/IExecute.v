@@ -108,7 +108,7 @@ module IExecute#(
 	(.mux_select(mux_shamt_select), .mux1_in(alu_data_1), .mux2_in(alu_data_2), .mux_out(alu_data_b));
 	
 
-
+	// ALU
 	alu alu_unit
 	(.a(alu_data_a), .b(alu_data_b), .opcode(alu_opcode), .result_out(alu_data_result), .zero_flag(alu_zero_flag));
 	

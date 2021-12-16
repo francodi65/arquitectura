@@ -60,7 +60,7 @@ module IDecode#(
 	wire [DATA_WIDTH-1:0] instr_to_execute;
 	
 	// Si el Hazard detecto riesgo, inserto burbuja
-	assign instr_to_execute = reset_control_buses? nop: inst_in;
+	assign instr_to_execute = inst_in;
 	assign nop_flag = instr_to_execute? 0 : 1;
 	
 	assign opcode = instr_to_execute[31:26];

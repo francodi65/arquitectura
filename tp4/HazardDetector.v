@@ -22,6 +22,7 @@ module HazardDetector#(
 				parameter ADDR_BITS = 5,
 				parameter DATA_WIDTH = 32
 				)(
+				input clk,
 				input mem_to_reg_flag,
 				input [ADDR_BITS-1:0] reg_rt_from_execute,
 				input [ADDR_BITS-1:0] reg_rs_from_decode,
@@ -30,17 +31,28 @@ module HazardDetector#(
 				output reg reset_control_buses
 				);
 	 
-	 always @(*)
+	 always @(posedge clk)
 	 begin
-		if(mem_to_reg_flag & ((reg_rt_from_execute == reg_rs_from_decode) | (reg_rt_from_execute == reg_rt_from_decode)))
+		if(mem_to_reg_flag & ((reg_rt_from_execute[ADDR_BITS-1:0] == reg_rs_from_decode[ADDR_BITS-1:0]) | (reg_rt_from_execute[ADDR_BITS-1:0] == reg_rt_from_decode[ADDR_BITS-1:0])))
 		begin
-			stall_flag <= 1;
 			reset_control_buses <= 1;
 		end
 		else
 		begin
-			stall_flag <= 0;
 			reset_control_buses <= 0;
+		end
+	 end
+	 
+	 
+	 always @(*)
+	 begin
+		if(mem_to_reg_flag & ((reg_rt_from_execute[ADDR_BITS-1:0] == reg_rs_from_decode[ADDR_BITS-1:0]) | (reg_rt_from_execute[ADDR_BITS-1:0] == reg_rt_from_decode[ADDR_BITS-1:0])))
+		begin
+			stall_flag <= 1;
+		end
+		else
+		begin
+			stall_flag <= 0;
 		end
 	 end
 	

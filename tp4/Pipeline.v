@@ -187,6 +187,7 @@ module Pipeline#(
 	 //Forwarding Unit wires
 	 
 	 ForwardingModule ForwardingModule_unit(
+	 .clk(clk),
 	 .reg_write_from_mem(wb_bus_from_execute[reg_write]),  //mem lee la salida del execute
 	 .reg_write_from_wb(wb_bus_from_memory[reg_write]),    //wb lee la salida de mem
 	 .reg_rd_add_from_mem(reg_w_addr_from_execute),
@@ -199,6 +200,7 @@ module Pipeline#(
 	 //Hazard Detector wires
 	 
 	 HazardDetector HazardDetector_unit(
+	 .clk(clk),
 	 .mem_to_reg_flag(memory_bus_from_execute[mem_read]),
 	 .reg_rt_from_execute(reg_w_addr_from_execute), // En ese caso W siempre va a ser RT
 	 .reg_rs_from_decode(reg_rs_addr),

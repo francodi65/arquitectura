@@ -120,6 +120,7 @@ module decoder#(
 				  end
 				  default://Jump
 				  begin
+						execute_bus[reg_dst] <= 0;
 				      execute_bus[3:0] <= 4'b1111;
 						memory_bus[mem_read] <= 0; //read disabled.
 						memory_bus[mem_write] <= 0; //write disabled.

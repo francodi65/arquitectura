@@ -66,7 +66,7 @@ module pipeline_test;
 		#1
 		pc_reset = 0;
 		pc_enable = 1;
-		#100;
+		#20;
 		pc_reset = 0;
 		pc_enable = 0;
 
