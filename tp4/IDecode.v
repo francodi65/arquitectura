@@ -39,6 +39,7 @@ module IDecode#(
 				output [WB_BUS_WIDTH-1:0] wb_bus_out,
 				output [ADDR_BITS-1:0] reg_rs_data_out,
 				output [ADDR_BITS-1:0] reg_rt_data_out,
+				output [REG_ADDR_BITS-1:0] add_reg_rs_out,
 				output [REG_ADDR_BITS-1:0] add_reg_rt_out,
 				output [REG_ADDR_BITS-1:0] add_reg_rd_out,
 				output [ADDR_BITS-1:0] inm_data_out,
@@ -50,7 +51,7 @@ module IDecode#(
 	wire [5:0] funct;
 	wire [REG_ADDR_BITS-1:0] add_reg_a; // RS
 	wire [REG_ADDR_BITS-1:0] add_reg_b; // RT
-	wire [REG_ADDR_BITS-1:0] add_reg_w; // RD
+	wire [REG_ADDR_BITS-1:0] add_reg_d; // RD
 	wire [INM_DATA_WIDTH-1:0] inm_data;
 	wire [DATA_WIDTH-SHAMT_BITS-1:0] shamt_ext = 0;
 	wire nop_flag;
@@ -60,11 +61,12 @@ module IDecode#(
 	assign funct = inst_in[5:0];
 	assign add_reg_a = inst_in[25:21];
 	assign add_reg_b = inst_in[20:16];
-	assign add_reg_w = inst_in[15:11];
+	assign add_reg_d = inst_in[15:11];
 	assign inm_data = inst_in[15:0];
 	
-	assign add_reg_rd_out = add_reg_w;
+	assign add_reg_rs_out = add_reg_a;
 	assign add_reg_rt_out = add_reg_b;
+	assign add_reg_rd_out = add_reg_d;
 
 	assign shamt_out[4:0] = inst_in[10:6];
 	assign shamt_out[DATA_WIDTH-1:5] = shamt_ext;
@@ -73,7 +75,7 @@ module IDecode#(
 	
 
 	decoder control_unit
-	(.opcode(opcode), .funct(funct), .nop_flag(nop_flag), .execute_bus(execute_bus_out), .memory_bus(memory_bus_out), .wb_bus(wb_bus_out)); //+ fetch bus out);
+	(.opcode(opcode), .funct(funct), .nop_flag(nop_flag), .execute_bus(execute_bus_out), .memory_bus(memory_bus_out), .wb_bus(wb_bus_out));
 	
 	register_bank register_bank_unit
 	(.clk(clk), .write_w(write_w), .addr_reg_a(add_reg_a), .addr_reg_b(add_reg_b), .addr_reg_w(add_reg_w_in), 

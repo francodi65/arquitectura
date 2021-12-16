@@ -25,6 +25,7 @@ module Pipeline#(
 				parameter EXEC_BUS_WIDTH = 7,
 				parameter MEM_BUS_WIDTH = 3,
 				parameter WB_BUS_WIDTH = 2,
+				parameter FW_BUS_WIDTH = 2,
 				parameter REG_ADDR_BITS = 5
 				)(
 				input clk,
@@ -37,8 +38,14 @@ module Pipeline#(
 				output [ADDR_BITS-1:0] reg_rs_data_out
 				);
 				
-	 
-	
+//---------- Local variables ----------//
+
+	 // Write back bus bits
+	localparam  [WB_BUS_WIDTH-1:0]
+		mem_to_reg 	=  0, 
+		reg_write  	=  1;
+
+//-----------------------------------------------//
 	
 	
 	// Fetch Wires
@@ -58,10 +65,11 @@ module Pipeline#(
 	 
 	 // Decode Wires
 	 
-	wire reg_write;
+	wire reg_write_flag;
 	wire [ADDR_BITS-1:0]  reg_w_addr;
 	wire [DATA_WIDTH-1:0] reg_w_data;
 	wire [ADDR_BITS-1:0]  reg_rd_addr;
+	wire [ADDR_BITS-1:0]  reg_rs_addr;
 	wire [DATA_WIDTH-1:0] reg_rs_data;
 	wire [ADDR_BITS-1:0]  reg_rt_addr;
 	wire [DATA_WIDTH-1:0] reg_rt_data;
@@ -74,7 +82,7 @@ module Pipeline#(
 	 
 	 IDecode IDecode_unit(
 	 .clk(clk),
-	 .write_w(reg_write),
+	 .write_w(reg_write_flag),
 	 .next_pc_in(pc_addr),
 	 .inst_in(pc_instr),
 	 .reg_w_data_in(reg_w_data),
@@ -84,6 +92,7 @@ module Pipeline#(
 	 .wb_bus_out(wb_bus_from_decode),
 	 .reg_rs_data_out(reg_rs_data),
 	 .reg_rt_data_out(reg_rt_data),
+	 .add_reg_rs_out(reg_rs_addr),
 	 .add_reg_rt_out(reg_rt_addr),
 	 .add_reg_rd_out(reg_rd_addr),
 	 .inm_data_out(inm_data),
@@ -99,6 +108,9 @@ module Pipeline#(
 	wire [MEM_BUS_WIDTH-1:0] memory_bus_from_execute;
 	wire [WB_BUS_WIDTH-1:0] wb_bus_from_execute;
 	wire [DATA_WIDTH-1:0] branch_pc_from_execute;
+	wire [FW_BUS_WIDTH-1:0] fw_mux_rs_select;
+	wire [FW_BUS_WIDTH-1:0] fw_mux_rt_select;
+	wire [DATA_WIDTH-1:0] mem_data;
 	 
 	 IExecute IExecute_unit(
 	 .clk(clk),
@@ -106,12 +118,18 @@ module Pipeline#(
 	 .memory_bus_in(memory_bus_from_decode),
 	 .wb_bus_in(wb_bus_from_decode),
 	 .reg_rs_data_in(reg_rs_data),
+	 .reg_rs_data_from_mem_in(alu_result_data),
+	 .reg_rs_data_from_wb_in(mem_data),
 	 .reg_rt_data_in(reg_rt_data),
+	 .reg_rt_data_from_mem_in(alu_result_data),
+	 .reg_rt_data_from_wb_in(mem_data),
 	 .inmediate_data_in(inm_data),
 	 .shamt_data_in(shamt_data),
 	 .add_reg_rd_in(reg_rd_addr),
 	 .add_reg_rt_in(reg_rt_addr),
 	 .next_pc_in(pc_addr_from_decode),
+	 .fw_mux_rs_select(fw_mux_rs_select),
+	 .fw_mux_rt_select(fw_mux_rt_select),
 	 .alu_result_out(alu_result_data),
 	 .add_reg_w_out(reg_w_addr_from_execute),
 	 .memory_bus_out(memory_bus_from_execute),
@@ -123,7 +141,6 @@ module Pipeline#(
 	 
 	 // Memory wires
 	
-	wire [DATA_WIDTH-1:0] mem_data;
 	wire [DATA_WIDTH-1:0] alu_result_data_from_mem;
 	wire [WB_BUS_WIDTH-1:0] wb_bus_from_memory;
 	 
@@ -146,7 +163,7 @@ module Pipeline#(
 	 
 	 // WB wires
 	 
-	assign reg_write = wb_bus_from_memory[1]; // reg_write
+	assign reg_write_flag = wb_bus_from_memory[reg_write];
 
 	IWriteBack IWriteBack_unit(
 	 .wb_bus_in(wb_bus_from_memory),
@@ -154,6 +171,17 @@ module Pipeline#(
 	 .alu_data(alu_result_data_from_mem),
 	 .reg_w_data(reg_w_data));
 	 
+	 //Forwarding Unit wires
+	 
+	 ForwardingModule ForwardingModule_unit(
+	 .reg_write_from_mem(wb_bus_from_execute[reg_write]),  //mem lee la salida del execute
+	 .reg_write_from_wb(wb_bus_from_memory[reg_write]),    //wb lee la salida de mem
+	 .reg_rd_add_from_mem(reg_w_addr_from_execute),
+	 .reg_rd_add_from_wb(reg_w_addr),
+	 .reg_rs_add_from_dec(reg_rs_addr),
+	 .reg_rt_add_from_dec(reg_rt_addr),
+	 .fw_mux_rs_select(fw_mux_rs_select),
+	 .fw_mux_rt_select(fw_mux_rt_select));
 	 
 	 // Debug variables 
 	assign pc_addr_out = pc_addr;
