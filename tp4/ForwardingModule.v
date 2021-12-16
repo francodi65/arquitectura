@@ -40,25 +40,25 @@ module ForwardingModule#(
 		reg_from_mem  	=  1,
 		reg_from_wb  	=  2;
 	 
+	 // Si el decoder esta usando un registro que tiene el stage MEM o WR, se lo mando directamente asi no espera
+	 always @(*)
+	 begin
+		if((reg_rs_add_from_dec[REG_ADD_WIDTH-1:0] == reg_rd_add_from_mem[REG_ADD_WIDTH-1:0]) & reg_write_from_mem)
+			fw_mux_rs_select <= reg_from_mem;
+		else if((reg_rs_add_from_dec[REG_ADD_WIDTH-1:0] == reg_rd_add_from_wb[REG_ADD_WIDTH-1:0]) & reg_write_from_wb)
+			fw_mux_rs_select <= reg_from_wb;
+		else
+			fw_mux_rs_select <= reg_current;
+	 end
 	 
 	 always @(*)
 	 begin
-		if(reg_write_from_mem) // Mem quiere escribir en el reg W?
-		begin
-		   // Si Decode esta solicitando ese registro, se lo mandamos ya.
-			fw_mux_rs_select <= (reg_rs_add_from_dec[REG_ADD_WIDTH-1:0] == reg_rd_add_from_mem[REG_ADD_WIDTH-1:0]) ? reg_from_mem : reg_current;
-			fw_mux_rt_select <= (reg_rt_add_from_dec[REG_ADD_WIDTH-1:0] == reg_rd_add_from_mem[REG_ADD_WIDTH-1:0]) ? reg_from_mem : reg_current;
-		end
-		else if(reg_write_from_wb) // WB quiere escribir en el reg W?
-		begin
-			fw_mux_rs_select <= (reg_rs_add_from_dec[REG_ADD_WIDTH-1:0] == reg_rd_add_from_mem[REG_ADD_WIDTH-1:0]) ? reg_from_wb : reg_current;
-			fw_mux_rt_select <= (reg_rt_add_from_dec[REG_ADD_WIDTH-1:0] == reg_rd_add_from_mem[REG_ADD_WIDTH-1:0]) ? reg_from_wb : reg_current;
-		end
+		if((reg_rt_add_from_dec[REG_ADD_WIDTH-1:0] == reg_rd_add_from_mem[REG_ADD_WIDTH-1:0]) & reg_write_from_mem)
+			fw_mux_rt_select <= reg_from_mem;
+		else if((reg_rt_add_from_dec[REG_ADD_WIDTH-1:0] == reg_rd_add_from_wb[REG_ADD_WIDTH-1:0]) & reg_write_from_wb)
+			fw_mux_rt_select <= reg_from_wb;
 		else
-		begin
-			fw_mux_rs_select <= reg_current;
 			fw_mux_rt_select <= reg_current;
-		end
 	 end
 
 

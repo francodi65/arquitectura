@@ -84,6 +84,7 @@ module decoder#(
 							 6'b000100: execute_bus[3:0] <= 4'b0000;
 							 6'b000110: execute_bus[3:0] <= 4'b0001;
 							 6'b000111: execute_bus[3:0] <= 4'b0010;
+							 6'b100000: execute_bus[3:0] <= 4'b0011;
 							 6'b100001: execute_bus[3:0] <= 4'b0011;
 							 6'b100011: execute_bus[3:0] <= 4'b1000;
 							 6'b100100: execute_bus[3:0] <= 4'b0100;
